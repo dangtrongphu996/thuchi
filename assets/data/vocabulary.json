@@ -1,0 +1,1674 @@
+[
+  {
+    "kanji": "父親",
+    "hiragana": "ちちおや",
+    "mean": "bố tôi, người bố",
+    "example": "父親は今年50歳になる。Bố tôi năm nay 50 tuổi",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "母親",
+    "hiragana": "ははおや",
+    "mean": "mẹ tôi, người mẹ",
+    "example": "母親の料理は とてもおいしい。Các món ăn của mẹ tôi nấu rất ngon.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "長女",
+    "hiragana": "ちょうじょ",
+    "mean": "trưởng nữ, con gái cả, con gái đầu lòng",
+    "example": "私は長女で、妹が一人いる。Tôi là con gái cả, dưới tôi còn một em gái nữa.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "長男",
+    "hiragana": "ちょうなん",
+    "mean": "trường nam, con trai cả, con trai đầu lòng",
+    "example": "姉に元気な長男が生まれた。Chị tôi đã sinh được cậu con trai đầu lòng khỏe mạnh.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "次女",
+    "hiragana": "じじょ",
+    "mean": "con gái thứ hai",
+    "example": "次女は母に似ている。Cô con gái thứ hai giống mẹ.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "次男",
+    "hiragana": "じなん",
+    "mean": "con trai thứ hai",
+    "example": "次男はとても背が高い。Cậu con trai thứ hai người rất cao.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "三女",
+    "hiragana": "さんじょ",
+    "mean": "con gái thứ ba",
+    "example": "三女は小学一年生だ。Con gái thứ ba đang học cấp 1.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "三男",
+    "hiragana": "さんなん",
+    "mean": "con trai thứ ba",
+    "example": "三男は兄弟の中で一番元気だ。Trong anh em, cậu con trai thứ ba là khỏe mạnh nhất.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "末っ子",
+    "hiragana": "すえっこ",
+    "mean": "con út",
+    "example": "彼は5人兄弟の末っ子だ。Anh ấy là con út trong gia đình có 5 anh em.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "一人っ子",
+    "hiragana": "ひとりっこ",
+    "mean": "con một",
+    "example": "私の友だちには、一人っ子が多い。Bạn bè tôi nhiều người là con một.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "姉妹",
+    "hiragana": "しまい",
+    "mean": "chị em gái",
+    "example": "私は3人姉妹の末っ子だ。Tôi là con út trong gia đình có 3 chị em gái.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "一人娘",
+    "hiragana": "ひとりむすめ",
+    "mean": "con gái độc nhất, con gái duy nhất",
+    "example": "父親は一人娘の結婚式で泣いた。Người cha đã khóc trong đám cưới của cô con gái duy nhất của mình.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "親子",
+    "hiragana": "おやこ",
+    "mean": "bố mẹ con cái",
+    "example": "最近、親子でよく海外旅行をしている。Gần đây, bố mẹ con cái hay đi du lịch nước ngoài cùng nhau.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "夫婦",
+    "hiragana": "ふうふ",
+    "mean": "vợ chồng",
+    "example": "佐藤さん夫婦は、毎日散歩している。Vợ chồng anh Sato hàng ngày đi dạo.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "親類",
+    "hiragana": "しんるい",
+    "mean": "họ hàng",
+    "example": "田中さんと私は親類だ。Anh Tanaka và tôi là chỗ ho hàng.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "先祖",
+    "hiragana": "せんぞ",
+    "mean": "tổ tiên",
+    "example": "うちの先祖に、有名なサムライがいるそうだ。Nghe nói trong tổ tiên của nhà tôi có một vị Samurai nổi tiếng.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "尊敬する",
+    "hiragana": "そんけいする",
+    "mean": "kính trọng",
+    "example": "私は両親をとても尊敬している。Tôi rất kính trọng bố mẹ tôi.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "おじ",
+    "hiragana": "おじ",
+    "mean": "chú, cậu, bác trai",
+    "example": "父とおじは二人兄弟だ。Bố tôi và chú là hai anh em.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "おば",
+    "hiragana": "おば",
+    "mean": "cô, dì, bác gái",
+    "example": "私は母親とりおばにいるいる相談する。Tôi tâm sự nhiều với dì hơn là mẹ.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "いとこ",
+    "hiragana": "いとこ",
+    "mean": "anh chị em họ",
+    "example": "今日、いとこが遊びに来る。Hôm nay tôi đi chơi với người em họ.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "おい",
+    "hiragana": "おい",
+    "mean": "cháu trai",
+    "example": "おいが生まれて、私もおばさんになった。Cháu trai chào đời, thế là tôi trở thành dì (cô).",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "めい",
+    "hiragana": "めい",
+    "mean": "cháu gái",
+    "example": "おいもめいも、とてもかわいい。Cả cháu trai lẫn cháu gái đều rất dễ thương.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "連れる",
+    "hiragana": "つれる",
+    "mean": "dẫn đi, dắt đi",
+    "example": "子どもを連れて、近所の公園に行く。Tôi dắt con đi chơi công viên gần nhà.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "似る",
+    "hiragana": "にる",
+    "mean": "giống",
+    "example": "父に似ていると言われます。Mọi người bảo, tôi giống bố.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "そっくりな",
+    "hiragana": "そっくりな",
+    "mean": "giống hệt, giống như đúc",
+    "example": "妹の顔は、父親にそっくりだ。Gương mặt của em gái giống bố như đúc.",
+    "character": 1,
+    "section": 1
+  },
+  {
+    "kanji": "親友",
+    "hiragana": "しんゆう",
+    "mean": "bạn thân",
+    "example": "私には親友が3人います。Tôi có 3 người bạn thân.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "仲間",
+    "hiragana": "なかま",
+    "mean": "hội, bạn, hội bạn",
+    "example": "彼もサッカーの仲間に入れよう。Cho cậu ta cùng tham gia vào hội bóng đá nào!",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "仲良し",
+    "hiragana": "なかよし",
+    "mean": "thân, thân thiết, quan hệ tốt",
+    "example": "クラスメートは、みんな仲良しだ。Tất cả bạn bè trong lớp đều thân thiết với nhau.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "幼なじみ",
+    "hiragana": "おさなじみ",
+    "mean": "bạn thuở bé",
+    "example": "いなかに帰ると、いつも幼なじみに会う。Mỗi khi về quê, bao giờ tôi cũng đi gặp lũ bạn thuở bé.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "友情",
+    "hiragana": "ゆうじょう",
+    "mean": "tình bạn",
+    "example": "彼との友情をいつまでも大切にしたい。Tôi luôn muốn giữ gìn tình bạn với anh ấy.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "親しい",
+    "hiragana": "したしい",
+    "mean": "thân",
+    "example": "親しい友だちの結婚式に招待された。Tôi được mời dự đám cưới của người bạn thân.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "知人",
+    "hiragana": "ちじん",
+    "mean": "người quen",
+    "example": "知人の紹介で、彼と知り合った。Tôi biết anh ấy qua giới thiệu của người quen.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "メンバー",
+    "hiragana": "メンバー",
+    "mean": "thành viên, thành phần tham dự",
+    "example": "明日のパーティーのメンバーは、あした だれですか。Thành phần tham dự buổi tiệc ngày mai là những ai?",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "つなぐ",
+    "hiragana": "つなぐ",
+    "mean": "nắm, nối, thông",
+    "example": "子どもたちは、手をつないで学校に行く。Bọn trẻ con nắm tay nhau đến trường.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "つながる",
+    "hiragana": "つながる",
+    "mean": "kết nối, gọi được",
+    "example": "夜になっても、電話がつながらない。Đến tận đêm điện thoại cũng không gọi được.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "当時",
+    "hiragana": "とうじ",
+    "mean": "lúc đó, thời đó",
+    "example": "彼女はクラスメートだったが、当時は、あまり話さなかった。Cô ấy từng là bạn học cùng lớp với tôi nhưng thời đó chẳng hay nói chuyện mấy.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "祝う",
+    "hiragana": "いわう",
+    "mean": "mừng, chúc mừng",
+    "example": "友だちの婚約を祝うための会を開いた。Tôi tổ chức buổi mùng bạn đính hôn.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "遠慮する",
+    "hiragana": "えんりょする",
+    "mean": "sự làm khách, e ngại, giữ kẽ",
+    "example": "遠慮しないで食べてください。Hãy ăn đi, đừng làm khách!",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "しょっちゅう",
+    "hiragana": "しょっちゅう",
+    "mean": "thường xuyên, thường",
+    "example": "幼なじみとしょっちゅう食事している。Tôi thường xuyên dỉ ăn uông củng với lũ bạn thuở bé.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "たびたび",
+    "hiragana": "たびたび",
+    "mean": "nhiều lần",
+    "example": "仕事中に、友だちからたびたびメールが来る。Nhiều lần e-mail bạn bè gửi đến trong lúc đang làm việc.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "たまに",
+    "hiragana": "たまに",
+    "mean": "thi thoảng",
+    "example": "大学の友だちとたまにお酒を飲む。Thi thoảng tôi đi uống cùng với bạn bè đại học.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "たまたま",
+    "hiragana": "たまたま",
+    "mean": "tình cờ, ngẫu nhiên",
+    "example": "昨日駅前で、たまたま高校時代の友だちに会った。Hôm qua, tình cờ tôi gặp lại người bạn thời cấp ba ở trước ga.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "めったに",
+    "hiragana": "めったに",
+    "mean": "họa hoằn, hiếm khi",
+    "example": "東京に来てから、幼なじみとめったに会えない。Từ khi đến Tokyo, tôi hiếm khi gặp được bạn bè thuở bé.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "しばらく",
+    "hiragana": "しばらく",
+    "mean": "một lúc, một thời gian",
+    "example": "幼なじみとしばらく会っていない。Một thời gian tôi không gặp bạn thuở bé.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "別々な",
+    "hiragana": "べつべつな",
+    "mean": "sự khác nhau, riêng biệt (riêng biệt)",
+    "example": "親友とは別々の大学に進んだ。Tôi và bạn thân mỗi đứa vào một trường đại học khác nhau.",
+    "character": 1,
+    "section": 2
+  },
+  {
+    "kanji": "彼女",
+    "hiragana": "かのじょ",
+    "mean": "cô ấy, bạn gái",
+    "example": "彼女ができたので、毎日が楽しい。Tôi mới có bạn gái nên ngày nào cũng vui.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "彼",
+    "hiragana": "かれ",
+    "mean": "anh ấy, bạn trai",
+    "example": "両親は、彼をあまり好きじゃないようだ。Bố mẹ tôi có vẻ không thích anh ấy lắm.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "愛情",
+    "hiragana": "あいじょう",
+    "mean": "tình yêu",
+    "example": "やさしい人だとわかり、友情が愛情に変わった。Tôi cảm nhận được đó là một người hiền lành và tình bạn đã chuyển sang thành tình yêu.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "出会い",
+    "hiragana": "であい",
+    "mean": "cuộc gặp gỡ",
+    "example": "それはドラマのような出会いだった。Đó là một cuộc gặp gỡ giống như trong phim vậy.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "出会う",
+    "hiragana": "であう",
+    "mean": "gặp gỡ",
+    "example": "アメリカに旅行したとき、彼女に出会った。Tôi đã gặp gỡ cô ấy khi đi du lịch qua Mỹ.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "付き合う",
+    "hiragana": "つきあう",
+    "mean": "yêu nhau, quan hệ,cùng đi",
+    "example": "二人は半年前から付き合っている。Hai người yêu nhau từ nửa năm trước.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "交際する",
+    "hiragana": "こうさいする",
+    "mean": "sự quan hệ, giao thiệp",
+    "example": "彼女の両親が、二人の交際に反対している。Bố mẹ cô ấy phản đối mối quan hệ của hai đứa.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "記念する",
+    "hiragana": "きねんする",
+    "mean": "sự kỷ niệm",
+    "example": "彼女の卒業を記念して、 写真を撮った。Tôi chụp ảnh kỷ niệm tốt nghiệp của cô ấy.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "記念日",
+    "hiragana": "きねんび",
+    "mean": "ngày kỷ niệm",
+    "example": "明日は結婚記念日だ。Mai là ngày kỷ niệm ngày cưới.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "けんかする",
+    "hiragana": "けんかする",
+    "mean": "sự cãi nhau, cãi vã,　đánh lộn",
+    "example": "私たちは、よくけんかする。Chúng tôi hay cãi vã.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "言い返す",
+    "hiragana": "いいかえす",
+    "mean": "nói lại, bắt bẻ, bốp chát",
+    "example": "彼は注意されると、すぐ言い返す。Anh ấy hễ bị nhắc nhở là nói trả lại ngay.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "謝る",
+    "hiragana": "あやまる",
+    "mean": "xin lỗi",
+    "example": "私が怒ると、彼はすぐに謝る。Hễ tôi tức giận là anh ta lại xin lỗi ngay.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "仲直りする",
+    "hiragana": "なかなおる",
+    "mean": "sự làm lành",
+    "example": "3日前にけんかして、まだ仲直りしていない。Chúng tôi cãi nhau 3 ngày trước và giờ vân chưa làm lành.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "連れて行く",
+    "hiragana": "つれていく",
+    "mean": "dẫn đi, dắt đi",
+    "example": "両親の家に彼女を連れて行きたい。Tôi muốn dẫn bạn gái đến nhà bố mẹ.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "連れて来る",
+    "hiragana": "つれてくる",
+    "mean": "dẫn đến, dẫn về",
+    "example": "兄が彼女を家に連れて来た。Anh trai tôi dẫn bạn gái về nhà. ",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "秘密",
+    "hiragana": "ひみつ",
+    "mean": "bí mật",
+    "example": "彼は私の秘密を、みんなに話した。Anh ấy nói điều bí mật của tôi cho tất cả mọi người biết.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "内緒",
+    "hiragana": "ないしょ",
+    "mean": "bí mật, chuyện nội bộ, biết với nhau",
+    "example": "この話は、ぜったいに内緒にしてね。Chuyện này phải tuyệt đối giữ bí mật đấy nhé!",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "好かれる",
+    "hiragana": "すかれる",
+    "mean": "được thích, được yêu mến",
+    "example": "彼女は、みんなに好かれる人だ。Cô ấy là người được mọi người yêu mến.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "もてる",
+    "hiragana": "もてる",
+    "mean": "có duyên, đào hoa",
+    "example": "どうして彼が女性にもてるのかわからない。Tôi không hiểu được tại sao anh ta lại có duyên với phụ nữ.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "(人を)ふる",
+    "hiragana": "ひとりをふる",
+    "mean": "bỏ (người yêu), từ chối (ai đó)",
+    "example": "弟は彼女にふられて、元気がない。Em trai bị bạn gái bỏ nên buồn bã.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "[お]見合いする",
+    "hiragana": "おみあいする",
+    "mean": "mai mối",
+    "example": "姉はお見合いの前に、美容院へ行った。Em gái trước khi đi đến buổi mai mối đã đi làm tóc.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "恋愛する",
+    "hiragana": "れんあいする",
+    "mean": "chuyện yêu đương, tình yêu",
+    "example": "今は恋愛より、いい友だちがほしい。Bây giờ tôi muốn có một người bạn tốt hơn là chuyện yêu đương.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "存在する",
+    "hiragana": "そんざいする",
+    "mean": "sự tồn tại",
+    "example": "恋人は、ぼくにとって大切な存在だ。Người yêu là người rất quan trọng đối với tôi.",
+    "character": 1,
+    "section": 3
+  },
+  {
+    "kanji": "相手",
+    "hiragana": "あいて",
+    "mean": "đối phương, đối tác",
+    "example": "自分のことだけでなく、相手のことも考えよう。Không chỉ mỗi mình mà hãy nghĩ cho cả đối phương nữa.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "助ける",
+    "hiragana": "たすける",
+    "mean": "giúp, cứu",
+    "example": "駅で困っている人を助けた。Tôi đã giúp một người đang gặp khó khăn ở ga.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "助かる",
+    "hiragana": "たすかる",
+    "mean": "đỡ, may",
+    "example": "友だちがレポートをチェックしてくれたので、助かった。Bạn đã giúp tôi kiểm tra lại bài báo cáo, may quá.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "支える",
+    "hiragana": "ささえる",
+    "mean": "hỗ trợ, nâng đỡ, làm chỗ dựa",
+    "example": "国の両親が、いつも私を支えてくれる。Bố mẹ tôi ở trong nước luôn luôn hỗ trợ tôi.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "誘う",
+    "hiragana": "さそう",
+    "mean": "rủ, rủ rê",
+    "example": "見たい映画があるので、友だちを誘った。Tôi có bộ phim muốn xem nên đã rủ bạn đi xem.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "待ち合わせる",
+    "hiragana": "まちあわせる",
+    "mean": "hẹn gặp nhau",
+    "example": "駅前のカフェで、友だちと待ち合わせた。Tôi đã hẹn gặp bạn ở tiệm cà phê trước ga.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "交換する",
+    "hiragana": "こうかんする",
+    "mean": "sự trao dối",
+    "example": "仕事の相手と、メールアドレスを交換した。Tôi đã trao dôi địa chi e-mail với đôi tác công việc.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "交流する",
+    "hiragana": "こうりゅう",
+    "mean": "sự giao lưu",
+    "example": "いろいろな国の人たちと交流したい。Tôi muốn giao lưu với mọi người đến từ nhiều nước khác nhau.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "断る",
+    "hiragana": "ことわる",
+    "mean": "từ chối, từ bỏ",
+    "example": "兄の友だちにデートに誘われたが、断った。Bạn của anh trai rủ đi hẹn hò nhưng tôi đã từ chối.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "預ける",
+    "hiragana": "あずける",
+    "mean": "gửi, gửi trông hộ",
+    "example": "旅行の間、友だちにペットを預けた。Tôi đã gửi bạn trông hộ cho con thú cưng trong thời gian đi du lịch.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "預かる",
+    "hiragana": "あずかる",
+    "mean": "trông hộ",
+    "example": "友だちの旅行の間、彼女のペットを預かった。Tôi đã trông hộ con thú cưng của bạn tôi trong thời gian cô ấy đi du lịch.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": " かわいがる",
+    "hiragana": "かわいがる",
+    "mean": "cưng chiều, yêu chiều, quý",
+    "example": "彼女は、みんなからかわいがられている。Cô ấy được mọi người quý.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "甘やかす",
+    "hiragana": "あまやかす",
+    "mean": "chiều, chiều chuộng",
+    "example": "両親は弟を甘やかしている。Bố mẹ tôi chiều chuộng em trai.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "ついて来る",
+    "hiragana": "ついてくる",
+    "mean": "đi theo, bám theo",
+    "example": "散歩にいつも妹がついて来る。Em gái tôi lúc nào cũng bám theo khi đi dạo.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "抱く",
+    "hiragana": "だく",
+    "mean": "ôm, bế",
+    "example": "かわいい赤ちゃんを抱いた。Tôi bê em bé dể thương.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "話しかける",
+    "hiragana": "はなしかける",
+    "mean": "bắt chuyện",
+    "example": "兄は、赤ちゃんに話しかけた。Anh trai tôi bắt chuyện với em bé.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "無視する",
+    "hiragana": "むしする",
+    "mean": "sự làm ngơ, bỏ qua",
+    "example": "知り合いに話しかけたのに、無視された。Tôi bắt chuyện với người quen nhưng đã bị người đó làm ngơ.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "振り向く",
+    "hiragana": "ふりむく",
+    "mean": "quay lại, ngoái đầu quay lại",
+    "example": "後ろから名前を呼ばれて、振り向いた。Bị gọi tên từ phía sau, tôi ngoái đầu quay lại.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "いただく",
+    "hiragana": "いただく",
+    "mean": "nhận, được ai đó cho cái gì (cách nói kính ngữ)",
+    "example": "部長に日本のお酒をいただいた。Tôi được trưởng phòng cho rượu sake.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "くださる",
+    "hiragana": "くださる",
+    "mean": "cho, được ai đó cho cái gì (cách nói kính ngữ)",
+    "example": "社長の奥様が、お菓子をくださった。Phu nhân giám đốc cho tôi bánh.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "差し上げる",
+    "hiragana": "さしあげる",
+    "mean": "cho, được ai đó cho cái gì (cách nói kính ngữ)",
+    "example": "先生に国のお土産を差し上げた。Tôi biếu thầy (cô) giáo món quà nước tôi.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "やる",
+    "hiragana": "やる",
+    "mean": "cho, được ai đó cho cái gì (cách nói kính ngữ)",
+    "example": "買ったばかりのバッグを妹にやった。Tôi cho em gải cải tủi xách vửa mới mua.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "与える",
+    "hiragana": "あたえる",
+    "mean": "làm cho, mang đến",
+    "example": "彼女は、私たちに元気を与えてくれる人だ。Cô ấy là người mang đến sự vui vẻ cho chúng tôi.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "味方する",
+    "hiragana": "みかたする",
+    "mean": "đứng về phía",
+    "example": "私はいつも、あなたの味方です。Tôi luôn đứng về phía bạn.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "悪口",
+    "hiragana": "わるぐち",
+    "mean": "nói xấu",
+    "example": "人の悪口を言うのは、やめよう。Hãy thôi nói xấu người khác đi!",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "我々",
+    "hiragana": "われわれ",
+    "mean": "chúng tôi",
+    "example": "これが我々の意見です。Đây là ý kiến của chúng tôi.",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "まねする",
+    "hiragana": "まねする",
+    "mean": "sự bắt chước, làm theo",
+    "example": "人のまねではなく、自分の考えを持とう。Không phải là làm theo người khác mà hãy có chính kiến của mình!",
+    "character": 1,
+    "section": 4
+  },
+  {
+    "kanji": "名字",
+    "hiragana": "みょうじ",
+    "mean": "họ",
+    "example": "彼の名字は、とても珍しい。Họ của anh ấy rất hiếm.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": " 性別",
+    "hiragana": "せいべつ",
+    "mean": "giới tính",
+    "example": "名前を書いて、性別に○をしてください。Hãy viết tên và khoanh tròn vào giới tính.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "牛齢",
+    "hiragana": "ねんれい",
+    "mean": "tuổi, tuổi tác",
+    "example": "女性に平齢を聞いてはいけない。Không được hỏi tuổi của phụ nữ.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "高齢",
+    "hiragana": "こうれい",
+    "mean": "cao tuổi, nhiều tuổi",
+    "example": "日本には、高齢で元気な人が多い。Ở Nhật Bản có nhiều người cao tuổi khỏe mạnh.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "老人",
+    "hiragana": "ろうじん",
+    "mean": "người già",
+    "example": "ボウリングは、老人も好きなスポーツだ。Bowling là môn thể thao yêu thích của người già.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "幼児",
+    "hiragana": "ようじ",
+    "mean": "trẻ ấu nhi (trẻ từ 1-5 tuổi)",
+    "example": "この教室では、幼児が英語を勉強している。Trẻ ấu nhi đang học tiếng Anh ở lớp này.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "出身",
+    "hiragana": "しゅっしん",
+    "mean": "xuất thân, sinh ra",
+    "example": "彼はタイのバンコク出身だ。Anh ấy sinh ra ở Bangkok, Thái Lan.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "生まれ",
+    "hiragana": "うまれ",
+    "mean": "(sự) sinh ra, chào đời",
+    "example": "私は大阪生まれだ。Tôi sinh ra ở Osaka.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "育ち",
+    "hiragana": "そだち",
+    "mean": "(sự) lớn lên, trưởng thành",
+    "example": "私は大阪生まれ、東京育ちだ。Tôi sinh ra ở Osaka, lớn lên ở Tokyo.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "行儀",
+    "hiragana": "ぎょうぎ",
+    "mean": "hành vi, cách cư xử",
+    "example": "あの子は、とても行儀がいい。Đứa trẻ đó có hành vi rất tốt.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "マナー",
+    "hiragana": "マナー",
+    "mean": "phép lịch sự, ứng xử",
+    "example": "彼はタバコのマナーを知らない。Anh ta không biết phép lịch sự khi hút thuốc.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "個人",
+    "hiragana": "こじん",
+    "mean": "cá nhân",
+    "example": "個人のデータは、あまり教えないほうがいい。Không nên cho biết dữ liệu cá nhân.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "アドレス",
+    "hiragana": "アドレス",
+    "mean": "địa chỉ e-mail",
+    "example": "アドレスは名刺に書いてある。Địa chỉ e-mail có ghi trên danh thiếp.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "本人",
+    "hiragana": "ほんじん",
+    "mean": "bản thân, đúng người",
+    "example": "あなたが本人か、確認させてください。Hãy cho tôi xác nhận có phải đúng là anh (chị ) hay　không!",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "独身",
+    "hiragana": "どくしん",
+    "mean": "độc thân, chưa có vợ (chồng)",
+    "example": "彼は独身だが、結婚したいと言っていた。Anh ấy độc thân nhưng nói muốn lấy vợ.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "主婦",
+    "hiragana": "しゅふ",
+    "mean": "nội trợ",
+    "example": "姉は主婦だが、仕事もしている。Chị tôi làm nội trợ nhưng cũng làm việc.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "フリーター",
+    "hiragana": "フリーター",
+    "mean": "người làm thêm tự do",
+    "example": "弟は大学を卒業してからずっとフリーターだ。Sau khi tốt nghiệp đại học, em trai tôi làm thêm tự do　suốt.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "無職",
+    "hiragana": "むしょく",
+    "mean": "sự không có việc làm",
+    "example": "今は無職だが、来月から働く。Bây giờ thì không có việc làm nhưng từ tháng sau tôi sẽ　đi làm.",
+    "character": 1,
+    "section": 5
+  },
+  {
+    "kanji": "本日",
+    "hiragana": "ほんじっ",
+    "mean": "hôm nay",
+    "example": "本日はお忙しいところ、ありがとうございます。ôi xin cám ơn ông ngày hôm nay, mặc dù rất bận rộn vẫn dành thời gian cho tôi.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "明日",
+    "hiragana": "あす",
+    "mean": "ngày mai",
+    "example": "明日の3時に、そちらにうかがいます。Tôi xin phép đến chỗ chị vào 3 giờ ngày mai.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "前日",
+    "hiragana": "ぜんじっ",
+    "mean": "ngày hôm trước",
+    "example": "会議の前日に準備をする。Chuẩn bị vào ngày hôm trước khi hội nghị diễn ra.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "翌日",
+    "hiragana": "よくじつ",
+    "mean": "ngày hôm sau",
+    "example": "誕生日の翌日に、韓国に出張した。Tôi đã đi công tác Hàn Quốc vào hôm sau ngày sinh nhật.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "しあさって",
+    "hiragana": "しあさって",
+    "mean": "ngày kia",
+    "example": "私の誕生日は、しあさってだ。Sinh nhật tôi là ngày kia.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "先おととい",
+    "hiragana": "さきおととい",
+    "mean": "hôm kìa",
+    "example": "先おととい、高校のクラス会があった。Hôm kìa có buổi họp lớp cấp ba.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "昨日",
+    "hiragana": "さくじっ",
+    "mean": "hôm qua",
+    "example": "昨日は、いろいろとお世話になりました。Tôi cảm ơn anh ngày hôm qua đã giúp tôi rật nhiêu!",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "昨年",
+    "hiragana": "さくねん",
+    "mean": "năm ngoái",
+    "example": "昨年の5月に日本にまいりました。Tôi đến Nhật Bản vào tháng 5 năm ngoái.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "先日",
+    "hiragana": "せんじっ",
+    "mean": "hôm nọ hôm trước",
+    "example": "先日は、どうもありがとうございました。Hôm nọ cám ơn chị nhé!",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "再来週",
+    "hiragana": "さらいしゅう",
+    "mean": "tuần tới nữa",
+    "example": "再来週は仕事が忙しくなりそうだ。Có lẽ tuần tới nữa công việc sẽ bận.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "先々週",
+    "hiragana": "せんせんしゅう",
+    "mean": "tuần trước nữa",
+    "example": "先々週の試験が、今日やっと返ってきた。Cuối cùng, ngày hôm nay cũng biết kết quả của kỳ thi tuần trước nữa.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "上旬",
+    "hiragana": "じょうじゅん",
+    "mean": "thượng tuần, đầu tháng",
+    "example": "来月の上旬、タイに旅行に行きます。Tôi sẽ đi du lịch Thái Lan vào thượng tuẩn của tháng tới.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "中旬",
+    "hiragana": "ちゅうじゅん",
+    "mean": "trung tuần, giữa tháng",
+    "example": "今月の中旬までにレポートを出してください。Hãy nộp bài báo cáo vào trung tuần tháng này!",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "下旬",
+    "hiragana": "げじゅん",
+    "mean": "hạ tuần, cuối tháng",
+    "example": "毎月下旬になると、給料が楽しみだ。Cứ đến cuối tháng tôi lại khấp khởi chờ lương.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "深夜",
+    "hiragana": "しんや",
+    "mean": "đêm khuyа",
+    "example": "深夜になると、大きな声が聞こえる。Cứ đền đêm khuya, tôi lại nghe thấy giọng nói to.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "未来",
+    "hiragana": "みらい",
+    "mean": "tương lai",
+    "example": "子どもたちの明るい未来を考えよう。Hãy nghĩ đến tương lai của bọn trẻ!",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "数日",
+    "hiragana": "すうじつ",
+    "mean": "một số ngày, vài ngày",
+    "example": "土曜日が数日は気が いそうだ。Nghe nói từ thứ bảy thời tiết sẽ xấu trong vài ngày.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "以降",
+    "hiragana": "いこう",
+    "mean": "từ sau",
+    "example": "大地震以降、水を買っておくようになった。Kể từ sau trận động đất lớn xảy ra, tôi bắt đầu mua nước dự trữ.",
+    "character": 2,
+    "section": 1
+  },
+  {
+    "kanji": "朝食",
+    "hiragana": "ちょうしょく",
+    "mean": "bữa sáng",
+    "example": "忙しくても、朝食は食べたほうがいい。Dù bận cũng nên ăn sáng.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "モーニング",
+    "hiragana": "モーニング",
+    "mean": "sáng, buỗi sáng",
+    "example": "あの店のモーニングセットは、安くておいしい。Sét ăn sáng của cửa hàng đó vừa rẻ lại vừa ngon.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "昼食",
+    "hiragana": "ちゅうしょく",
+    "mean": "bữa trưa",
+    "example": "忙しいので、昼食はいつもサンドイッチです。Vì bận nên bữa trưa bao giờ cũng là bánh sandwich.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "ランチ",
+    "hiragana": "ランチ",
+    "mean": "bữa trưa",
+    "example": "ここのランチメニューは、おいしそうだ。Thực đơn bữa trưa ở đây trông có vẻ ngon.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "夕食",
+    "hiragana": "ゆうしょく",
+    "mean": "bữa tối",
+    "example": "今日の夕食は、ちょっと遅くなりそうだ。Bữa tối ngày hôm nay có vẻ sẽ muộn một chút.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "ディナー",
+    "hiragana": "ディナー",
+    "mean": "bữa tối",
+    "example": "昨日のディナーは高級レストランで食べた。Bữa tối hôm qua tôi ăn ở nhà hàng cao cấp.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "デザート",
+    "hiragana": "デザート",
+    "mean": "món tráng miệng",
+    "example": "おなかがいっぱいだが、デザートは食べられる。No rôi nhưng vẫn có thể ăn được món tràng miệng.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "おやつ",
+    "hiragana": "おやつ",
+    "mean": "bữa ăn xế, bữa ăn phụ",
+    "example": "もうすぐ3時、おやつの時間ですよ。Sắp sửa 3 giờ rồi, đến giờ ăn bữa phụ rồi đấy!",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "おかず",
+    "hiragana": "おかず",
+    "mean": "thức ăn",
+    "example": "毎日のおかずを考えるのは大変だ。Ngày nào cũng nghĩ ăn cái gì thật là mệt.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "お弁当",
+    "hiragana": "おべんとう",
+    "mean": "cơm hộp",
+    "example": "毎日、会社に弁当を持って行く。Hằng ngày tôi mang cơm hộp đến công ty.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "自炊する",
+    "hiragana": "じすいする",
+    "mean": "việc tự nấu ăn",
+    "example": "日本に来てから、自炊を始めた。Từ khi đến Nhật, tôi bắt đầu tự nấu ăn.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "外食する",
+    "hiragana": "がいしょくする",
+    "mean": "việc ăn ngoài",
+    "example": "週末は外食することがある。Cuối tuần tôi thường đi ăn ngoài.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "グルメ",
+    "hiragana": "グルメ",
+    "mean": "sành ăn, người sành ăn",
+    "example": "彼はグルメで、いろいろな店を知っている。Anh ấy là người sành ăn, biết nhiều cửa hàng.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "おごる",
+    "hiragana": "おごる",
+    "mean": "đãi, chiêu đãi",
+    "example": "ボーナスをもらったので、妹にディナーをおごった。Vì mới có thưởng nên tôi đã đãi em gái đi ăn tối.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "食欲",
+    "hiragana": "しょくよく",
+    "mean": "thèm ăn, hứng ăn",
+    "example": "最近、あまり食欲がない。Gần đây tôi không có hứng ăn lắm.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "注文する",
+    "hiragana": "ちゅうもんする",
+    "mean": "sự đặt hàng, gọi món",
+    "example": "先に飲み物を注文しましょう。Chúng mình gọi đồ uống trước đi nào!",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "乾杯する",
+    "hiragana": "かんばいする",
+    "mean": "sự cạn chén, nâng cốc, cụng ly",
+    "example": "ワインで乾杯しましょう。Chúng ta hãy nâng cốc uống rượu vang nào!",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "かむ",
+    "hiragana": "かむ",
+    "mean": "nhai",
+    "example": "食事のときは、よくかみましょう。Khi ăn, chúng ta hãy nhai thật kỹ!",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "味わう",
+    "hiragana": "あじわう",
+    "mean": "thưởng thức, thử vị",
+    "example": "おいしい料理は、よく味わって食べよう。Nào hãy thưởng thức các món ăn ngon!",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "お代わりする",
+    "hiragana": "おかわりする",
+    "mean": "sự ăn thêm, uống thêm",
+    "example": "みそ汁がおいしくて、お代わりした。Canh tương miso ngon nên tôi đã dùng thêm bát nữa.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "残す",
+    "hiragana": "のこす",
+    "mean": "để thừa, để lại",
+    "example": "ごはんが多すぎて、少し残した。Cơm quá nhiều khiến tôi để thừa một ít.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "残り物",
+    "hiragana": "のこりもの",
+    "mean": "đồ (ăn) thừa",
+    "example": "今日の残り物は、明日食べよう。Đồ ăn thừa hôm nay, ngày mai ăn nào!",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "もったいない",
+    "hiragana": "もったいない",
+    "mean": "lãng phí",
+    "example": "食べ物を残すなんて、もったいない。Để thừa đồ ăn thật là lãng phí.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "済ませる",
+    "hiragana": "すませる",
+    "mean": "dùng... cho đơn giản, ... là xong",
+    "example": "今日の昼ごはんはコンビニ弁当で済ませた。Bữa trưa hôm nay tôi đã dùng cơm hộp cửa hàng tiện lợi cho đơn giản.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "済む",
+    "hiragana": "すむ",
+    "mean": "xong, xong xuôi",
+    "example": "もう晩ごはんの準備は済んだ。Việc chuẩn bị bữa tối đã xong.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "量",
+    "hiragana": "りょう",
+    "mean": "lượng, số lượng",
+    "example": "この店のスパゲッティは、量が少ない。Mi spagtetti của cửa hàng này lượng ít.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "バランス",
+    "hiragana": "バランス",
+    "mean": "sự cân bằng, sự cân đối",
+    "example": "食事は、肉と野菜のバランスが大切だ。Sự cân bằng giữa thịt và rau trong bữa ăn quan trọng.",
+    "character": 2,
+    "section": 2
+  },
+  {
+    "kanji": "なべ",
+    "hiragana": "なべ",
+    "mean": "nồi",
+    "example": "スーパーで、大きななべを買った。Tôi đã mua cái nổi lớn ở siêu thị.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "フライパン",
+    "hiragana": "フライパン",
+    "mean": "chảo",
+    "example": "フライパンで、オムレツを作った。Tôi làm món trứng rán bằng chảo.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "包丁",
+    "hiragana": "ほうちょう",
+    "mean": "dao",
+    "example": "私の家には包丁が1本しかない。Nhà tôi chỉ có mỗi một con dao.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "まな板",
+    "hiragana": "まないた",
+    "mean": "thớt",
+    "example": "うちのまな板は、木でできている。Thớt nhà tôi làm bằng gỗ.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "おたま",
+    "hiragana": "おたま",
+    "mean": "muôi, vá",
+    "example": "おたまでカレーを、よく混ぜてください。Hãy dùng muôi trộn cà ri thật kỹ!",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "しゃもじ",
+    "hiragana": "しゃもじ",
+    "mean": "thìa xới cơm",
+    "example": "このしゃもじは、ごはんがつきにくい。Cái thìa xới cơm này khó bị dính cơm.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "大さじ",
+    "hiragana": "おおさじ",
+    "mean": "thìa to, muỗng to",
+    "example": "まず、砂糖を大さじ2杯入れてください。Trước tiên, hãy cho vào 2 thìa đường to!",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "炊飯器",
+    "hiragana": "すいはんき",
+    "mean": "nôi cơm điện",
+    "example": "炊飯器で、ごはんを炊く。Nồi cơm bằng nồi cơm điện.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "流し台",
+    "hiragana": "ながしだい",
+    "mean": "bồn rửa",
+    "example": "この流し台は石でできている。Cái bồn rửa này làm bằng đá.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "電子レンジ",
+    "hiragana": "でんしレンジ",
+    "mean": "lò vi sóng",
+    "example": "電子レンジの「チン」という音が聞こえた。Tôi đã nghe thấy tiếng “Ring!” báo hiệu của lò vi sóng.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "調味料",
+    "hiragana": "ちょうみりょう",
+    "mean": "gia vị, bột ngọt",
+    "example": "台所に調味料が、たくさんある。だいところ ちょうみりょう",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "サラダ油",
+    "hiragana": "サラダあぶら",
+    "mean": "dầu ăn",
+    "example": "サラダ油を買って来るのを忘れた。Tôi đã quên mua dầu ăn đến.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "食品",
+    "hiragana": "しょくひん",
+    "mean": "thực phẩm, đồ ăn",
+    "example": "食品は近所のスーパーで買う。Tôi mua thực phẩm ở siêu thị gần nhà.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "切らす",
+    "hiragana": "きらす",
+    "mean": "dùng hết",
+    "example": "しょうゆを切らしたので、コンビニに買いに行った。Vì dã dùng hết xì dầu nên tôi đi ra của hàng tiện lợi để mua.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "くさる",
+    "hiragana": "くさる",
+    "mean": "hỏng, thiêu",
+    "example": "冷蔵庫の牛乳が、くさっていた。Sữa bò để trong tủ lạnh đã bị hỏng.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "アルミホイル",
+    "hiragana": "アルミホイル",
+    "mean": "giấy bạc",
+    "example": "アルミホイルで包んで、魚を焼く。Tôi bọc cá bằng giấy bạc để nướng.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "ラップする",
+    "hiragana": "ラップする",
+    "mean": "màng bọc thực phẩm, giấy bóng",
+    "example": "残ったものはラップして、冷蔵庫に入れておく。Tôi gói đồ ăn thừa bằng giấy bóng và cất vào tủ lạnh.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "おしぼり",
+    "hiragana": "おしぼり",
+    "mean": "khăn ướt",
+    "example": "かにを食べるときは、おしぼりが必要だ。Khi ăn cua cần đến khăn ướt.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "食器",
+    "hiragana": "しょっ き",
+    "mean": "bát đĩa",
+    "example": "クリスマスの料理に合う食器を選ぶ。Chọn bát đĩa hợp với các món ăn lễ Nô-en.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "茶わん",
+    "hiragana": "ちゃわん",
+    "mean": "bát, chén",
+    "example": "一人暮らしのために、新しい茶わんを買った。Tôi đã mua bát mới cho cuộc sống một mình.",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "クラス",
+    "hiragana": "クラス",
+    "mean": "ly, tách",
+    "example": "ヒールを飲むクラスは、どれがいいですか。Ly uống bia, cái nào thì tốt hơn nhỉ?",
+    "character": 2,
+    "section": 3
+  },
+  {
+    "kanji": "刻む",
+    "hiragana": "きざむ",
+    "mean": "khắc, chạm trố, cắt tia",
+    "example": "野菜を細かく刻みます。Cắt tia rau củ tỉ mi.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "卵を割る",
+    "hiragana": "たまごをわる",
+    "mean": "đập (trứng), làm bể",
+    "example": "卵を3つ、割ってください。Hãy đập 3 quả trứng.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "むく",
+    "hiragana": "むく",
+    "mean": "bóc, gọt",
+    "example": "じゃがいもの皮をむいたら、小さく切ります。Gọt xong vỏ khoai tây thì thái nhỏ.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "加える",
+    "hiragana": "くわえる",
+    "mean": "thêm",
+    "example": "なべに水を200 ミリリットル加えます。Cho thêm 200ml nước vào nồi.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "少々",
+    "hiragana": "しょうしょう",
+    "mean": "một chút, một ít",
+    "example": "塩とこしょうを少々入れます。Cho vào một ít muối và tiêu.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "揚げる",
+    "hiragana": "あげる",
+    "mean": "rán, chiên",
+    "example": "180度の油で、しっかり揚げます。Rán kỹ bằng dầu nóng 180 độ.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "煮る",
+    "hiragana": "にる",
+    "mean": "nấu, ninh",
+    "example": "なべにふたをして、30分煮てください。Hãy đậy nắp nồi và ninh 30 phút.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "ゆでる",
+    "hiragana": "ゆでる",
+    "mean": "luộc",
+    "example": "お湯に塩を入れて、ゆでます。Cho muối vào nước sôi và luộc.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "蒸す",
+    "hiragana": "むす",
+    "mean": "hấp",
+    "example": "電子レンジで、 野菜を蒸します。Hập rau băng lò vi sóng.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "くるむ",
+    "hiragana": "くるむ",
+    "mean": "quấn, cuộn",
+    "example": "さくらの葉で、材料をくるみます。Quấn nguyên liệu bằng lá cây hoa anh đào.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "にぎる",
+    "hiragana": "にぎる",
+    "mean": "năm",
+    "example": "ごはんに梅干しを入れて、にぎります。Cho mơ muối vào cơm rồi nắm.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "熱する",
+    "hiragana": "ねっする",
+    "mean": "làm nóng, đun nóng",
+    "example": "フライパンで、5分くらい熱してください。Hãy làm nóng chảo khoảng 5 phút.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "こげる",
+    "hiragana": "こげる",
+    "mean": "cháy",
+    "example": "焼きすぎて、魚がこげてしまいました。Nướng kỹ quá, cá bị cháy mất rồi.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "取り出す",
+    "hiragana": "とりだす",
+    "mean": "lấy ra",
+    "example": "電子レンジから、温めた野菜を取り出します。Lấy rau đã hâm nóng từ lò vi sóng ra.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "塗る",
+    "hiragana": "ぬる",
+    "mean": "phết, bôi",
+    "example": "パンにバターを塗ります。Phết bơ lên bánh mì.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "温める",
+    "hiragana": "あたためる",
+    "mean": "làm nóng, hâm nóng",
+    "example": "これは、このままでも温めても、おいしいです。Cái này để nguyên thế này hoặc hâm nóng lên đều ngon.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "冷やす",
+    "hiragana": "ひやす",
+    "mean": "đê lạnh, đê nguội",
+    "example": "この料理は冷やしても、おいしいです。Món ăn này đê nguội cũng ngon.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "ぬるい",
+    "hiragana": "ぬるい",
+    "mean": "ấm, âm ấm",
+    "example": "ぬるいコーヒーは、おいしくないです。Cà phê âm ấm thì không ngon.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "水分",
+    "hiragana": "すいぶん",
+    "mean": "thành phần nước, nước",
+    "example": "この野菜は水分が多いですね。Rau này chứa nhiều nước.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "沸かす",
+    "hiragana": "わかす",
+    "mean": "đun sôi",
+    "example": "そこのやかんで、お湯を沸かしてください。Hãy đun sôi nước bằng cái ấm ở đó. ",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "注ぐ",
+    "hiragana": "そそぐ",
+    "mean": "rót, đổ",
+    "example": "お湯をカップに注ぎ、3分待ちます。Rót nước sôi vào cốc, đợi 3 phút.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "味見する",
+    "hiragana": "あじみする",
+    "mean": "sự nếm thử",
+    "example": "途中でちょっと味見をしてみましょう。Giữa chừng hãy nếm thử một chút!",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "手間",
+    "hiragana": "てま",
+    "mean": "thời gian, công sức",
+    "example": "この料理は手間がかかりません。Món ăn này không tốn thời gian.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "手軽な",
+    "hiragana": "てがるな",
+    "mean": "dễ dàng",
+    "example": "家でも手軽にレストランの料理が作れます。Ố nhà cũng có thể dễ dàng nấu được món ăn của nhà hàng.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "でき上がり",
+    "hiragana": "できあがり",
+    "mean": "xong, nấu xong",
+    "example": "これで、料理のでき上がりです。Thế là món ăn đã được nấu xong.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "分ける",
+    "hiragana": "わける",
+    "mean": "chia",
+    "example": "この料理は、二人で分けて食べましょう。Món này hãy chia cho cho hai người cùng ăn!",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "つまむ",
+    "hiragana": "つまむ",
+    "mean": "gắp, nắm",
+    "example": "それは、はしでつまんで食べてください。Cái món đấy thì hãy dùng đũa gắp ăn!",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "塩辛い",
+    "hiragana": "しおからい",
+    "mean": "mặn",
+    "example": "これは、ちょっと塩辛いですね。Cái món này hơi mặn nhi!",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "すっぱい",
+    "hiragana": "すっぱい",
+    "mean": "chua",
+    "example": "私は、すっぱいりんごが好きです。Tôi thích táo chua.",
+    "character": 2,
+    "section": 4
+  },
+  {
+    "kanji": "冷凍する",
+    "hiragana": "れいとう",
+    "mean": "料理が残ったら、冷凍しておきましょう。Khi món ăn bị thừa, chúng ta hãy để vào tủ đông!",
+    "example": "sự đông lạnh",
+    "character": 2,
+    "section": 4
+  }
+]

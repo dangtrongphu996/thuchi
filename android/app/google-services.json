@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1027202755957",
+    "project_id": "thuchi-2c425",
+    "storage_bucket": "thuchi-2c425.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027202755957:android:07822b7bc971077dd5773c",
+        "android_client_info": {
+          "package_name": "com.example.thuchi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027202755957-et5p5bipiuh3qqp3pqqkhbe95vng7nbj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thuchi",
+            "certificate_hash": "b810192d2baa48e96d713c067b8b16cea8d3b166"
+          }
+        },
+        {
+          "client_id": "1027202755957-p50rnretdiaa50ms5ucpeljtge9bhasa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCcJA2_586Nmjgz9EDrpJOBaD9V-Y1zRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027202755957-p50rnretdiaa50ms5ucpeljtge9bhasa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

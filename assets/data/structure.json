@@ -1,0 +1,45 @@
+[
+    {
+        "character": 1,
+        "sections": [
+            {
+                "section": 1,
+                "name": "家族/ Gia đình"
+                
+            },{
+                "section": 2,
+                "name": "友だちと知り合い/Bạn bè và người quen"
+            },{
+                "section": 3,
+                "name": "恋人/Người yêu"
+            },{
+                "section": 4,
+                "name": "コミュニケーション/ Giao tiếp"
+            },{
+                "section": 5,
+                "name": "どんな人?/ Là người như thế nào?"
+            }
+        ]
+    },{
+        "character": 2,
+        "sections": [
+            {
+                "section": 1,
+                "name": "時の表現/Cách nói về thời gian"
+                
+            },{
+                "section": 2,
+                "name": "食生活/ Đời sống ẩm thực"
+            },{
+                "section": 3,
+                "name": "料理の道具と材料/ Dụng cụ và nguyên liệu nấu ăn"
+            },{
+                "section": 4,
+                "name": "料理の作り方/ Cách làm món ăn"
+            },{
+                "section": 5,
+                "name": "家事/Việc nhà"
+            }
+        ]
+    }
+]
