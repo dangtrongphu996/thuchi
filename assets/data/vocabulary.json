@@ -434,7 +434,7 @@
   {
     "kanji": "けんかする",
     "hiragana": "けんかする",
-    "mean": "sự cãi nhau, cãi vã,　đánh lộn",
+    "mean": "sự cãi nhau, cãi vã, đánh lộn",
     "example": "私たちは、よくけんかする。Chúng tôi hay cãi vã.",
     "character": 1,
     "section": 3
@@ -632,7 +632,7 @@
     "section": 4
   },
   {
-    "kanji": " かわいがる",
+    "kanji": "かわいがる",
     "hiragana": "かわいがる",
     "mean": "cưng chiều, yêu chiều, quý",
     "example": "彼女は、みんなからかわいがられている。Cô ấy được mọi người quý.",
@@ -768,7 +768,7 @@
     "section": 5
   },
   {
-    "kanji": " 性別",
+    "kanji": "性別",
     "hiragana": "せいべつ",
     "mean": "giới tính",
     "example": "名前を書いて、性別に○をしてください。Hãy viết tên và khoanh tròn vào giới tính.",
@@ -867,7 +867,7 @@
     "kanji": "本人",
     "hiragana": "ほんじん",
     "mean": "bản thân, đúng người",
-    "example": "あなたが本人か、確認させてください。Hãy cho tôi xác nhận có phải đúng là anh (chị ) hay　không!",
+    "example": "あなたが本人か、確認させてください。Hãy cho tôi xác nhận có phải đúng là anh (chị ) hay không!",
     "character": 1,
     "section": 5
   },
@@ -891,7 +891,7 @@
     "kanji": "フリーター",
     "hiragana": "フリーター",
     "mean": "người làm thêm tự do",
-    "example": "弟は大学を卒業してからずっとフリーターだ。Sau khi tốt nghiệp đại học, em trai tôi làm thêm tự do　suốt.",
+    "example": "弟は大学を卒業してからずっとフリーターだ。Sau khi tốt nghiệp đại học, em trai tôi làm thêm tự do suốt.",
     "character": 1,
     "section": 5
   },
@@ -899,7 +899,7 @@
     "kanji": "無職",
     "hiragana": "むしょく",
     "mean": "sự không có việc làm",
-    "example": "今は無職だが、来月から働く。Bây giờ thì không có việc làm nhưng từ tháng sau tôi sẽ　đi làm.",
+    "example": "今は無職だが、来月から働く。Bây giờ thì không có việc làm nhưng từ tháng sau tôi sẽ đi làm.",
     "character": 1,
     "section": 5
   },
@@ -1322,7 +1322,7 @@
   {
     "kanji": "炊飯器",
     "hiragana": "すいはんき",
-    "mean": "nôi cơm điện",
+    "mean": "nồi cơm điện",
     "example": "炊飯器で、ごはんを炊く。Nồi cơm bằng nồi cơm điện.",
     "character": 2,
     "section": 3
@@ -1665,10 +1665,1871 @@
   },
   {
     "kanji": "冷凍する",
-    "hiragana": "れいとう",
+    "hiragana": "れいとうする",
     "mean": "料理が残ったら、冷凍しておきましょう。Khi món ăn bị thừa, chúng ta hãy để vào tủ đông!",
     "example": "sự đông lạnh",
     "character": 2,
     "section": 4
-  }
+  },
+  {
+    "kanji": "ちらかる",
+    "hiragana": "ちらかる",
+    "mean": "bừa bộn, bày bừa, bày lung tung",
+    "example": "弟の部屋に、おもちゃがちらかっている。Căn phòng của em trai đồ chơi bày lung tung.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "片づける",
+    "hiragana": "かたづける",
+    "mean": "dọn, dọn dẹp",
+    "example": "すぐ部屋を片づけなさい。Hãy dọn phòng ngay!",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "清潔な",
+    "hiragana": "せいけつな",
+    "mean": "sạch sẽ",
+    "example": "家の中は、いつも清潔にしておきたい。Tôi muốn trong nhà lúc nào cũng phải sạch sẽ.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "掃く",
+    "hiragana": "はく",
+    "mean": "quét, quét dọn",
+    "example": "毎日、家の前を掃いている。Hàng ngày tôi quét trước cửa nhà.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "ほうき",
+    "hiragana": "ほうき",
+    "mean": "chỗi",
+    "example": "ほうきで玄関を掃く。Tôi quét chỗ cửa vào nhà bằng chổi.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "ちりとり",
+    "hiragana": "ちりとり",
+    "mean": "cái hột rác",
+    "example": "掃いたごみを、ちりとりに集める。Thu rác đã quét vảo cải hột rác.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "掃除機",
+    "hiragana": "そうじき",
+    "mean": "máy hút bụi",
+    "example": "うちの掃除機は、音がとても静かだ。Máy hút bụi nhà tôi tiếng rất êm.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "ふく",
+    "hiragana": "ふく",
+    "mean": "lau",
+    "example": "食事前に、テーブルをきれいにふく。Lau bàn trước khi ăn.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "ぞうきん",
+    "hiragana": "ぞうきん",
+    "mean": "giẻ lau",
+    "example": "古いタオルでぞうきんを作った。Tôi làm giẻ lau bằng khăn mặt cũ.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "バケツ",
+    "hiragana": "バケツ",
+    "mean": "xô",
+    "example": "もう少し大きなバケツは、ありませんか。Có cái xô nào lớn hơn một chút không?",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "しばる",
+    "hiragana": "しばる",
+    "mean": "vắt",
+    "example": "ぞうきんを、よくしぼってください。Hãy vắt kỹ giẻ lau!",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "こぼす",
+    "hiragana": "こぼす",
+    "mean": "làm đổ",
+    "example": "バケツの水をこぼしてしまった。Tôi làm đổ mất nước trong xô.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "洗剤",
+    "hiragana": "せんざい",
+    "mean": "bột giặt, nước rửa",
+    "example": "お風呂の掃除には、どんな洗剤がいいですか。Để rửa bồn tắm thì nước rửa nào tốt?",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "かび",
+    "hiragana": "かび",
+    "mean": "mốc",
+    "example": "お風呂のかびを取る。Tẩy mốc bồn tắm.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "ほこり",
+    "hiragana": "ほこり",
+    "mean": "bụi",
+    "example": "窓を開けると、部屋にほこりが入る。Hễ mở cửa sổ là bụi vào trong phòng.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "みがく",
+    "hiragana": "みがく",
+    "mean": "cọ, đánh cọ",
+    "example": "かがみを、きれいにみがく。Đánh cọ sạch gương.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "ブラシ",
+    "hiragana": "ブラシ",
+    "mean": "bàn chải",
+    "example": "ブラシで、お風呂を洗う。Rửa bồn tắm bằng bàn chải.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "あわ",
+    "hiragana": "あわ",
+    "mean": "bọt",
+    "example": "この石けんは、あわがよく出る。Xà phòng này ra nhiều bọt.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "臭う",
+    "hiragana": "におう",
+    "mean": "bị mùi, ám mùi, bốc mùi",
+    "example": "バケツの中の生ごみが臭う。Rác hữu cơ trong thùng bốc mùi.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "洗濯物",
+    "hiragana": "せんたくもの",
+    "mean": "đồ giặt",
+    "example": "毎日、洗濯物が多い。Hàng ngày, đồ giặt nhiều.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "汚れ",
+    "hiragana": "よごれ",
+    "mean": "bẩn, vết bẩn",
+    "example": "この洗剤は、汚れがよく落ちる。Bột giặt làm sạch vết bẩn rất tôt.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "干す",
+    "hiragana": "ほす",
+    "mean": "phơi, hong",
+    "example": "天気がいいので、洗濯物を外に干そう。Trời nắng nên tôi định phơi đồ giặt bên ngoài.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "乾燥する",
+    "hiragana": "かんそうする",
+    "mean": "sự sấy khô",
+    "example": "厚いバスタオルは、乾燥機で乾燥させる。Sấy khô khăn tắm dày bằng máy sấy.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "たたむ",
+    "hiragana": "たたむ",
+    "mean": "gắp",
+    "example": "息子は自分で洗濯物をたたむ。Con trai tôi tự mình gấp đồ giặt.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "アイロン",
+    "hiragana": "アイロン",
+    "mean": "bàn là, bàn ủi",
+    "example": "娘はアイロンをかけるのが上手だ。Con gái tôi là quần áo giỏi.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "敷く",
+    "hiragana": "しく",
+    "mean": "trải",
+    "example": "たたみの部屋に、ふとんを敷いて寝ている。Tôi trải đệm ra phòng chiếu để ngủ.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "育兒",
+    "hiragana": "いくじ",
+    "mean": "nuôi con",
+    "example": "働きながら育児をするのは大変た。Vừa làm việc vừa nuôi con thì vất và.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "人を起こす",
+    "hiragana": "ひとをおこす",
+    "mean": "đánh thức",
+    "example": "毎朝6時に、子どもを起こす。Hàng sáng tôi đảnh thức con dậy lúc 6 giờ.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "糸",
+    "hiragana": "いと",
+    "mean": "sợi chỉ",
+    "example": "黒い糸でボタンをつけた。Tôi dơm cúc bằng chỉ đen.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "針",
+    "hiragana": "はり",
+    "mean": "kim",
+    "example": "針に糸を通すのは、とても難しい。Xâu chỉ vào kim rất khó.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "生ごみ",
+    "hiragana": "なまごみ",
+    "mean": "rác hữu cơ",
+    "example": "夏は、生ごみがすぐに臭う。Mùa hè, rác hữu cơ bốc mùi ngay.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "空き缶",
+    "hiragana": "あきかん",
+    "mean": "vỏ lon",
+    "example": "水曜日は、空き缶を捨てる日だ。Thứ tư là ngày vứt vỏ lon.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "ごみを出す",
+    "hiragana": "ごみをだす",
+    "mean": "vứt (rác)",
+    "example": "決められた日に、ごみを出す。Vứt rác vào ngày quy định.",
+    "character": 2,
+    "section": 5
+  },
+  {
+    "kanji": "住まい",
+    "hiragana": "すまい",
+    "mean": "chỗ ở",
+    "example": "インターネットで、住まいを探す。Tìm chỗ ở qua internet.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "リビング",
+    "hiragana": "リビング",
+    "mean": "phòng khách",
+    "example": "リビングが広いので、この部屋に決めた。Phòng khách rộng rãi nên tôi quyết định lấy căn này.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "居間",
+    "hiragana": "いま",
+    "mean": "phòng khách",
+    "example": "家族みんなで、居間でテレビを見る。Mọi người trong gia đình xem tivi ở phòng khách.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "家電",
+    "hiragana": "かでん",
+    "mean": "đồ điện gia đình",
+    "example": "引っ越したとき、新しい家電を買った。Khi chuyển nhà tôi đã mua đồ điện gia đình mới.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "エアコン",
+    "hiragana": "エアコン",
+    "mean": "máy điều hòa",
+    "example": "このエアコンは電気代が安い。Máy điều hòa này tiền điện rẻ.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "クーラー",
+    "hiragana": "クーラー",
+    "mean": "máy lạnh",
+    "example": "私の国は暑いので、クーラーしかない。Nước tôi nóng nên chỉ có máy lạnh.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "暖める",
+    "hiragana": "あたためる",
+    "mean": "làm ấm, sưới ấm",
+    "example": "寒いので、ヒーターで暖めた。Trời lạnh nên tôi dã sưới âm băng mảy sưới.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "天井",
+    "hiragana": "てんじょう",
+    "mean": "trần nhà",
+    "example": "このマンションは、天井が高い。Chung cư này trần nhà cao.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "床",
+    "hiragana": "ゆか",
+    "mean": "sàn nhà",
+    "example": "リビングの床には、何も敷いていない。Sàn nhà phòng khách chẳng trải gì cả.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "カーペット",
+    "hiragana": "カーペット",
+    "mean": "thảm",
+    "example": "たたみの上に、カーペットを敷いている。Trải thảm lên trên chiếu tấm.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "ざぶとん",
+    "hiragana": "ざぶとん",
+    "mean": "đệm ngồi",
+    "example": "お客さんのためのざぶとんを買いに行く。Tôi đi mua đệm ngồi dành cho khách.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "ソファー",
+    "hiragana": "ソファー",
+    "mean": "ghế sofa",
+    "example": "テレビを見るときは、ソファーに座る。Tôi ngồi ghế sofa khi xem tivi.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "クッション",
+    "hiragana": "クッション",
+    "mean": "gối tựa lưng",
+    "example": "ソファーに合うクッションを買った。Tôi mua gối tựa lưng hợp với chiếc ghế sofa.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "どかす",
+    "hiragana": "",
+    "mean": "xê, xê dịch, chuyển ra chỗ khác",
+    "example": "その車をどかしてください。Hãy dịch chuyển cái xe đó!",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "コンセント",
+    "hiragana": "コンセント",
+    "mean": "ô cắm",
+    "example": "この部屋はコンセントが多くて、便利だ。Căn phòng này có nhiều ô cắm, tiện lợi.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "スイッチ",
+    "hiragana": "スイッチ",
+    "mean": "công tắc",
+    "example": "暗くて、スイッチがどこかわからない。Tối nên không biết công tắc ở đâu.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "ドライヤー",
+    "hiragana": "ドライヤー",
+    "mean": "máy sấy tóc",
+    "example": "ドライヤーは小さいほうがいい。Máy sấy tóc nhỏ thì tốt hơn.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "蛇口",
+    "hiragana": "じゃぐち",
+    "mean": "vòi nước",
+    "example": "お風呂に蛇口が二つ、ついている。Bồn tắm có hai vòi nước.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "ひねる",
+    "hiragana": "ひねる",
+    "mean": "vặn, xoắn",
+    "example": "右の蛇口をひねると、お湯が出てくる。Vặn vòi nước bên phải, nước nóng sẽ chảy ra.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "実家",
+    "hiragana": "じっか",
+    "mean": "nhà bố mẹ đẻ",
+    "example": "週末は実家に帰る。Cuối tuần tôi về nhà bố mẹ đẻ.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "家賃",
+    "hiragana": "やちん",
+    "mean": "tiền thuê nhà",
+    "example": "私のマンションは家賃が高い。Khu chung cư này tiền thuê nhà cao.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "物置",
+    "hiragana": "ものおき",
+    "mean": "nơi để đồ",
+    "example": "物置にスキーの道具を入れている。Tôi để dụng cụ trượt tuyết ở nơi để đồ.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "日当たり",
+    "hiragana": "ひあたり",
+    "mean": "ánh nắng",
+    "example": "広くて、日当たりのいい部屋に住みたい。Tôi muốn sống trong căn phòng rộng rãi, có ánh nắng chiếu vào.",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "內側",
+    "hiragana": "うちがわ",
+    "mean": "bên trong",
+    "example": "この家は古いが、内側はきれいだ。Ngôi nhà này cũ nhưng bên trong đẹp",
+    "character": 3,
+    "section": 1
+  },
+  {
+    "kanji": "お札",
+    "hiragana": "おさっ",
+    "mean": "tiền giấy",
+    "example": "日本のお札は、千円から一万円まである。Tiền giấy của Nhật Bản có mệnh giá từ 1.000 yên đến 10.000 yên.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "コイン",
+    "hiragana": "コイン",
+    "mean": "tiền xu",
+    "example": "海外のコインを集めるのが好きだ。Tôi thích sưu tầm tiền xu của nước ngoài.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "小銭",
+    "hiragana": "こぜに",
+    "mean": "tiền lẻ, xu lẻ",
+    "example": "財布に小銭がない。Trong ví không có tiền lẻ.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "生活費",
+    "hiragana": "せいかつひ",
+    "mean": "chi phí/tiền sinh hoạt",
+    "example": "日本は生活費が高い。Chỉ phí sinh hoạt ở Nhật Bản đắt đỏ.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "食費",
+    "hiragana": "しょくひ",
+    "mean": "chi phí/tiền ăn uống",
+    "example": "1か月の食費は2万円ぐらいだ。Tiền ăn một tháng khoảng hai mươi nghìn yên.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "光熱費",
+    "hiragana": "こうねつひ",
+    "mean": "chi phí/tiền điện ga",
+    "example": "日本は光熱費が高い。Chi phí điện ga ở Nhật Bản đắt đỏ.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "交際費",
+    "hiragana": "こうさいひ",
+    "mean": "chỉ phí/tiên quan hệ giao tiếp",
+    "example": "友だちとよく飲みに行くので、交際費がかかる。Tôi hay đi uống với bạn bè nên tốn tiền quan hệ giao tiếp.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "公共料金",
+    "hiragana": "こうきょうりょうきん",
+    "mean": "phí dịch vụ công cộng",
+    "example": "この国は公共料金が安い。Phí dịch vụ công cộng nước này rẻ.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "おこづかい",
+    "hiragana": "おこづかい",
+    "mean": "tiền tiêu vặt",
+    "example": "1か月のこづかいは3万円だ。Tiền tiêu vặt một tháng là ba mươi nghìn yên.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "節約する",
+    "hiragana": "せつやくする",
+    "mean": "sự tiết kiệm",
+    "example": "旅行のために節約している。Tôi đang tiết kiệm tiền để đi du lịch.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "ぜいたく",
+    "hiragana": "ぜいたく",
+    "mean": "xa xỉ, xa hoa, xài sang",
+    "example": "今はまだ学生なので、ぜいたくはできない。Bây giờ vẫn còn là sinh viên nên không thể xài sang được.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "割り勘",
+    "hiragana": "わりかん",
+    "mean": "chia tiền trå",
+    "example": "今日は割り勘にしよう。Hôm nay chúng mình cùng chia tiền trả nhél",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "レンタルする",
+    "hiragana": "レンタルする",
+    "mean": "sự thuê, mướn",
+    "example": "結婚式のドレスは、レンタルにした。Tôi quyết định thuê váy cưới.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "支払う",
+    "hiragana": "しはらう",
+    "mean": "trả tiền, thanh toán",
+    "example": "コンビニで、公共料金を支払うことができる。Có thể trả tiền phí dịch vụ công cộng ở cửa hảng tiện lợi.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "支払い",
+    "hiragana": "しはらい",
+    "mean": "chi trả, thanh toán",
+    "example": "公共料金の支払いを忘れていた。Tôi quên trả tiền phí dịch vụ công cộng.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "勘定する",
+    "hiragana": "かんじょうする",
+    "mean": "sự tính tiền, thanh toán",
+    "example": "お勘定は、どこでしますか。Tính tiền ở đâu?",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "口座",
+    "hiragana": "こうざ",
+    "mean": "tài khoản",
+    "example": "初めて自分の口座を開いた。Lần dầu tiên tôi mở tài khoản cho mình.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "キャッシュカード",
+    "hiragana": "キャッシュカード",
+    "mean": "thẻ tiền mặt",
+    "example": "銀行からキャッシュカードが届いた。Thẻ tiền mặt được gửi đến từ ngân hàng.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "暗証番号",
+    "hiragana": "あんしょうばんごう",
+    "mean": "số mật khẩu, mật mã",
+    "example": "カードの暗証番号を忘れてしまった。Tôi quên mất số mật khẩu của thẻ.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "預金する",
+    "hiragana": "よきんする",
+    "mean": "sự gửi tiền (vào ngân hàng)",
+    "example": "銀行に100万円預金した。Tôi đã gửi một triệu yên vào ngân hàng.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "ためる",
+    "hiragana": "ためる",
+    "mean": "tích lũy, dành dụm",
+    "example": "会社員になったら、お金をためるつもりだ。Khi trở thành nhân viên công ty, tôi dự định sẽ tích lũy tiền.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "たまる",
+    "hiragana": "たまる",
+    "mean": "tích trữ, dành dụm được",
+    "example": "節約しても、なかなかお金がたまらない。Dù tôi có tiết kiệm, mãi vẫn không dành dụm được tiền.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "引き出す",
+    "hiragana": "ひきだす",
+    "mean": "rút",
+    "example": "大きな買い物をするので、お金を引き出した。Vì sẽ mua sắm một khoản lớn nên tôi đã rút tiền.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "振り込む",
+    "hiragana": "ふりこむ",
+    "mean": "chuyển khoån",
+    "example": "銀行で、公共料金を振り込んだ。Tôi đã chuyển khoản tiền công cộng ở ngân hàng.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "送金する",
+    "hiragana": "そうきんする",
+    "mean": "sự gửi tiền (cho ai đó)",
+    "example": "今月も、国の両親に送金した。Tháng này tôi cũng đã gửi tiền cho bố mẹ ở trong nước.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "通帳記入",
+    "hiragana": "とうちょうきにゅう",
+    "mean": "cập nhật thông tin sổ ngân hàng",
+    "example": "通帳記入のために、銀行に寄った。Tôi ghé qua ngân hàng để cập nhật thông tin sổ ngân hàng.",
+    "character": 3,
+    "section": 2
+  },
+  {
+    "kanji": "品物",
+    "hiragana": "しなもの",
+    "mean": "hàng, hàng hóa",
+    "example": "駅前のデパートは、高い品物が多い。Siêu thị mua sắm trước ga có nhiều hàng đắt tiền.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "現金",
+    "hiragana": "げんきん",
+    "mean": "tiền mặt",
+    "example": "買い物は、いつも現金で払う。Tôi bao giờ cũng dùng tiền mặt thanh toán khi mua sắm.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "クレジットカード",
+    "hiragana": "クレジットカード",
+    "mean": "thẻ tín dụng",
+    "example": "このクレジットカードは、とても便利だ。Thẻ tín dụng này rất tiện.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "1回払い",
+    "hiragana": "いっかいばらい",
+    "mean": "thanh toán một lần",
+    "example": "カードの支払いは、 1回払いだ。Thanh toán bằng thẻ là thanh toán một lần.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "合計する",
+    "hiragana": "ごうけいする",
+    "mean": "tổng cộng",
+    "example": "先月のカードの支払いは、合計10万円になった。Thanh toán thẻ của tháng trước tổng cộng là 100 nghìn yên.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "代金",
+    "hiragana": "だいきん",
+    "mean": "tiền mua hàng",
+    "example": "品物は代金を払って、3日以内に届く。Trả tiền hàng rồi thì hàng sẽ được gửi đến trong vòng 3 ngày.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "税込",
+    "hiragana": "ぜいこみ",
+    "mean": "bao gồm thuế",
+    "example": "この値段は税込ですか。Giả này là đã bao gồm thuế chưa?",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "請求書",
+    "hiragana": "せいきゅうしょ",
+    "mean": "phiếu yêu cầu thanh toán",
+    "example": "電話料金の請求書が届いた。Phiếu yêu cầu thanh toán tiền điện thoại được gửi đến.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "領収書",
+    "hiragana": "りょうしゅうしょ",
+    "mean": "hóa đơn",
+    "example": "買い物をするときは、 領収書をもらう。Khi mua sắm, tôi lấy hóa đơn.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "売り切れ",
+    "hiragana": "うりきれ",
+    "mean": "bán hết",
+    "example": "ほしかったバッグは、売り切れだった。Cái túi mà tôi muốn đã bị bán hết.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "品切れ",
+    "hiragana": "しなぎれ",
+    "mean": "sự hết hàng",
+    "example": "店の人に、Mサイズは品切れだと言われた。Người bán hàng nói rằng cỡ M đã hết hàng.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "日替わり",
+    "hiragana": "ひがわり",
+    "mean": "thay đổi theo ngày",
+    "example": "この店は、日替わりでセールをしている。Cửa tiệm này bán hạ giá thay đổi theo ngày.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "割引",
+    "hiragana": "わりびき",
+    "mean": "giảm giá",
+    "example": "あのパン屋は、水曜日に10パーセント割引をしている。Cửa hàng bánh mì giảm giá 10% vào thứ tư.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "半額",
+    "hiragana": "はんがく",
+    "mean": "nửa giá tiền",
+    "example": "5万円のコートが半額で買えた。Tôi mua được một cái áo khoác 50 nghìn yên với nửa giá tiền.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "特売日",
+    "hiragana": "とくばいび",
+    "mean": "ngày hạ giá đặc biệt",
+    "example": "今日はスーパーの特売日だ。Hôm nay là ngày hạ giá đặc biệt của siêu thị.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "たった",
+    "hiragana": "たった",
+    "mean": "chỉ có, vỏn vẹn",
+    "example": "有名ブランドのバッグがたった3万円だった。Cái túi hàng hiệu nổi tiếng chỉ có 30 nghìn yên.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "得な",
+    "hiragana": "とくな",
+    "mean": "món hời (hời, lời)",
+    "example": "バーゲンに行って、得をした。Tôi đi vào đợt hạ giá nên hời.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "損な",
+    "hiragana": "そんな",
+    "mean": "tổn thất, thiệt (bị thiệt)",
+    "example": "バーゲンに行けなくて、損をした。Không thể đi vào đợt bán giảm giá nên đã bị thiệt.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "おまけする",
+    "hiragana": "おまけする",
+    "mean": "quà tặng khuyến mãi",
+    "example": "お店の人が、りんごをおまけしてくれた。Người bản hảng đã tặng khuyên mãi tảo cho tôi.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "むだな",
+    "hiragana": "むだな",
+    "mean": "sự lãng phí (hoang phí, lãng phí)",
+    "example": "そんなものを買って、お金のむだだ。Mua món đồ như thế là lãng phí.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "むだづかいする",
+    "hiragana": "むだづかいする",
+    "mean": "sự tiêu xài hoang phí",
+    "example": "ボーナスをむだづかいしてしまった。Tôi đã tiêu lãng phí tiền thưởng.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "奇る",
+    "hiragana": "よる",
+    "mean": "rẽ qua, ghé qua",
+    "example": "帰りにデパートに寄って、負い物をした。Trên đường về tôi đã ghé qua trung tâm thương mại mua sắm.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "ついでに",
+    "hiragana": "ついでに",
+    "mean": "tiện thể, thuận tiện",
+    "example": "郵便局に行った。ついでに、コンビニに寄った。Tôi đã đi bưu điện. Tiện thể, tôi ghé qua cửa hàng tiện lợi.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "レジ袋",
+    "hiragana": "レジぶくろ",
+    "mean": "túi bóng, bao xốp",
+    "example": "あのスーパーでは、レジ袋が3円です。Ở siêu thị ấy, túi bóng đựng hàng là 3 yên.",
+    "character": 3,
+    "section": 3
+  },
+  {
+    "kanji": "定休日",
+    "hiragana": "ていきゅうび",
+    "mean": "ngày nghỉ quy định",
+    "example": "本日は定休日のため、休ませていただきます。Hôm nay là ngày nghỉ quy định nên chúng tôi xin được phép nghỉ.",
+    "character": 3,
+    "section": 3
+  },{
+    "kanji": "覚ます",
+    "hiragana": "さます",
+    "mean": "tỉnh dậy, thức giấc",
+    "example": "夜中の３時に目を覚ましました。Tôi tỉnh dậy lúc 3 giờ đêm.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "覚める",
+    "hiragana": "さめる",
+    "mean": "thức dậy",
+    "example": "毎朝、７時に目が覚める。Hàng ngày tôi thức dậy lúc 7 giờ.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "（夜が）明ける",
+    "hiragana": "（よるが）あける",
+    "mean": "trời sáng",
+    "example": "ゲームをしていたら、夜が明けてしまった。Tôi chơi game rồi thì trời sáng mất tiêu.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "支度",
+    "hiragana": "したく",
+    "mean": "sự chuẩn bị, sửa soạn",
+    "example": "起きたら、急いで朝ごはんを食べて、支度する。Thức dậy là tôi vội vã ăn sáng rồi sửa soạn.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "合わせる",
+    "hiragana": "あわせる",
+    "mean": "ướm, phối hợp",
+    "example": "ごはんのとき、手と合わせて「いただきます」と言う。Khi ăn cơm, chắp tay lại và nói \"Itadakimasu\".",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "しまう",
+    "hiragana": "しまう",
+    "mean": "cất",
+    "example": "午前中に、冬のふとんを干して、しまう。Trong buổi sáng tôi phơi chăn mùa đông và cất đi.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "（ひげを）そる",
+    "hiragana": "そる",
+    "mean": "cạo (râu)",
+    "example": "夫はひげをそるのに、時間がかかる。Chồng tôi mất thời gian cho việc cạo râu.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "（髪を）とかす",
+    "hiragana": "とかす",
+    "mean": "chải (tóc)",
+    "example": "朝、３分くらいで髪をとかす。Buổi sáng, tôi chải tóc mất khoảng 3 phút.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "そろえる",
+    "hiragana": "そろえる",
+    "mean": "tập hợp, xếp",
+    "example": "持っていくものをそろえて、バッグに入れる。Tôi xếp những thứ mang đi cho vào túi.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "昼寝",
+    "hiragana": "ひるね",
+    "mean": "việc ngủ trưa",
+    "example": "会社で１５分だけ、昼寝している。Ở công ty, tôi ngủ trưa chỉ 15 phút.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "腰かける",
+    "hiragana": "こしかける",
+    "mean": "tựa lưng",
+    "example": "いすに腰かけて、少し休もう。Dựa lưng vào ghế, nghỉ ngơi một chút nào!",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "暮れる",
+    "hiragana": "くれる",
+    "mean": "lặn",
+    "example": "もう少しで日が暮れる。Mặt trời sắp sửa lặn.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "おしゃべり",
+    "hiragana": "おしゃべり",
+    "mean": "sự nói chuyện, chuyện trò",
+    "example": "家族とおしゃべりする時間を大切にしている。Tôi trân trọng thời gian chuyện trò với gia đình.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "リラックス",
+    "hiragana": "リラックス",
+    "mean": "sự thư giãn",
+    "example": "家に帰って、リビングでリラックスする。Về đến nhà tôi thư giãn ở phòng khách.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "ふだん",
+    "hiragana": "ふだん",
+    "mean": "thông thường, bình thường",
+    "example": "ふだんは家で食事をする。Bình thường tôi ăn ở nhà.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "ふだん着",
+    "hiragana": "ふだんぎ",
+    "mean": "quần áo thường ngày, quần áo ở nhà",
+    "example": "昔のまま、ソファーで寝てしまった。Tôi ngủ quên trên ghế sofa mà vẫn mặc nguyên bộ quần áo thường ngày.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "相変わらず",
+    "hiragana": "あいかわらず",
+    "mean": "vẫn",
+    "example": "息子は相変わらずゲームをしている。Con trai tôi vẫn chứng chơi game.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "だいたい",
+    "hiragana": "だいたい",
+    "mean": "đại khái, đại để",
+    "example": "だいたい１時ごろ寝る。Tôi usualy go to sleep around 1:00.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "夜ふかし",
+    "hiragana": "よふかし",
+    "mean": "sự thức khuya",
+    "example": "週末は、ちょっと夜ふかししてしまう。Cuối tuần tôi thức khuya một chút.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "電源",
+    "hiragana": "でんげん",
+    "mean": "nguồn điện, chỗ cắm điện",
+    "example": "夜、パソコンの電源を切る。Buổi tối, tắt nguồn điện máy vi tính.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "充電",
+    "hiragana": "じゅうでん",
+    "mean": "việc nạp điện, sạc pin",
+    "example": "寝る前に、スマートフォンを充電しておく。Trước khi ngủ tôi nạp điện cho máy smartphone.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "セット",
+    "hiragana": "セット",
+    "mean": "sự cài đặt",
+    "example": "目覚ましを７時にセットした。Tôi cài đặt đồng hồ báo thức lúc 7 giờ.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "なでる",
+    "hiragana": "なでる",
+    "mean": "vuốt ve",
+    "example": "ペットの犬をなでて、「おやすみ」と言った。Tôi vuốt ve con chó cưng và nói \"Chúc ngủ ngon!\".",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "ぐっすり",
+    "hiragana": "ぐっすり",
+    "mean": "say giấc, ngủ tít",
+    "example": "今日もぐっすり寝られそうだ。Hôm nay cũng có vẻ ngủ say giấc đây.",
+    "character": 3,
+    "section": 4
+  },
+  {
+    "kanji": "運",
+    "hiragana": "うん",
+    "mean": "số, vận",
+    "example": "今日は運がいい一日だった。Hôm nay là một ngày may mắn.",
+    "character": 3,
+    "section": 4
+  },{
+    "kanji": "日常",
+    "hiragana": "にちじょう",
+    "mean": "thường nhật",
+    "example": "日常の生活を楽しみたい。Tôi muốn hưởng thụ cuộc sống thường nhật.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "常に",
+    "hiragana": "つねに",
+    "mean": "thường xuyên",
+    "example": "常に家族の健康を考えている。Tôi thường xuyên nghĩ đến sức khỏe của gia đình.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "出迎え",
+    "hiragana": "でむかえ",
+    "mean": "sự đón",
+    "example": "空港へ国からの友だちの出迎えに行く。Tôi ra sân bay đón bạn từ nước sang.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "出迎える",
+    "hiragana": "でむかえる",
+    "mean": "đón",
+    "example": "バス停で友だちを出迎えた。Tôi đã đón được bạn ở bến đỗ xe buýt.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "見送り",
+    "hiragana": "みおくり",
+    "mean": "sự tiễn",
+    "example": "空港へ家族を見送りに行く。Tôi tiễn gia đình ra sân bay.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "見送る",
+    "hiragana": "みおくる",
+    "mean": "tiễn",
+    "example": "私の家族を見送った。Tôi tiễn vợ gia đình vừa khóc.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "郵送",
+    "hiragana": "ゆうそう",
+    "mean": "gửi bưu điện",
+    "example": "母に誕生日プレゼントを郵送した。Tôi gửi bưu điện quà sinh nhật cho mẹ.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "小包",
+    "hiragana": "こづつみ",
+    "mean": "gói, bưu kiện",
+    "example": "小包にセーターを入れた。Tôi cho chiếc áo len vào bưu kiện.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "送料",
+    "hiragana": "そうりょう",
+    "mean": "tiền gửi, cước gửi",
+    "example": "荷物を送るとき、送料がかかる。Khi gửi hành lý sẽ mất tiền gửi.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "あて先",
+    "hiragana": "あてさき",
+    "mean": "địa chỉ nhận",
+    "example": "あて先を間違えないように書いた。Tôi đã viết không để nhầm địa chỉ.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "あて名",
+    "hiragana": "あてな",
+    "mean": "tên người nhận",
+    "example": "あて名に母の名前を書いた。Tôi viết tên mẹ tôi vào tên người nhận.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "差出人",
+    "hiragana": "さしだしにん",
+    "mean": "người gửi",
+    "example": "ここに差出人の住所を書いてください。Hãy viết địa chỉ của người gửi vào chỗ này!",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "とりあえず",
+    "hiragana": "とりあえず",
+    "mean": "trước mắt, trước mắt",
+    "example": "大学に合格したので、とりあえず母に知らせた。Vì đã đậu đại học nên trước mắt, tôi báo cho mẹ biết.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "出前",
+    "hiragana": "でまえ",
+    "mean": "gọi đến nhà",
+    "example": "今日は疲れたので、すしの出前にしよう。Hôm nay mệt nên mình gọi sushi đến nhà thôi!",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "ほどく",
+    "hiragana": "ほどく",
+    "mean": "tháo, cởi",
+    "example": "玄関で、くつのひもをほどいた。Tôi tháo dây giày ở lối vào cửa.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "留守番電話",
+    "hiragana": "るすばんでんわ",
+    "mean": "điện thoại trả lời tự động khi vắng nhà",
+    "example": "留守番電話に母の声が入っていた。Có tiếng của mẹ tôi trong máy điện thoại trả lời tự động khi vắng nhà.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "よく",
+    "hiragana": "よく",
+    "mean": "hay",
+    "example": "両親や兄弟と、よく電話している。Tôi hay nói chuyện điện thoại với bố mẹ và anh em trong nhà.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "早め",
+    "hiragana": "はやめ",
+    "mean": "sớm, nhanh chóng",
+    "example": "飛行機のチケットを早めに予約しておく。Tôi đặt sẵn vé máy bay sớm.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "リサイクル",
+    "hiragana": "リサイクル",
+    "mean": "sự tái chế, tái sử dụng",
+    "example": "洋服も家具もリサイクルできる。Quần áo cũng như gia dụng đều tái sử dụng được.",
+    "character": 3,
+    "section": 5
+  },
+  {
+    "kanji": "どける",
+    "hiragana": "どける",
+    "mean": "xê, xê dịch, tránh sang một bên",
+    "example": "その自転車をどけてください。Hãy xê cái xe đạp này ra!",
+    "character": 3,
+    "section": 5
+  },{
+    "kanji": "商店街",
+    "hiragana": "しょうてんがい",
+    "mean": "phố thương mại",
+    "example": "駅前に大きな商店街がある。Trước cửa ga có phố thương mại lớn. [1]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "にぎやか",
+    "hiragana": "にぎやか",
+    "mean": "nhộn nhịp",
+    "example": "商店街は、たくさんの人で にぎやかだ。Phố thương mại có nhiều người, nhộn nhịp. [1]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "高層ビル",
+    "hiragana": "こうそうビル",
+    "mean": "tòa nhà cao tầng",
+    "example": "この町には、高層ビルがない。Ở thị trấn này không có tòa nhà cao tầng. [1]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "建つ",
+    "hiragana": "たつ",
+    "mean": "được xây, được xây dựng",
+    "example": "川の近くに、高層マンションが建った。Gần sông có một chung cư cao tầng được xây. [1]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "水族館",
+    "hiragana": "すいぞくかん",
+    "mean": "thủy cung",
+    "example": "水族館は、いつも子どもでいっぱいだ。Thủy cung bao giờ cũng đông trẻ em. [1]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "博物館",
+    "hiragana": "はくぶつかん",
+    "mean": "bảo tàng",
+    "example": "週末、博物館はとても込んでいる。Cuối tuần, bảo tàng rất đông. [1]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "出入り口（出入口）",
+    "hiragana": "でいりぐち（でいりぐち）",
+    "mean": "lối ra vào",
+    "example": "博物館の出入り口に、ポスターがはってある。Áp-phích được dán ở lối ra vào bảo tàng. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "自動ドア",
+    "hiragana": "じどうドア",
+    "mean": "cửa tự động",
+    "example": "出入り口に、大きな 自動ドアがある。Ở lối ra vào có cửa tự động lớn. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "入館料",
+    "hiragana": "にゅうかんりょう",
+    "mean": "phí vào cửa",
+    "example": "入館料は400円です。Phí vào cửa là 400 yên. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "混雑",
+    "hiragana": "こんざつ",
+    "mean": "sự đông đúc, đông nghịt",
+    "example": "週末は、どこも混雑している。Cuối tuần ở đâu cũng đông nghịt. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "行列",
+    "hiragana": "ぎょうれつ",
+    "mean": "hàng người",
+    "example": "人気の店の前に、長い 行列ができている。Trước cửa tiệm được ưa thích, có một hàng người xếp dài. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "休館日",
+    "hiragana": "きゅうかんび",
+    "mean": "ngày nghỉ",
+    "example": "この博物館の休館日は、月曜日だ。Ngày nghỉ của bảo tàng này là thứ hai. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "ホール",
+    "hiragana": "ホール",
+    "mean": "hội trường",
+    "example": "市のホールで、よくコンサートが開かれる。Những buổi hòa nhạc hay được tổ chức ở hội trường thành phố. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "使用料",
+    "hiragana": "しようりょう",
+    "mean": "phí sử dụng",
+    "example": "このホール の使用料は、3時間 1万円だ。Phí sử dụng hội trường này là 10 nghìn yên cho 3 tiếng đồng hồ. [2]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "無料",
+    "hiragana": "むりょう",
+    "mean": "miễn phí",
+    "example": "駅前で無料の化粧品をもらった。Tôi được một vài mỹ phẩm miễn phí ở trước ga. [3]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "老人ホーム",
+    "hiragana": "ろうじんホーム",
+    "mean": "nhà dưỡng lão",
+    "example": "公園の近くに、老人ホームができそうだ。Họ nói gần công viên có xây nhà dưỡng lão. [3]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "目印",
+    "hiragana": "めじるし",
+    "mean": "dấu, dấu hiệu nhận biết",
+    "example": "A:「そらの近くに、何か 目印がありますか。」B:「そうですね。赤い橋があります。」 [3]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "歩道橋",
+    "hiragana": "ほどうきょう",
+    "mean": "cầu đi bộ qua đường",
+    "example": "歩道橋に上ると、町がよく見える。Nếu leo lên cầu đi bộ qua đường sẽ nhìn thấy rõ phố. [3]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "タワー",
+    "hiragana": "タワー",
+    "mean": "tháp",
+    "example": "スカイツリーは、日本で一番高いタワーだ。Skytree là tháp cao nhất ở Nhật Bản. [3]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "ライト",
+    "hiragana": "ライト",
+    "mean": "ánh sáng, chiếu sáng",
+    "example": "あのタワーは夜7時になると、ライトがつく。Tháp ấy cứ đến 7 giờ tối là có đèn chiếu sáng. [3]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "居酒屋",
+    "hiragana": "いざかや",
+    "mean": "quán nhậu kiểu Nhật",
+    "example": "この町には、たくさん居酒屋がある。Ở phố này có nhiều quán nhậu. [3]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "八百屋",
+    "hiragana": "やおや",
+    "mean": "cửa hàng rau quả",
+    "example": "野菜や果物は八百屋で買う。Rau và hoa quả thì tôi mua ở cửa hàng rau quả. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "正面",
+    "hiragana": "しょうめん",
+    "mean": "chính diện",
+    "example": "パン屋の正面に、小さな本屋がある。Bên cạnh hiệu bánh mì có một hiệu sách nhỏ. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "そば",
+    "hiragana": "そば",
+    "mean": "gần bên cạnh",
+    "example": "本屋のそばに、おいしいレストランがある。Bên cạnh hiệu sách có một nhà hàng ngon. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "コンクリート",
+    "hiragana": "コンクリート",
+    "mean": "bê tông",
+    "example": "あのアパートは、コンクリートでできている。Chung cư ấy được xây bằng bê tông. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "地方",
+    "hiragana": "ちほう",
+    "mean": "địa phương",
+    "example": "この地方には、自然がたくさんある。Địa phương này có nhiều phong cảnh tự nhiên. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "地域",
+    "hiragana": "ちいき",
+    "mean": "khu vực",
+    "example": "この地域には、知り合いが多い。Tôi có nhiều người quen biết ở khu vực này. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "郊外",
+    "hiragana": "こうがい",
+    "mean": "ngoại ô",
+    "example": "いつか郊外に、庭のある家を建てたい。Tôi muốn khi nào đó sẽ xây một căn nhà có sân vườn ở ngoại ô. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "中心",
+    "hiragana": "ちゅうしん",
+    "mean": "trung tâm, giữa",
+    "example": "広場の中心に、きれいな花が咲いている。Hoa đẹp đang đùa nở giữa trung tâm quảng trường. [4]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "移転",
+    "hiragana": "いてん",
+    "mean": "sự di chuyển, di dời",
+    "example": "市役所が移転するらしい。Nghe nói, tòa nhà ủy ban sẽ được di dời. [5]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "工事",
+    "hiragana": "こうじ",
+    "mean": "công trường xây dựng",
+    "example": "3年くらい前から、駅の工事をしている。Đang tiến hành công trường xây dựng nhà ga từ khoảng 3 năm trước. [5]",
+    "character": 4,
+    "section": 1
+},
+{
+    "kanji": "空き地",
+    "hiragana": "あきち",
+    "mean": "khu đất trống",
+    "example": "うちの近くの空き地が、駐車場になった。Khu đất trống ở gần nhà đã trở thành bãi đỗ xe. [5]",
+    "character": 4,
+    "section": 1
+},
+{
+  "kanji": "人ごみ",
+  "hiragana": "ひとごみ",
+  "mean": "đám đông, dòng người",
+  "example": "人ごみの中を歩くと、ちょっと疲れる。Hễ đi bộ trong đám đông người là thấy hơi mệt.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "都会",
+  "hiragana": "とかい",
+  "mean": "đô thị, khu vực thành thị",
+  "example": "都会には自然が少ない。Ở đô thị ít có khung cảnh tự nhiên.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "ぶらぶら〈する〉",
+  "hiragana": "ぶらぶら",
+  "mean": "đi lang thang",
+  "example": "休みの日は、一人で町をぶらぶらする。Vào ngày nghỉ, tôi một mình đi lang thang thị trấn.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "うろうろ〈する〉",
+  "hiragana": "うろうろ",
+  "mean": "sự lởn vởn, lang vãng",
+  "example": "最近、知らない人が家の前をうろうろしている。Gần đây, có người lạ đi lởn vởn trước nhà.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "通りかかる",
+  "hiragana": "とおりかかる",
+  "mean": "đi qua",
+  "example": "通りかかった店に、ちょっと入ってみた。Tôi thử vào cửa hàng mình đi ngang qua một chút.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "通り過ぎる",
+  "hiragana": "とおりすぎる",
+  "mean": "đi quá",
+  "example": "スマホを見ていて、学校を通り過ぎてしまった。Mải xem điện thoại, tôi đã đi quá mất trường học.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "徒歩",
+  "hiragana": "とほ",
+  "mean": "đi bộ",
+  "example": "うちから駅まで、徒歩で15分くらいだ。Từ nhà đến ga đi bộ mất khoảng 15 phút.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "方向",
+  "hiragana": "ほうこう",
+  "mean": "hướng, phương hướng",
+  "example": "知らない町では、方向がわからない。Ở thành phố không quen tôi không biết phương hướng.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "遠回り〈する〉",
+  "hiragana": "とおまわり",
+  "mean": "sự đi vòng, đường vòng",
+  "example": "時間があるから、ちょっと遠回りしてみよう。Vì có thời gian nên tôi thử đi vòng một chút.",
+  "character": 4,
+  "section": 1
+},
+{
+  "kanji": "近道〈する〉",
+  "hiragana": "ちかみち",
+  "mean": "sự đi tắt, đường tắt",
+  "example": "駅に行くとき、公園を通って近道した。Khi đi ra ga, tôi đi tắt qua công viên.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "距離",
+  "hiragana": "きょり",
+  "mean": "cự ly, khoảng cách",
+  "example": "うちから学校まで、ちょっと距離がある。Từ nhà đến trường hơi có khoảng cách (hơi xa) một chút.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "追いかける",
+  "hiragana": "おいかける",
+  "mean": "đuổi theo",
+  "example": "女の子が犬を追いかけている。Bé gái đuổi theo con chó.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "追いつく",
+  "hiragana": "おいつく",
+  "mean": "đuổi kịp",
+  "example": "ちょっと走ったら、すぐに追いついた。Chạy một chút là đuổi kịp ngay.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "追い越す",
+  "hiragana": "おいこす",
+  "mean": "vượt",
+  "example": "前の人がゆっくり歩いていたので、追い越した。Vì người đàng trước đi chậm nên tôi đã vượt qua.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "突き当たり",
+  "hiragana": "つきあたり",
+  "mean": "cuối đường, cuối đường hẻm cụt",
+  "example": "この道の突き当たりに病院がある。Ở cuối con đường này có bệnh viện.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "立ち止まる",
+  "hiragana": "たちどまる",
+  "mean": "dừng lại",
+  "example": "立ち止まらないで、 前に進んでください。Không đừng lại, hãy đi tiếp!",
+  "character": 4,
+  "section":2
+},
+{
+  "kanji": "横切る",
+  "hiragana": "よこぎる",
+  "mean": "băng qua",
+  "example": "黒猫が道を横切った。Con mèo đen băng qua đường.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "見かける",
+  "hiragana": "みかける",
+  "mean": "trông thấy, bắt gặp",
+  "example": "駅で知り合いを見かけた。Tôi bắt gặp người quen ở ga.",
+  "character": 4,
+  "section": 2
+},
+{
+  "kanji": "行き先",
+  "hiragana": "いきさき",
+  "mean": "nơi đến",
+  "example": "急いでいたので、行き先を間違えてしまった。Vì vội vàng nên tôi đã bị nhầm mất nơi đến.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "往復",
+  "hiragana": "おうふく",
+  "mean": "sự đi về, khứ hồi",
+  "example": "It takes four hours round trip to get to my office and back. Đến công ty cả đi lẫn về mất 4 tiếng đồng hồ.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "片道",
+  "hiragana": "かたみち",
+  "mean": "một chiều",
+  "example": "東京まで新幹線で、片道1万円だ。Vé đi một chiều bằng tàu Shinkansen đến Tokyo mất 10 nghìn yên.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "各駅停車",
+  "hiragana": "かくえきていしゃ",
+  "mean": "tàu chậm (đỗ lại tất cả các ga)",
+  "example": "時間があるときは、各駅停車に乗る。Khi có thời gian tôi ngồi tàu chậm.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "急行",
+  "hiragana": "きゅうこう",
+  "mean": "tàu tốc hành",
+  "example": "A駅までお急ぎの方は、次の急行をご利用ください。Quý vị nào muốn đi gấp đến nhà ga A, vui lòng sử dụng tàu tốc hành tiếp theo.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "始発",
+  "hiragana": "しはつ",
+  "mean": "chuyến tàu đầu tiên, ga đầu",
+  "example": "この駅の始発電車は、5時半ごろだ。Chuyến tàu chạy đầu tiên của ga này là khoảng 5 giờ rưỡi.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "終電",
+  "hiragana": "しゅうでん",
+  "mean": "chuyến tàu cuối cùng",
+  "example": "12時半の終電に間に合わない。Không kịp chuyến tàu cuối cùng lúc 12 rưỡi.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "終点",
+  "hiragana": "しゅうてん",
+  "mean": "ga cuối",
+  "example": "終電で寝てしまって、終点まで行った。Tôi đã ngủ quên mất trên chuyến tàu cuối cùng và đi đến tận ga cuối.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "上り",
+  "hiragana": "のぼり",
+  "mean": "lên thành phố, đi ga đầu",
+  "example": "もうすぐ上り電車が来る。Tàu lên thành phố sắp sửa đến.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "下り",
+  "hiragana": "くだり",
+  "mean": "đi địa phương, đi ga cuối",
+  "example": "下りの電車に乗って、山へ行く。Tôi ngồi tàu đi địa phương để đến núi.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "JR",
+  "hiragana": "ジェイアール",
+  "mean": "JR (Công ty đường sắt Nhật Bản)",
+  "example": "私はJRを、よく利用する。Tôi hay sử dụng JR.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "私鉄",
+  "hiragana": "してつ",
+  "mean": "tuyến đường sắt tư nhân",
+  "example": "この近くに私鉄の駅はない。Ở gần đây không có ga tuyến đường sắt tư nhân.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "経由",
+  "hiragana": "けいゆ",
+  "mean": "sự đi qua, quá cảnh",
+  "example": "今日は東京駅を__経由して__、家に帰る。Hôm nay tôi đi qua ga Tokyo để về nhà.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "定期券",
+  "hiragana": "ていきけん",
+  "mean": "vé tháng",
+  "example": "定期券は割引があるので、得だ。Vé tháng có giảm giá nên lợi.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "有効期限",
+  "hiragana": "ゆうこうきげん",
+  "mean": "thời hạn, thời hạn có hiệu lực",
+  "example": "カードの有効期限は、来月までだ。Thời hạn của thẻ này đến tháng sau.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "窓口",
+  "hiragana": "まどぐち",
+  "mean": "quầy giao dịch, teller",
+  "example": "You can make reservations for your trip at the ticket window in the station. Có thể đặt tour du lịch tại quầy giao dịch nhà ga.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "販売",
+  "hiragana": "はんばい",
+  "mean": "sự bán",
+  "example": "They’re selling commemorative tickets at the ticket window. Tại quầy giao dịch có bán vé kỷ niệm.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "通路側",
+  "hiragana": "つうろがわ",
+  "mean": "phía lối đi",
+  "example": "新幹線では通路側に座る。Trong tàu Shinkansen tôi ngồi phía lối đi.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "改札",
+  "hiragana": "かいさつ",
+  "mean": "soát vé, cửa soát vé",
+  "example": "改札を出たところで待ち合わせた。Đã hẹn gặp nhau tại chỗ ra từ cửa soát vé.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "指定席",
+  "hiragana": "していせき",
+  "mean": "ghế chỉ định, reserved seats",
+  "example": "旅行の前に、指定席を予約した。Khi đi du lịch, tôi đã đặt sẵn ghế chỉ định.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "車内アナウンス",
+  "hiragana": "しゃないアナウンス",
+  "mean": "phát thanh trên tàu",
+  "example": "車内アナウンスで、携帯電話のルールを説明している。Phát thanh trên tàu đang giải thích về quy định sử dụng điện thoại di động.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "車掌",
+  "hiragana": "しゃしょう",
+  "mean": "nhân viên trên tàu, xe",
+  "example": "新幹線の車掌の制服は、かっこいい。Đồng phục của nhân viên trên tàu Shinkansen trông đẹp.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "ホーム",
+  "hiragana": "ホーム",
+  "mean": "sân chờ tàu, sân ga",
+  "example": "ホームに、たくさんの人が並んでいる。Nhiều người đang xếp hàng trên sân chờ tàu.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "線路",
+  "hiragana": "せんろ",
+  "mean": "đường tàu",
+  "example": "線路には、ぜったいに降りないでください。Tuyệt đối không được xuống đường tàu!",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "踏切",
+  "hiragana": "ふみきり",
+  "mean": "chỗ đường tàu cắt ngang, chỗ đường sắt cắt đường bộ",
+  "example": "あの踏切は10分くらい開かないことがある。Chỗ đường tàu cắt ngang đôi khi khoảng 10 phút vẫn chưa mở.",
+  "character": 4,
+  "section": 1
+},
+{
+  "kanji": "乗り遅れる",
+  "hiragana": "のりおくれる",
+  "mean": "trễ tàu xe",
+  "example": "道が込んでいて、新幹線に乗り遅れた。Đường đông nên tôi đã trễ tàu Shinkansen.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "乗り換える",
+  "hiragana": "のりかえる",
+  "mean": "chuyển tàu xe",
+  "example": "次の駅で、地下鉄に乗り換える。Sẽ chuyển sang tàu điện ngầm ở ga tiếp theo.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "乗り越す",
+  "hiragana": "のりこす",
+  "mean": "đi quá ga (số tiền)",
+  "example": "乗り越したら、改札でお金を払う。Nếu đi quá ga trả tiền ở cửa soát vé.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "乗り過ごす",
+  "hiragana": "のりすごす",
+  "mean": "đi quá",
+  "example": "電車で寝てしまって、乗り過ごした。Ngủ quên mất trên tàu nên đã đi quá.",
+  "character": 4,
+  "section": 3
+},
+{
+  "kanji": "踏む",
+  "hiragana": "ふむ",
+  "mean": "giẫm",
+  "example": "電車の中で、となりの人の足を__踏んで__しまった。Tôi lỡ giẫm vào chân người bên cạnh trong tàu điện.",
+  "character": 4,
+  "section": 3
+}
 ]

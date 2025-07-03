@@ -19,16 +19,31 @@ class _AddVocabularyScreenState extends State<AddVocabularyScreen> {
 
   bool _isLoading = false;
 
+  Future<String> _getLocalVocabularyPath() async {
+    final directory = await getApplicationDocumentsDirectory();
+    return '${directory.path}/vocabulary_temp.json';
+  }
+
+  Future<File> _getLocalVocabularyFile() async {
+    final path = await _getLocalVocabularyPath();
+    final file = File(path);
+    if (!await file.exists()) {
+      // Copy from assets if not exists
+      final data = await rootBundle.loadString('assets/data/vocabulary.json');
+      await file.writeAsString(data);
+    }
+    return file;
+  }
+
   Future<void> _saveVocabulary() async {
     if (!_formKey.currentState!.validate()) return;
 
     setState(() => _isLoading = true);
 
     try {
-      // Đọc dữ liệu hiện tại
-      final String data = await rootBundle.loadString(
-        'assets/data/vocabulary.json',
-      );
+      // Đọc dữ liệu hiện tại từ local file
+      final file = await _getLocalVocabularyFile();
+      final String data = await file.readAsString();
       List<dynamic> jsonData = json.decode(data);
 
       // Thêm từ mới
@@ -37,11 +52,11 @@ class _AddVocabularyScreenState extends State<AddVocabularyScreen> {
         'hiragana': _hiraganaController.text,
         'mean': _meanController.text,
         'example': _exampleController.text,
+        'character': 100,
+        'section': 1,
       });
 
       // Lưu lại file
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/vocabulary.json');
       await file.writeAsString(json.encode(jsonData));
 
       // Hiện thông báo thành công

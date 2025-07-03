@@ -384,6 +384,7 @@ class _PhanTichDanhMucScreenNewState extends State<PhanTichDanhMucScreenNew> {
   Widget _buildDanhMucListCard() {
     final filtered =
         _danhMucs.where((dm) => (_tongTienMap[dm.id] ?? 0) > 0).toList();
+    filtered.sort((a, b) => (_tongTienMap[b.id] ?? 0).compareTo(_tongTienMap[a.id] ?? 0));
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(

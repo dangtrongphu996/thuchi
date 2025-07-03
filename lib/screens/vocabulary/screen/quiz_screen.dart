@@ -40,7 +40,7 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void loadAndStartQuiz() async {
-    final list = await loader.loadVocabulary();
+    final list = await loader.loadVocabularyFromLocal();
     // Lọc theo character nếu có
     List<Vocabulary> filteredList = list;
     if (widget.character != null) {

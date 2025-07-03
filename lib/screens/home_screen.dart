@@ -11,6 +11,7 @@ import 'package:thuchi/screens/input_items_screen.dart';
 import 'package:thuchi/screens/spinner_screen.dart';
 import 'package:thuchi/screens/thong_ke_danh_muc_nang_cao_screen.dart';
 import 'package:thuchi/screens/thong_ke_danh_muc_screen.dart';
+import 'package:thuchi/screens/todo_screen.dart';
 import 'danh_muc_list_screen.dart';
 import 'thong_ke_screen.dart';
 import 'ngan_sach_screen.dart';
@@ -415,6 +416,16 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       },
+                    ),
+                    _buildMenuCard(
+                      context,
+                      'Công việc hằng ngày',
+                      Icons.checklist,
+                      Colors.deepPurple,
+                      () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TodoScreen()),
+                      ),
                     ),
                   ],
                 ),

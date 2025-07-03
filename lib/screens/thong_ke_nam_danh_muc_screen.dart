@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/danh_muc.dart';
 import '../db/chi_tiet_chi_tieu_dao.dart';
 import 'package:intl/intl.dart';
+import 'thong_ke_thang_danh_muc_screen.dart';
 
 class ThongKeNamDanhMucScreen extends StatefulWidget {
   final DanhMuc danhMuc;
@@ -375,6 +376,21 @@ class _ThongKeNamDanhMucScreenState extends State<ThongKeNamDanhMucScreen> {
                                             color: Colors.green,
                                           ),
                                         ),
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder:
+                                                  (context) =>
+                                                      ThongKeThangDanhMucScreen(
+                                                        danhMuc: widget.danhMuc,
+                                                        selectedMonth: m,
+                                                        selectedYear:
+                                                            selectedYear,
+                                                      ),
+                                            ),
+                                          );
+                                        },
                                       ),
                                     );
                                   },

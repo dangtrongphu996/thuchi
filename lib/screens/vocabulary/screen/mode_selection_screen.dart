@@ -13,12 +13,15 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
   final List<int> questionCounts = [10, 20, 50, 100];
 
   int? selectedCharacter;
-  final List<int?> characters = [null, 1, 2];
+  final List<int?> characters = [null, 1, 2, 100];
 
   int? selectedSection;
   final Map<int, List<int?>> sectionsByCharacter = {
     1: [null, 1, 2, 3, 4, 5],
-    2: [null, 1, 2],
+    2: [null, 1, 2, 3, 4, 5],
+    3: [null, 1, 2, 3, 4, 5],
+    4: [null, 1, 2, 3],
+    100: [null, 1],
   };
   List<int?> availableSections = [null];
 
@@ -29,32 +32,8 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
         iconTheme: IconThemeData(color: Colors.white),
         title: Text('Chọn chế độ', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.indigo,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.category),
-            tooltip: 'Danh mục',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const CharacterSectionScreen(),
-                ),
-              );
-            },
-          ),
-        ],
       ),
       backgroundColor: Color(0xFFF6F7FB),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed:
-            () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => AddVocabularyScreen()),
-            ),
-        backgroundColor: Colors.indigo,
-        icon: Icon(Icons.add, color: Colors.white),
-        label: Text('Thêm từ vựng', style: TextStyle(color: Colors.white)),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

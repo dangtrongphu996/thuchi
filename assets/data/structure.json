@@ -41,5 +41,84 @@
                 "name": "家事/Việc nhà"
             }
         ]
+    },
+    {
+        "character": 3,
+        "sections": [
+            {
+                "section": 1,
+                "name": "家/Nhà"
+            },{
+                "section": 2,
+                "name": "お金と銀行/Tiền và ngân hàng"
+            },{
+                "section": 3,
+                "name": "買い物/Mua sắm"
+            },{
+                "section": 4,
+                "name": "朝から夜まで/Từ sáng đến tối"
+            },{
+                "section": 5,
+                "name": "こんなことも/Cả những việc như thế này"
+            }
+        ]
+    },{
+        "character": 4,
+        "sections": [
+            {
+                "section": 1,
+                "name": "町のようす/Quang cảnh thành phố"
+            },
+            {
+                "section": 2,
+                "name": "町を歩く/Đi bộ trong thành phố"
+            },
+            {
+                "section": 3,
+                "name": "電車と新幹線/Tàu điện và tàu Shinkansen"
+            },
+            {
+                "section": 4,
+                "name": "バス/Xe buýt"
+            },
+            {
+                "section": 5,
+                "name": "運転する/Lái xe"
+            }
+        ]
+    },
+    {
+        "character": 5,
+        "sections": [
+            {
+                "section": 1,
+                "name": "学校/Trường học"
+            },
+            {
+                "section": 2,
+                "name": "勉強/Học tập"
+            },
+            {
+                "section": 3,
+                "name": "日本の大学/Trường đại học của Nhật Bản"
+            },
+            {
+                "section": 4,
+                "name": "試験/Thi cử"
+            },
+            {
+                "section": 5,
+                "name": "もっとがんばれ！/Hãy cố gắng hơn nữa!"
+            }
+        ]
+    },
+    {
+        "character": 100,
+        "sections": [
+            {
+                "section": 1,
+                "name": "Từ vựng tự do"
+            }
+        ]
     }
 ]

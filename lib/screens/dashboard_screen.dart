@@ -21,6 +21,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'danh_muc_list_screen.dart';
 import 'chi_tiet_theo_thang.dart';
+import 'package:thuchi/screens/vocabulary/screen/vocabulary_menu_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -250,7 +251,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ModeSelectionScreen(),
+                    builder: (context) => VocabularyMenuScreen(),
                   ),
                 );
               },
