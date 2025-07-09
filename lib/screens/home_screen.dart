@@ -23,6 +23,9 @@ import 'package:thuchi/screens/holiday/home_holiday.dart';
 import 'thong_ke_nam_pie_screen.dart';
 import 'bao_cao_tong_hop_screen.dart';
 import 'phan_tich_danh_muc_screen.dart';
+import 'giao_dich_theo_ngay_screen.dart';
+import 'giao_dich_theo_thang_screen.dart';
+import 'giao_dich_theo_nam_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -425,6 +428,42 @@ class HomeScreen extends StatelessWidget {
                       () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => TodoScreen()),
+                      ),
+                    ),
+                    _buildMenuCard(
+                      context,
+                      'Giao dịch theo ngày',
+                      Icons.today,
+                      Colors.purple,
+                      () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GiaoDichTheoNgayScreen(),
+                        ),
+                      ),
+                    ),
+                    _buildMenuCard(
+                      context,
+                      'Giao dịch theo tháng',
+                      Icons.calendar_view_month,
+                      Colors.teal,
+                      () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GiaoDichTheoThangScreen(),
+                        ),
+                      ),
+                    ),
+                    _buildMenuCard(
+                      context,
+                      'Giao dịch theo năm',
+                      Icons.event_note,
+                      Colors.indigo,
+                      () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GiaoDichTheoNamScreen(),
+                        ),
                       ),
                     ),
                   ],
