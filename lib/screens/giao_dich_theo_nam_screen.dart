@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import '../db/chi_tiet_chi_tieu_dao.dart';
 import '../models/chi_tiet_chi_tieu_danh_muc.dart';
 import 'them_chi_tiet_screen.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class GiaoDichTheoNamScreen extends StatefulWidget {
   const GiaoDichTheoNamScreen({Key? key}) : super(key: key);
@@ -97,6 +98,7 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Header năm
                           Center(
                             child: Card(
                               elevation: 4,
@@ -106,22 +108,22 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                               color: Colors.indigo.shade50,
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                  horizontal: 24,
-                                  vertical: 16,
+                                  horizontal: 28,
+                                  vertical: 18,
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
-                                      Icons.calendar_today,
+                                      Icons.event_note,
                                       color: Colors.indigo,
-                                      size: 28,
+                                      size: 32,
                                     ),
-                                    const SizedBox(width: 12),
+                                    const SizedBox(width: 16),
                                     Text(
                                       year.toString(),
                                       style: const TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.indigo,
                                       ),
@@ -132,30 +134,168 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                             ),
                           ),
                           const SizedBox(height: 18),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              _buildSummaryCard(
-                                'Thu nhập',
-                                tongThu,
-                                Colors.green,
-                                Icons.arrow_upward,
+                          // Biểu đồ PieChart
+                          if (tongThu > 0 || tongChi > 0)
+                            Card(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
                               ),
-                              _buildSummaryCard(
-                                'Chi phí',
-                                tongChi,
-                                Colors.red,
-                                Icons.arrow_downward,
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 12,
+                                  horizontal: 8,
+                                ),
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      'Tỷ lệ Thu/Chi',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 15),
+                                    SizedBox(
+                                      height: 110,
+                                      child: PieChart(
+                                        PieChartData(
+                                          sections: [
+                                            PieChartSectionData(
+                                              color: Colors.green,
+                                              value: tongThu,
+                                              title: 'Thu',
+                                              radius: 38,
+                                              titleStyle: const TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            PieChartSectionData(
+                                              color: Colors.red,
+                                              value: tongChi,
+                                              title: 'Chi',
+                                              radius: 38,
+                                              titleStyle: const TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                          sectionsSpace: 2,
+                                          centerSpaceRadius: 28,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              _buildSummaryCard(
-                                'Còn lại',
-                                conLai,
-                                Colors.blue,
-                                Icons.account_balance_wallet,
+                            ),
+                          const SizedBox(height: 10),
+                          // Tổng hợp số tiền và tổng số giao dịch
+                          Card(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 14,
+                                horizontal: 18,
                               ),
-                            ],
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Column(
+                                    children: [
+                                      const Text(
+                                        'Thu nhập',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                      Text(
+                                        '${tongThu.toInt()} đ',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Số giao dịch: ${thuNhap.length}',
+                                        style: const TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    width: 1,
+                                    height: 40,
+                                    color: Colors.grey.shade300,
+                                  ),
+                                  Column(
+                                    children: [
+                                      const Text(
+                                        'Chi phí',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      Text(
+                                        '${tongChi.toInt()} đ',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Số giao dịch: ${chiPhi.length}',
+                                        style: const TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    width: 1,
+                                    height: 40,
+                                    color: Colors.grey.shade300,
+                                  ),
+                                  Column(
+                                    children: [
+                                      const Text(
+                                        'Còn lại',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                      Text(
+                                        '${conLai.toInt()} đ',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          const SizedBox(height: 24),
+                          const SizedBox(height: 18),
+                          // Danh sách thu nhập
                           Text(
                             'Danh sách Thu nhập',
                             style: TextStyle(
@@ -175,7 +315,7 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount: thuNhap.length,
                                 separatorBuilder:
-                                    (_, __) => const SizedBox(height: 8),
+                                    (_, __) => const SizedBox(height: 10),
                                 itemBuilder: (context, idx) {
                                   final ct = thuNhap[idx].chiTietChiTieu;
                                   final dm = thuNhap[idx].danhMuc;
@@ -184,12 +324,22 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 2,
+                                    ),
                                     child: ListTile(
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                            vertical: 8,
+                                            horizontal: 16,
+                                          ),
                                       leading: CircleAvatar(
                                         backgroundColor: Colors.green.shade100,
+                                        radius: 26,
                                         child: Icon(
                                           _getTypeIcon(1),
                                           color: Colors.green,
+                                          size: 28,
                                         ),
                                       ),
                                       title: Text(
@@ -197,6 +347,7 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.green,
+                                          fontSize: 17,
                                         ),
                                       ),
                                       subtitle: Text(
@@ -204,31 +355,91 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                             (ct.ghiChu.isNotEmpty
                                                 ? ' - ${ct.ghiChu}'
                                                 : ''),
+                                        style: const TextStyle(fontSize: 14),
                                       ),
-                                      trailing: IconButton(
-                                        icon: const Icon(
-                                          Icons.edit,
-                                          color: Colors.blue,
-                                        ),
-                                        onPressed: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder:
-                                                  (_) => ThemChiTietScreen(
-                                                    chiTiet: ct,
-                                                    danhMuc: dm,
-                                                  ),
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          IconButton(
+                                            icon: const Icon(
+                                              Icons.edit,
+                                              color: Colors.blue,
                                             ),
-                                          );
-                                          _fetchYearsAndData();
-                                        },
+                                            onPressed: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder:
+                                                      (_) => ThemChiTietScreen(
+                                                        chiTiet: ct,
+                                                        danhMuc: dm,
+                                                      ),
+                                                ),
+                                              );
+                                              _fetchYearsAndData();
+                                            },
+                                          ),
+                                          IconButton(
+                                            icon: const Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                            ),
+                                            onPressed: () async {
+                                              final confirm = await showDialog<
+                                                bool
+                                              >(
+                                                context: context,
+                                                builder:
+                                                    (context) => AlertDialog(
+                                                      title: const Text(
+                                                        'Xác nhận xóa',
+                                                      ),
+                                                      content: const Text(
+                                                        'Bạn có chắc chắn muốn xóa giao dịch này?',
+                                                      ),
+                                                      actions: [
+                                                        TextButton(
+                                                          child: const Text(
+                                                            'Hủy',
+                                                          ),
+                                                          onPressed:
+                                                              () =>
+                                                                  Navigator.pop(
+                                                                    context,
+                                                                    false,
+                                                                  ),
+                                                        ),
+                                                        TextButton(
+                                                          child: const Text(
+                                                            'Xóa',
+                                                            style: TextStyle(
+                                                              color: Colors.red,
+                                                            ),
+                                                          ),
+                                                          onPressed:
+                                                              () =>
+                                                                  Navigator.pop(
+                                                                    context,
+                                                                    true,
+                                                                  ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                              );
+                                              if (confirm == true) {
+                                                await _dao.delete(ct.id!);
+                                                _fetchYearsAndData();
+                                              }
+                                            },
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   );
                                 },
                               ),
                           const SizedBox(height: 18),
+                          // Danh sách chi phí
                           Text(
                             'Danh sách Chi phí',
                             style: TextStyle(
@@ -248,7 +459,7 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount: chiPhi.length,
                                 separatorBuilder:
-                                    (_, __) => const SizedBox(height: 8),
+                                    (_, __) => const SizedBox(height: 10),
                                 itemBuilder: (context, idx) {
                                   final ct = chiPhi[idx].chiTietChiTieu;
                                   final dm = chiPhi[idx].danhMuc;
@@ -257,12 +468,22 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 2,
+                                    ),
                                     child: ListTile(
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                            vertical: 8,
+                                            horizontal: 16,
+                                          ),
                                       leading: CircleAvatar(
                                         backgroundColor: Colors.red.shade100,
+                                        radius: 26,
                                         child: Icon(
                                           _getTypeIcon(2),
                                           color: Colors.red,
+                                          size: 28,
                                         ),
                                       ),
                                       title: Text(
@@ -270,6 +491,7 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.red,
+                                          fontSize: 17,
                                         ),
                                       ),
                                       subtitle: Text(
@@ -277,25 +499,84 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                             (ct.ghiChu.isNotEmpty
                                                 ? ' - ${ct.ghiChu}'
                                                 : ''),
+                                        style: const TextStyle(fontSize: 14),
                                       ),
-                                      trailing: IconButton(
-                                        icon: const Icon(
-                                          Icons.edit,
-                                          color: Colors.blue,
-                                        ),
-                                        onPressed: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder:
-                                                  (_) => ThemChiTietScreen(
-                                                    chiTiet: ct,
-                                                    danhMuc: dm,
-                                                  ),
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          IconButton(
+                                            icon: const Icon(
+                                              Icons.edit,
+                                              color: Colors.blue,
                                             ),
-                                          );
-                                          _fetchYearsAndData();
-                                        },
+                                            onPressed: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder:
+                                                      (_) => ThemChiTietScreen(
+                                                        chiTiet: ct,
+                                                        danhMuc: dm,
+                                                      ),
+                                                ),
+                                              );
+                                              _fetchYearsAndData();
+                                            },
+                                          ),
+                                          IconButton(
+                                            icon: const Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                            ),
+                                            onPressed: () async {
+                                              final confirm = await showDialog<
+                                                bool
+                                              >(
+                                                context: context,
+                                                builder:
+                                                    (context) => AlertDialog(
+                                                      title: const Text(
+                                                        'Xác nhận xóa',
+                                                      ),
+                                                      content: const Text(
+                                                        'Bạn có chắc chắn muốn xóa giao dịch này?',
+                                                      ),
+                                                      actions: [
+                                                        TextButton(
+                                                          child: const Text(
+                                                            'Hủy',
+                                                          ),
+                                                          onPressed:
+                                                              () =>
+                                                                  Navigator.pop(
+                                                                    context,
+                                                                    false,
+                                                                  ),
+                                                        ),
+                                                        TextButton(
+                                                          child: const Text(
+                                                            'Xóa',
+                                                            style: TextStyle(
+                                                              color: Colors.red,
+                                                            ),
+                                                          ),
+                                                          onPressed:
+                                                              () =>
+                                                                  Navigator.pop(
+                                                                    context,
+                                                                    true,
+                                                                  ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                              );
+                                              if (confirm == true) {
+                                                await _dao.delete(ct.id!);
+                                                _fetchYearsAndData();
+                                              }
+                                            },
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   );
@@ -305,6 +586,42 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                         ],
                       ),
                     ),
+                  );
+                },
+              ),
+      floatingActionButton:
+          _years.isEmpty
+              ? null
+              : Builder(
+                builder: (context) {
+                  final pageController = PageController(
+                    initialPage: _initialPage,
+                  );
+                  return FloatingActionButton(
+                    backgroundColor: Colors.indigo,
+                    child: const Icon(Icons.add),
+                    onPressed: () async {
+                      // Lấy năm đang xem
+                      final page =
+                          (pageController.hasClients
+                              ? pageController.page?.round()
+                              : _initialPage) ??
+                          _initialPage;
+                      final year = _years[page];
+                      final date = DateTime(year, 1, 1);
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (_) => ThemChiTietScreen(
+                                chiTiet: null,
+                                danhMuc: null,
+                              ),
+                        ),
+                      );
+                      _fetchYearsAndData();
+                    },
+                    tooltip: 'Thêm giao dịch cho năm này',
                   );
                 },
               ),

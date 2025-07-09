@@ -369,12 +369,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   letterSpacing: 1.2,
                                 ),
                               ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.refresh,
-                                  color: Colors.white,
-                                ),
-                                onPressed: isLoading ? null : loadData,
+                              Builder(
+                                builder:
+                                    (context) => IconButton(
+                                      icon: const Icon(
+                                        Icons.refresh,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: isLoading ? null : loadData,
+                                    ),
                               ),
                             ],
                           ),
