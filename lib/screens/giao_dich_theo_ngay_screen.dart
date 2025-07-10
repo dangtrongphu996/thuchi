@@ -179,21 +179,29 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
                                             PieChartSectionData(
                                               color: Colors.green,
                                               value: tongThu,
-                                              title: 'Thu',
+                                              title:
+                                                  tongThu + tongChi > 0
+                                                      ? 'Thu ${(tongThu / (tongThu + tongChi) * 100).toStringAsFixed(0)}%'
+                                                      : 'Thu',
                                               radius: 38,
                                               titleStyle: const TextStyle(
                                                 fontSize: 13,
-                                                color: Colors.white,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                             PieChartSectionData(
                                               color: Colors.red,
                                               value: tongChi,
-                                              title: 'Chi',
+                                              title:
+                                                  tongThu + tongChi > 0
+                                                      ? 'Chi ${(tongChi / (tongThu + tongChi) * 100).toStringAsFixed(0)}%'
+                                                      : 'Chi',
                                               radius: 38,
                                               titleStyle: const TextStyle(
                                                 fontSize: 13,
-                                                color: Colors.white,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                           ],
@@ -201,6 +209,47 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
                                           centerSpaceRadius: 28,
                                         ),
                                       ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    // Legend
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 16,
+                                              height: 16,
+                                              color: Colors.green,
+                                              margin: const EdgeInsets.only(
+                                                right: 6,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'Thu nhập',
+                                              style: TextStyle(fontSize: 13),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(width: 18),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 16,
+                                              height: 16,
+                                              color: Colors.red,
+                                              margin: const EdgeInsets.only(
+                                                right: 6,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'Chi phí',
+                                              style: TextStyle(fontSize: 13),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),

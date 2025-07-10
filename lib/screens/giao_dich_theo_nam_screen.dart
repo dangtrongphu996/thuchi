@@ -4,6 +4,9 @@ import '../db/chi_tiet_chi_tieu_dao.dart';
 import '../models/chi_tiet_chi_tieu_danh_muc.dart';
 import 'them_chi_tiet_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'chi_tiet_danh_muc_screen.dart';
+import 'thong_ke_nam_danh_muc_screen.dart';
+import '../models/danh_muc.dart';
 
 class GiaoDichTheoNamScreen extends StatefulWidget {
   const GiaoDichTheoNamScreen({Key? key}) : super(key: key);
@@ -165,21 +168,29 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                             PieChartSectionData(
                                               color: Colors.green,
                                               value: tongThu,
-                                              title: 'Thu',
+                                              title:
+                                                  tongThu + tongChi > 0
+                                                      ? 'Thu ${(tongThu / (tongThu + tongChi) * 100).toStringAsFixed(0)}%'
+                                                      : 'Thu',
                                               radius: 38,
                                               titleStyle: const TextStyle(
                                                 fontSize: 13,
-                                                color: Colors.white,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                             PieChartSectionData(
                                               color: Colors.red,
                                               value: tongChi,
-                                              title: 'Chi',
+                                              title:
+                                                  tongThu + tongChi > 0
+                                                      ? 'Chi ${(tongChi / (tongThu + tongChi) * 100).toStringAsFixed(0)}%'
+                                                      : 'Chi',
                                               radius: 38,
                                               titleStyle: const TextStyle(
                                                 fontSize: 13,
-                                                color: Colors.white,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                           ],
@@ -187,6 +198,47 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                                           centerSpaceRadius: 28,
                                         ),
                                       ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    // Legend
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 16,
+                                              height: 16,
+                                              color: Colors.green,
+                                              margin: const EdgeInsets.only(
+                                                right: 6,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'Thu nhập',
+                                              style: TextStyle(fontSize: 13),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(width: 18),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 16,
+                                              height: 16,
+                                              color: Colors.red,
+                                              margin: const EdgeInsets.only(
+                                                right: 6,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'Chi phí',
+                                              style: TextStyle(fontSize: 13),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -294,6 +346,27 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                               ),
                             ),
                           ),
+                          // Danh sách danh mục thu nhập và chi phí
+                          const SizedBox(height: 18),
+                          const Text(
+                            'Danh mục Thu nhập',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.green,
+                            ),
+                          ),
+                          _buildCategoryList(data, 1, page),
+                          const SizedBox(height: 12),
+                          const Text(
+                            'Danh mục Chi phí',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.red,
+                            ),
+                          ),
+                          _buildCategoryList(data, 2, page),
                           const SizedBox(height: 18),
                           // Danh sách thu nhập
                           Text(
@@ -672,4 +745,107 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
       ),
     );
   }
+}
+
+Widget _buildCategoryList(
+  List<ChiTietChiTieuDanhMuc> data,
+  int loai,
+  int page,
+) {
+  // Gom nhóm theo danh mục
+  final Map<String, double> tongTienTheoDanhMuc = {};
+  final Map<String, String> tenDanhMuc = {};
+  for (var e in data) {
+    if (e.danhMuc.loai == loai) {
+      tongTienTheoDanhMuc[e.danhMuc.id.toString()] =
+          (tongTienTheoDanhMuc[e.danhMuc.id.toString()] ?? 0) +
+          e.chiTietChiTieu.soTien;
+      tenDanhMuc[e.danhMuc.id.toString()] = e.danhMuc.ten;
+    }
+  }
+  final sorted =
+      tongTienTheoDanhMuc.entries.toList()
+        ..sort((a, b) => b.value.compareTo(a.value));
+  if (sorted.isEmpty) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Text(
+        loai == 1 ? 'Không có danh mục thu nhập' : 'Không có danh mục chi phí',
+        style: TextStyle(color: loai == 1 ? Colors.green : Colors.red),
+      ),
+    );
+  }
+  return ListView.separated(
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
+    itemCount: sorted.length,
+    separatorBuilder: (_, __) => const SizedBox(height: 8),
+    itemBuilder: (context, idx) {
+      final id = sorted[idx].key;
+      final ten = tenDanhMuc[id] ?? '';
+      final soTien = sorted[idx].value;
+      final color = loai == 1 ? Colors.green : Colors.red;
+      final icon = loai == 1 ? Icons.arrow_upward : Icons.arrow_downward;
+      // Lấy icon emoji nếu có
+      String? emoji;
+      DanhMuc? danhMucObj;
+      for (var e in data) {
+        if (e.danhMuc.id.toString() == id) {
+          if (e.danhMuc.icon != null && e.danhMuc.icon!.isNotEmpty) {
+            emoji = e.danhMuc.icon;
+          }
+          danhMucObj = e.danhMuc;
+          break;
+        }
+      }
+      // year lấy từ giao dịch đầu tiên của danh mục
+      final firstItem = data.firstWhere(
+        (e) => e.danhMuc.id.toString() == id,
+        orElse: () => data.first,
+      );
+      final year =
+          firstItem.chiTietChiTieu.ngay.length >= 7
+              ? DateTime.parse(firstItem.chiTietChiTieu.ngay).year
+              : DateTime.now().year;
+      return Card(
+        elevation: 2,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundColor: color.withOpacity(0.15),
+            child:
+                emoji != null
+                    ? Text(emoji, style: const TextStyle(fontSize: 20))
+                    : Icon(icon, color: color, size: 22),
+          ),
+          title: Text(
+            ten,
+            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+          ),
+          trailing: Text(
+            '${soTien.toInt()} đ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: color,
+              fontSize: 16,
+            ),
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 6,
+          ),
+          onTap: () {
+            if (danhMucObj != null) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ThongKeNamDanhMucScreen(danhMuc: danhMucObj!),
+                ),
+              );
+            }
+          },
+        ),
+      );
+    },
+  );
 }
