@@ -90,7 +90,7 @@ class _AllTransactionsScreenState extends State<AllTransactionsScreen> {
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Card(
-                        color: widget.loai == 1 ? Colors.green : Colors.red,
+                        color: const Color.fromARGB(255, 231, 255, 253),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
