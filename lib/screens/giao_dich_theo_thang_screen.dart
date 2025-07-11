@@ -26,6 +26,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
   Map<String, List<ChiTietChiTieuDanhMuc>> _dataByMonth = {};
   bool _loading = true;
   int _initialPage = 0;
+  PageController? _pageController;
 
   MucTieuThang? _mucTieuThu;
   MucTieuThang? _mucTieuChi;
@@ -33,6 +34,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
   @override
   void initState() {
     super.initState();
+    _pageController = PageController();
     _fetchMonthsAndData();
   }
 
@@ -80,11 +82,50 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
       _dataByMonth = grouped;
       _loading = false;
     });
+    // Đảm bảo PageController về đúng trang hiện tại
+    if (_pageController != null &&
+        _initialPage >= 0 &&
+        _initialPage < months.length) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (_pageController!.hasClients) {
+          _pageController!.jumpToPage(_initialPage);
+        }
+      });
+    }
+  }
+
+  Future<void> _updateMucTieuForPage(int page) async {
+    if (page >= 0 && page < _months.length) {
+      final m = _months[page];
+      final mucTieuThu = await _mucTieuDao.getByMonthAndType(
+        m.month,
+        m.year,
+        1,
+      );
+      final mucTieuChi = await _mucTieuDao.getByMonthAndType(
+        m.month,
+        m.year,
+        2,
+      );
+      setState(() {
+        _mucTieuThu = mucTieuThu;
+        _mucTieuChi = mucTieuChi;
+      });
+    }
   }
 
   Color _getTypeColor(int loai) => loai == 1 ? Colors.green : Colors.red;
   IconData _getTypeIcon(int loai) =>
       loai == 1 ? Icons.arrow_upward : Icons.arrow_downward;
+
+  Color getProgressColor(double percent) {
+    if (percent == 0) return Colors.grey;
+    if (percent < 0.3) return Colors.red;
+    if (percent < 0.5) return Colors.orange;
+    if (percent < 0.9) return Colors.amber;
+    if (percent < 1.0) return Colors.blue;
+    return Colors.green;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +143,11 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                 child: Text('Không có dữ liệu giao dịch theo tháng'),
               )
               : PageView.builder(
-                controller: PageController(initialPage: _initialPage),
+                controller: _pageController,
                 itemCount: _months.length,
+                onPageChanged: (page) {
+                  _updateMucTieuForPage(page);
+                },
                 itemBuilder: (context, page) {
                   final month = _months[page];
                   final key =
@@ -322,13 +366,6 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                                           color: Colors.green,
                                         ),
                                       ),
-                                      if (_mucTieuThu != null)
-                                        _buildProgressBar(
-                                          tongThu,
-                                          _mucTieuThu!.soTien,
-                                          Colors.green,
-                                          'Mục tiêu thu nhập',
-                                        ),
                                     ],
                                   ),
                                   Container(
@@ -360,13 +397,6 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                                           color: Colors.red,
                                         ),
                                       ),
-                                      if (_mucTieuChi != null)
-                                        _buildProgressBar(
-                                          tongChi,
-                                          _mucTieuChi!.soTien,
-                                          Colors.red,
-                                          'Mục tiêu chi phí',
-                                        ),
                                     ],
                                   ),
                                   Container(
@@ -397,6 +427,59 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                               ),
                             ),
                           ),
+                          // Card tiến độ mục tiêu tháng
+                          if (_mucTieuThu != null || _mucTieuChi != null)
+                            Card(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 16,
+                                  horizontal: 18,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.flag,
+                                          color: Colors.teal,
+                                          size: 22,
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Text(
+                                          'Tiến độ mục tiêu tháng',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                            color: Colors.teal.shade700,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 10),
+                                    if (_mucTieuThu != null)
+                                      _buildProgressBar(
+                                        tongThu,
+                                        _mucTieuThu!.soTien,
+                                        'Thu nhập',
+                                        icon: Icons.trending_up,
+                                      ),
+                                    if (_mucTieuChi != null)
+                                      _buildProgressBar(
+                                        tongChi,
+                                        _mucTieuChi!.soTien,
+                                        'Chi phí',
+                                        icon: Icons.trending_down,
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           // Danh sách danh mục thu nhập và chi phí
                           const SizedBox(height: 18),
                           const Text(
@@ -718,17 +801,15 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
               ? null
               : Builder(
                 builder: (context) {
-                  final pageController = PageController(
-                    initialPage: _initialPage,
-                  );
+                  final pageController = _pageController;
                   return FloatingActionButton(
                     backgroundColor: Colors.teal,
                     child: const Icon(Icons.add),
                     onPressed: () async {
                       // Lấy tháng đang xem
                       final page =
-                          (pageController.hasClients
-                              ? pageController.page?.round()
+                          (pageController?.hasClients == true
+                              ? pageController?.page?.round()
                               : _initialPage) ??
                           _initialPage;
                       final month = _months[page];
@@ -800,29 +881,118 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
   Widget _buildProgressBar(
     double value,
     double target,
-    Color color,
-    String label,
-  ) {
-    final percent = target > 0 ? (value / target).clamp(0, 1) : 0.0;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 6),
-        SizedBox(
-          width: 110,
-          child: LinearProgressIndicator(
-            value: percent.toDouble(),
-            backgroundColor: color.withOpacity(0.15),
-            valueColor: AlwaysStoppedAnimation<Color>(color),
-            minHeight: 8,
+    String label, {
+    IconData? icon,
+  }) {
+    final percent = target > 0 ? (value / target) : 0.0;
+    final percentClamped = percent.clamp(0.0, 1.0);
+    // Các mốc phần trăm
+    final p30 = 0.3;
+    final p50 = 0.5;
+    final p90 = 0.9;
+    final p100 = 1.0;
+    // Tính chiều rộng từng đoạn
+    double w30 = (percentClamped > p30 ? p30 : percentClamped).clamp(0, p30);
+    double w50 = (percentClamped > p50 ? p50 : percentClamped) - w30;
+    w50 = w50.clamp(0, p50 - p30);
+    double w90 = (percentClamped > p90 ? p90 : percentClamped) - w30 - w50;
+    w90 = w90.clamp(0, p90 - p50);
+    double w100 =
+        (percentClamped > p100 ? p100 : percentClamped) - w30 - w50 - w90;
+    w100 = w100.clamp(0, p100 - p90);
+    double wOver = percentClamped > 1.0 ? percentClamped - 1.0 : 0;
+    // Tổng width = 1.0 (100%)
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          if (icon != null) Icon(icon, color: Colors.teal, size: 20),
+          if (icon != null) const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$label: ${value.toInt()} / ${target.toInt()} đ',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.teal,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final totalWidth = constraints.maxWidth;
+                    return Stack(
+                      children: [
+                        // Nền
+                        Container(
+                          width: totalWidth,
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        // Các đoạn màu
+                        Row(
+                          children: [
+                            if (w30 > 0)
+                              Container(
+                                width: totalWidth * w30,
+                                height: 10,
+                                decoration: const BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.horizontal(
+                                    left: Radius.circular(6),
+                                  ),
+                                ),
+                              ),
+                            if (w50 > 0)
+                              Container(
+                                width: totalWidth * w50,
+                                height: 10,
+                                color: Colors.orange,
+                              ),
+                            if (w90 > 0)
+                              Container(
+                                width: totalWidth * w90,
+                                height: 10,
+                                color: Colors.amber,
+                              ),
+                            if (w100 > 0)
+                              Container(
+                                width: totalWidth * w100,
+                                height: 10,
+                                color: Colors.blue,
+                              ),
+                            if (wOver > 0)
+                              Container(
+                                width: totalWidth * wOver,
+                                height: 10,
+                                decoration: const BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.horizontal(
+                                    right: Radius.circular(6),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  'Đạt ${(percent * 100).toStringAsFixed(1)}%',
+                  style: const TextStyle(fontSize: 11, color: Colors.teal),
+                ),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          '$label: ${value.toInt()} / ${target.toInt()} đ (${(percent * 100).toStringAsFixed(1)}%)',
-          style: TextStyle(fontSize: 11, color: color),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

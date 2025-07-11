@@ -26,6 +26,7 @@ import 'phan_tich_danh_muc_screen.dart';
 import 'giao_dich_theo_ngay_screen.dart';
 import 'giao_dich_theo_thang_screen.dart';
 import 'giao_dich_theo_nam_screen.dart';
+import 'muc_tieu_thang_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -100,6 +101,18 @@ class HomeScreen extends StatelessWidget {
                   crossAxisSpacing: 20,
                   childAspectRatio: 1.08,
                   children: [
+                    _buildMenuCard(
+                      context,
+                      'Mục tiêu tháng',
+                      Icons.flag,
+                      Colors.teal,
+                      () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MucTieuThangScreen(),
+                        ),
+                      ),
+                    ),
                     _buildMenuCard(
                       context,
                       'Danh mục',

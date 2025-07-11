@@ -259,19 +259,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.flag, color: Colors.teal),
-              title: Text('Mục tiêu tháng', style: GoogleFonts.montserrat()),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MucTieuThangScreen(),
-                  ),
-                );
-              },
-            ),
-            Divider(),
-            ListTile(
               leading: Icon(Icons.backup, color: Colors.blue),
               title: Text('Sao lưu dữ liệu', style: GoogleFonts.montserrat()),
               onTap: () async {
