@@ -18,7 +18,24 @@ class DatabaseHelper {
     final documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, 'chi_tieu.db');
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(
+      path,
+      version: 2, // tăng version
+      onCreate: _createDB,
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await db.execute('''
+            CREATE TABLE MucTieuThang (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              thang INTEGER,
+              nam INTEGER,
+              loai INTEGER,
+              soTien REAL
+            );
+          ''');
+        }
+      },
+    );
   }
 
   Future<void> _createDB(Database db, int version) async {
@@ -48,6 +65,16 @@ class DatabaseHelper {
       danhMucId INTEGER,
       thang INTEGER,
       nam INTEGER,
+      soTien REAL
+    );
+    ''');
+
+    await db.execute('''
+    CREATE TABLE MucTieuThang (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      thang INTEGER,
+      nam INTEGER,
+      loai INTEGER,
       soTien REAL
     );
     ''');

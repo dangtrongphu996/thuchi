@@ -147,7 +147,7 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 18),
+                          const SizedBox(height: 10),
                           // Biểu đồ PieChart
                           if (tongThu > 0 || tongChi > 0)
                             Card(
@@ -357,7 +357,7 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 18),
+                          const SizedBox(height: 10),
                           // Danh sách thu nhập
                           Text(
                             'Danh sách Thu nhập',
@@ -368,7 +368,7 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
                             ),
                           ),
 
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 4),
                           thuNhap.isEmpty
                               ? _buildEmptyTransaction(
                                 'Không có giao dịch thu nhập',
@@ -502,7 +502,7 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
                                   );
                                 },
                               ),
-                          const SizedBox(height: 18),
+                          const SizedBox(height: 10),
                           // Danh sách chi phí
                           Text(
                             'Danh sách Chi phí',
@@ -512,7 +512,7 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
                               color: Colors.red.shade700,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 4),
                           chiPhi.isEmpty
                               ? _buildEmptyTransaction(
                                 'Không có giao dịch chi phí',

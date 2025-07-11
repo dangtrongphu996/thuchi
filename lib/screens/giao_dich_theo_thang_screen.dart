@@ -8,6 +8,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'chi_tiet_danh_muc_screen.dart';
 import 'chi_tiet_theo_thang.dart';
 import '../models/danh_muc.dart';
+import '../db/muc_tieu_thang_dao.dart';
+import '../models/muc_tieu_thang.dart';
 
 class GiaoDichTheoThangScreen extends StatefulWidget {
   const GiaoDichTheoThangScreen({Key? key}) : super(key: key);
@@ -19,10 +21,14 @@ class GiaoDichTheoThangScreen extends StatefulWidget {
 
 class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
   final ChiTietChiTieuDao _dao = ChiTietChiTieuDao();
+  final MucTieuThangDao _mucTieuDao = MucTieuThangDao();
   List<DateTime> _months = [];
   Map<String, List<ChiTietChiTieuDanhMuc>> _dataByMonth = {};
   bool _loading = true;
   int _initialPage = 0;
+
+  MucTieuThang? _mucTieuThu;
+  MucTieuThang? _mucTieuChi;
 
   @override
   void initState() {
@@ -52,6 +58,23 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
       (m) => '${m.year}-${m.month.toString().padLeft(2, '0')}' == nowKey,
     );
     if (_initialPage < 0) _initialPage = months.length - 1;
+    // Lấy mục tiêu tháng hiện tại
+    if (months.isNotEmpty) {
+      final currentMonth = months[_initialPage];
+      _mucTieuThu = await _mucTieuDao.getByMonthAndType(
+        currentMonth.month,
+        currentMonth.year,
+        1,
+      );
+      _mucTieuChi = await _mucTieuDao.getByMonthAndType(
+        currentMonth.month,
+        currentMonth.year,
+        2,
+      );
+    } else {
+      _mucTieuThu = null;
+      _mucTieuChi = null;
+    }
     setState(() {
       _months = months;
       _dataByMonth = grouped;
@@ -150,7 +173,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 18),
+                          const SizedBox(height: 10),
                           // Biểu đồ PieChart
                           if (tongThu > 0 || tongChi > 0)
                             Card(
@@ -299,6 +322,13 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                                           color: Colors.green,
                                         ),
                                       ),
+                                      if (_mucTieuThu != null)
+                                        _buildProgressBar(
+                                          tongThu,
+                                          _mucTieuThu!.soTien,
+                                          Colors.green,
+                                          'Mục tiêu thu nhập',
+                                        ),
                                     ],
                                   ),
                                   Container(
@@ -330,6 +360,13 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                                           color: Colors.red,
                                         ),
                                       ),
+                                      if (_mucTieuChi != null)
+                                        _buildProgressBar(
+                                          tongChi,
+                                          _mucTieuChi!.soTien,
+                                          Colors.red,
+                                          'Mục tiêu chi phí',
+                                        ),
                                     ],
                                   ),
                                   Container(
@@ -370,7 +407,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                               color: Colors.green,
                             ),
                           ),
-                          _buildCategoryList(data, 1),
+                          _buildCategoryList(data, 1, tongThu),
                           const SizedBox(height: 12),
                           const Text(
                             'Danh mục Chi phí',
@@ -380,7 +417,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                               color: Colors.red,
                             ),
                           ),
-                          _buildCategoryList(data, 2),
+                          _buildCategoryList(data, 2, tongChi),
                           const SizedBox(height: 18),
                           // Danh sách thu nhập
                           Text(
@@ -391,7 +428,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                               color: Colors.green.shade700,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 4),
                           thuNhap.isEmpty
                               ? _buildEmptyTransaction(
                                 'Không có giao dịch thu nhập',
@@ -525,7 +562,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                                   );
                                 },
                               ),
-                          const SizedBox(height: 18),
+                          const SizedBox(height: 10),
                           // Danh sách chi phí
                           Text(
                             'Danh sách Chi phí',
@@ -535,7 +572,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                               color: Colors.red.shade700,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 4),
                           chiPhi.isEmpty
                               ? _buildEmptyTransaction(
                                 'Không có giao dịch chi phí',
@@ -759,9 +796,42 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
       ),
     );
   }
+
+  Widget _buildProgressBar(
+    double value,
+    double target,
+    Color color,
+    String label,
+  ) {
+    final percent = target > 0 ? (value / target).clamp(0, 1) : 0.0;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 6),
+        SizedBox(
+          width: 110,
+          child: LinearProgressIndicator(
+            value: percent.toDouble(),
+            backgroundColor: color.withOpacity(0.15),
+            valueColor: AlwaysStoppedAnimation<Color>(color),
+            minHeight: 8,
+          ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          '$label: ${value.toInt()} / ${target.toInt()} đ (${(percent * 100).toStringAsFixed(1)}%)',
+          style: TextStyle(fontSize: 11, color: color),
+        ),
+      ],
+    );
+  }
 }
 
-Widget _buildCategoryList(List<ChiTietChiTieuDanhMuc> data, int loai) {
+Widget _buildCategoryList(
+  List<ChiTietChiTieuDanhMuc> data,
+  int loai,
+  double tongSoTien,
+) {
   // Gom nhóm theo danh mục
   final Map<String, double> tongTienTheoDanhMuc = {};
   final Map<String, String> tenDanhMuc = {};
@@ -794,6 +864,7 @@ Widget _buildCategoryList(List<ChiTietChiTieuDanhMuc> data, int loai) {
       final id = sorted[idx].key;
       final ten = tenDanhMuc[id] ?? '';
       final soTien = sorted[idx].value;
+      final percent = tongSoTien > 0 ? (soTien / tongSoTien * 100) : 0;
       final color = loai == 1 ? Colors.green : Colors.red;
       final icon = loai == 1 ? Icons.arrow_upward : Icons.arrow_downward;
       // Lấy icon emoji nếu có
@@ -836,13 +907,23 @@ Widget _buildCategoryList(List<ChiTietChiTieuDanhMuc> data, int loai) {
             ten,
             style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
           ),
-          trailing: Text(
-            '${soTien.toInt()} đ',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: color,
-              fontSize: 16,
-            ),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '${soTien.toInt()} đ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                  fontSize: 16,
+                ),
+              ),
+              Text(
+                '(${percent.toStringAsFixed(1)}%)',
+                style: TextStyle(color: Colors.blue, fontSize: 13),
+              ),
+            ],
           ),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,

@@ -347,7 +347,7 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                             ),
                           ),
                           // Danh sách danh mục thu nhập và chi phí
-                          const SizedBox(height: 18),
+                          const SizedBox(height: 10),
                           const Text(
                             'Danh mục Thu nhập',
                             style: TextStyle(
@@ -356,8 +356,8 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                               color: Colors.green,
                             ),
                           ),
-                          _buildCategoryList(data, 1, page),
-                          const SizedBox(height: 12),
+                          _buildCategoryList(data, 1, tongThu),
+                          const SizedBox(height: 8),
                           const Text(
                             'Danh mục Chi phí',
                             style: TextStyle(
@@ -366,296 +366,296 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
                               color: Colors.red,
                             ),
                           ),
-                          _buildCategoryList(data, 2, page),
-                          const SizedBox(height: 18),
-                          // Danh sách thu nhập
-                          Text(
-                            'Danh sách Thu nhập',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17,
-                              color: Colors.green.shade700,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          thuNhap.isEmpty
-                              ? _buildEmptyTransaction(
-                                'Không có giao dịch thu nhập',
-                                Colors.green,
-                              )
-                              : ListView.separated(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: thuNhap.length,
-                                separatorBuilder:
-                                    (_, __) => const SizedBox(height: 10),
-                                itemBuilder: (context, idx) {
-                                  final ct = thuNhap[idx].chiTietChiTieu;
-                                  final dm = thuNhap[idx].danhMuc;
-                                  return Card(
-                                    elevation: 2,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    margin: const EdgeInsets.symmetric(
-                                      horizontal: 2,
-                                    ),
-                                    child: ListTile(
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                            vertical: 8,
-                                            horizontal: 16,
-                                          ),
-                                      leading: CircleAvatar(
-                                        backgroundColor: Colors.green.shade100,
-                                        radius: 26,
-                                        child: Icon(
-                                          _getTypeIcon(1),
-                                          color: Colors.green,
-                                          size: 28,
-                                        ),
-                                      ),
-                                      title: Text(
-                                        '${ct.soTien.toInt()} đ',
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.green,
-                                          fontSize: 17,
-                                        ),
-                                      ),
-                                      subtitle: Text(
-                                        dm.ten +
-                                            (ct.ghiChu.isNotEmpty
-                                                ? ' - ${ct.ghiChu}'
-                                                : ''),
-                                        style: const TextStyle(fontSize: 14),
-                                      ),
-                                      trailing: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          IconButton(
-                                            icon: const Icon(
-                                              Icons.edit,
-                                              color: Colors.blue,
-                                            ),
-                                            onPressed: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder:
-                                                      (_) => ThemChiTietScreen(
-                                                        chiTiet: ct,
-                                                        danhMuc: dm,
-                                                      ),
-                                                ),
-                                              );
-                                              _fetchYearsAndData();
-                                            },
-                                          ),
-                                          IconButton(
-                                            icon: const Icon(
-                                              Icons.delete,
-                                              color: Colors.red,
-                                            ),
-                                            onPressed: () async {
-                                              final confirm = await showDialog<
-                                                bool
-                                              >(
-                                                context: context,
-                                                builder:
-                                                    (context) => AlertDialog(
-                                                      title: const Text(
-                                                        'Xác nhận xóa',
-                                                      ),
-                                                      content: const Text(
-                                                        'Bạn có chắc chắn muốn xóa giao dịch này?',
-                                                      ),
-                                                      actions: [
-                                                        TextButton(
-                                                          child: const Text(
-                                                            'Hủy',
-                                                          ),
-                                                          onPressed:
-                                                              () =>
-                                                                  Navigator.pop(
-                                                                    context,
-                                                                    false,
-                                                                  ),
-                                                        ),
-                                                        TextButton(
-                                                          child: const Text(
-                                                            'Xóa',
-                                                            style: TextStyle(
-                                                              color: Colors.red,
-                                                            ),
-                                                          ),
-                                                          onPressed:
-                                                              () =>
-                                                                  Navigator.pop(
-                                                                    context,
-                                                                    true,
-                                                                  ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                              );
-                                              if (confirm == true) {
-                                                await _dao.delete(ct.id!);
-                                                _fetchYearsAndData();
-                                              }
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                          const SizedBox(height: 18),
-                          // Danh sách chi phí
-                          Text(
-                            'Danh sách Chi phí',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17,
-                              color: Colors.red.shade700,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          chiPhi.isEmpty
-                              ? _buildEmptyTransaction(
-                                'Không có giao dịch chi phí',
-                                Colors.red,
-                              )
-                              : ListView.separated(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: chiPhi.length,
-                                separatorBuilder:
-                                    (_, __) => const SizedBox(height: 10),
-                                itemBuilder: (context, idx) {
-                                  final ct = chiPhi[idx].chiTietChiTieu;
-                                  final dm = chiPhi[idx].danhMuc;
-                                  return Card(
-                                    elevation: 2,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    margin: const EdgeInsets.symmetric(
-                                      horizontal: 2,
-                                    ),
-                                    child: ListTile(
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                            vertical: 8,
-                                            horizontal: 16,
-                                          ),
-                                      leading: CircleAvatar(
-                                        backgroundColor: Colors.red.shade100,
-                                        radius: 26,
-                                        child: Icon(
-                                          _getTypeIcon(2),
-                                          color: Colors.red,
-                                          size: 28,
-                                        ),
-                                      ),
-                                      title: Text(
-                                        '${ct.soTien.toInt()} đ',
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.red,
-                                          fontSize: 17,
-                                        ),
-                                      ),
-                                      subtitle: Text(
-                                        dm.ten +
-                                            (ct.ghiChu.isNotEmpty
-                                                ? ' - ${ct.ghiChu}'
-                                                : ''),
-                                        style: const TextStyle(fontSize: 14),
-                                      ),
-                                      trailing: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          IconButton(
-                                            icon: const Icon(
-                                              Icons.edit,
-                                              color: Colors.blue,
-                                            ),
-                                            onPressed: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder:
-                                                      (_) => ThemChiTietScreen(
-                                                        chiTiet: ct,
-                                                        danhMuc: dm,
-                                                      ),
-                                                ),
-                                              );
-                                              _fetchYearsAndData();
-                                            },
-                                          ),
-                                          IconButton(
-                                            icon: const Icon(
-                                              Icons.delete,
-                                              color: Colors.red,
-                                            ),
-                                            onPressed: () async {
-                                              final confirm = await showDialog<
-                                                bool
-                                              >(
-                                                context: context,
-                                                builder:
-                                                    (context) => AlertDialog(
-                                                      title: const Text(
-                                                        'Xác nhận xóa',
-                                                      ),
-                                                      content: const Text(
-                                                        'Bạn có chắc chắn muốn xóa giao dịch này?',
-                                                      ),
-                                                      actions: [
-                                                        TextButton(
-                                                          child: const Text(
-                                                            'Hủy',
-                                                          ),
-                                                          onPressed:
-                                                              () =>
-                                                                  Navigator.pop(
-                                                                    context,
-                                                                    false,
-                                                                  ),
-                                                        ),
-                                                        TextButton(
-                                                          child: const Text(
-                                                            'Xóa',
-                                                            style: TextStyle(
-                                                              color: Colors.red,
-                                                            ),
-                                                          ),
-                                                          onPressed:
-                                                              () =>
-                                                                  Navigator.pop(
-                                                                    context,
-                                                                    true,
-                                                                  ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                              );
-                                              if (confirm == true) {
-                                                await _dao.delete(ct.id!);
-                                                _fetchYearsAndData();
-                                              }
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                          const SizedBox(height: 24),
+                          _buildCategoryList(data, 2, tongChi),
+                          const SizedBox(height: 60),
+                          // // Danh sách thu nhập
+                          // Text(
+                          //   'Danh sách Thu nhập',
+                          //   style: TextStyle(
+                          //     fontWeight: FontWeight.bold,
+                          //     fontSize: 17,
+                          //     color: Colors.green.shade700,
+                          //   ),
+                          // ),
+                          // const SizedBox(height: 4),
+                          // thuNhap.isEmpty
+                          //     ? _buildEmptyTransaction(
+                          //       'Không có giao dịch thu nhập',
+                          //       Colors.green,
+                          //     )
+                          //     : ListView.separated(
+                          //       shrinkWrap: true,
+                          //       physics: const NeverScrollableScrollPhysics(),
+                          //       itemCount: thuNhap.length,
+                          //       separatorBuilder:
+                          //           (_, __) => const SizedBox(height: 10),
+                          //       itemBuilder: (context, idx) {
+                          //         final ct = thuNhap[idx].chiTietChiTieu;
+                          //         final dm = thuNhap[idx].danhMuc;
+                          //         return Card(
+                          //           elevation: 2,
+                          //           shape: RoundedRectangleBorder(
+                          //             borderRadius: BorderRadius.circular(12),
+                          //           ),
+                          //           margin: const EdgeInsets.symmetric(
+                          //             horizontal: 2,
+                          //           ),
+                          //           child: ListTile(
+                          //             contentPadding:
+                          //                 const EdgeInsets.symmetric(
+                          //                   vertical: 8,
+                          //                   horizontal: 16,
+                          //                 ),
+                          //             leading: CircleAvatar(
+                          //               backgroundColor: Colors.green.shade100,
+                          //               radius: 26,
+                          //               child: Icon(
+                          //                 _getTypeIcon(1),
+                          //                 color: Colors.green,
+                          //                 size: 28,
+                          //               ),
+                          //             ),
+                          //             title: Text(
+                          //               '${ct.soTien.toInt()} đ',
+                          //               style: const TextStyle(
+                          //                 fontWeight: FontWeight.bold,
+                          //                 color: Colors.green,
+                          //                 fontSize: 17,
+                          //               ),
+                          //             ),
+                          //             subtitle: Text(
+                          //               dm.ten +
+                          //                   (ct.ghiChu.isNotEmpty
+                          //                       ? ' - ${ct.ghiChu}'
+                          //                       : ''),
+                          //               style: const TextStyle(fontSize: 14),
+                          //             ),
+                          //             trailing: Row(
+                          //               mainAxisSize: MainAxisSize.min,
+                          //               children: [
+                          //                 IconButton(
+                          //                   icon: const Icon(
+                          //                     Icons.edit,
+                          //                     color: Colors.blue,
+                          //                   ),
+                          //                   onPressed: () async {
+                          //                     await Navigator.push(
+                          //                       context,
+                          //                       MaterialPageRoute(
+                          //                         builder:
+                          //                             (_) => ThemChiTietScreen(
+                          //                               chiTiet: ct,
+                          //                               danhMuc: dm,
+                          //                             ),
+                          //                       ),
+                          //                     );
+                          //                     _fetchYearsAndData();
+                          //                   },
+                          //                 ),
+                          //                 IconButton(
+                          //                   icon: const Icon(
+                          //                     Icons.delete,
+                          //                     color: Colors.red,
+                          //                   ),
+                          //                   onPressed: () async {
+                          //                     final confirm = await showDialog<
+                          //                       bool
+                          //                     >(
+                          //                       context: context,
+                          //                       builder:
+                          //                           (context) => AlertDialog(
+                          //                             title: const Text(
+                          //                               'Xác nhận xóa',
+                          //                             ),
+                          //                             content: const Text(
+                          //                               'Bạn có chắc chắn muốn xóa giao dịch này?',
+                          //                             ),
+                          //                             actions: [
+                          //                               TextButton(
+                          //                                 child: const Text(
+                          //                                   'Hủy',
+                          //                                 ),
+                          //                                 onPressed:
+                          //                                     () =>
+                          //                                         Navigator.pop(
+                          //                                           context,
+                          //                                           false,
+                          //                                         ),
+                          //                               ),
+                          //                               TextButton(
+                          //                                 child: const Text(
+                          //                                   'Xóa',
+                          //                                   style: TextStyle(
+                          //                                     color: Colors.red,
+                          //                                   ),
+                          //                                 ),
+                          //                                 onPressed:
+                          //                                     () =>
+                          //                                         Navigator.pop(
+                          //                                           context,
+                          //                                           true,
+                          //                                         ),
+                          //                               ),
+                          //                             ],
+                          //                           ),
+                          //                     );
+                          //                     if (confirm == true) {
+                          //                       await _dao.delete(ct.id!);
+                          //                       _fetchYearsAndData();
+                          //                     }
+                          //                   },
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //           ),
+                          //         );
+                          //       },
+                          //     ),
+                          // const SizedBox(height: 10),
+                          // // Danh sách chi phí
+                          // Text(
+                          //   'Danh sách Chi phí',
+                          //   style: TextStyle(
+                          //     fontWeight: FontWeight.bold,
+                          //     fontSize: 17,
+                          //     color: Colors.red.shade700,
+                          //   ),
+                          // ),
+                          // const SizedBox(height: 4),
+                          // chiPhi.isEmpty
+                          //     ? _buildEmptyTransaction(
+                          //       'Không có giao dịch chi phí',
+                          //       Colors.red,
+                          //     )
+                          //     : ListView.separated(
+                          //       shrinkWrap: true,
+                          //       physics: const NeverScrollableScrollPhysics(),
+                          //       itemCount: chiPhi.length,
+                          //       separatorBuilder:
+                          //           (_, __) => const SizedBox(height: 10),
+                          //       itemBuilder: (context, idx) {
+                          //         final ct = chiPhi[idx].chiTietChiTieu;
+                          //         final dm = chiPhi[idx].danhMuc;
+                          //         return Card(
+                          //           elevation: 2,
+                          //           shape: RoundedRectangleBorder(
+                          //             borderRadius: BorderRadius.circular(12),
+                          //           ),
+                          //           margin: const EdgeInsets.symmetric(
+                          //             horizontal: 2,
+                          //           ),
+                          //           child: ListTile(
+                          //             contentPadding:
+                          //                 const EdgeInsets.symmetric(
+                          //                   vertical: 8,
+                          //                   horizontal: 16,
+                          //                 ),
+                          //             leading: CircleAvatar(
+                          //               backgroundColor: Colors.red.shade100,
+                          //               radius: 26,
+                          //               child: Icon(
+                          //                 _getTypeIcon(2),
+                          //                 color: Colors.red,
+                          //                 size: 28,
+                          //               ),
+                          //             ),
+                          //             title: Text(
+                          //               '${ct.soTien.toInt()} đ',
+                          //               style: const TextStyle(
+                          //                 fontWeight: FontWeight.bold,
+                          //                 color: Colors.red,
+                          //                 fontSize: 17,
+                          //               ),
+                          //             ),
+                          //             subtitle: Text(
+                          //               dm.ten +
+                          //                   (ct.ghiChu.isNotEmpty
+                          //                       ? ' - ${ct.ghiChu}'
+                          //                       : ''),
+                          //               style: const TextStyle(fontSize: 14),
+                          //             ),
+                          //             trailing: Row(
+                          //               mainAxisSize: MainAxisSize.min,
+                          //               children: [
+                          //                 IconButton(
+                          //                   icon: const Icon(
+                          //                     Icons.edit,
+                          //                     color: Colors.blue,
+                          //                   ),
+                          //                   onPressed: () async {
+                          //                     await Navigator.push(
+                          //                       context,
+                          //                       MaterialPageRoute(
+                          //                         builder:
+                          //                             (_) => ThemChiTietScreen(
+                          //                               chiTiet: ct,
+                          //                               danhMuc: dm,
+                          //                             ),
+                          //                       ),
+                          //                     );
+                          //                     _fetchYearsAndData();
+                          //                   },
+                          //                 ),
+                          //                 IconButton(
+                          //                   icon: const Icon(
+                          //                     Icons.delete,
+                          //                     color: Colors.red,
+                          //                   ),
+                          //                   onPressed: () async {
+                          //                     final confirm = await showDialog<
+                          //                       bool
+                          //                     >(
+                          //                       context: context,
+                          //                       builder:
+                          //                           (context) => AlertDialog(
+                          //                             title: const Text(
+                          //                               'Xác nhận xóa',
+                          //                             ),
+                          //                             content: const Text(
+                          //                               'Bạn có chắc chắn muốn xóa giao dịch này?',
+                          //                             ),
+                          //                             actions: [
+                          //                               TextButton(
+                          //                                 child: const Text(
+                          //                                   'Hủy',
+                          //                                 ),
+                          //                                 onPressed:
+                          //                                     () =>
+                          //                                         Navigator.pop(
+                          //                                           context,
+                          //                                           false,
+                          //                                         ),
+                          //                               ),
+                          //                               TextButton(
+                          //                                 child: const Text(
+                          //                                   'Xóa',
+                          //                                   style: TextStyle(
+                          //                                     color: Colors.red,
+                          //                                   ),
+                          //                                 ),
+                          //                                 onPressed:
+                          //                                     () =>
+                          //                                         Navigator.pop(
+                          //                                           context,
+                          //                                           true,
+                          //                                         ),
+                          //                               ),
+                          //                             ],
+                          //                           ),
+                          //                     );
+                          //                     if (confirm == true) {
+                          //                       await _dao.delete(ct.id!);
+                          //                       _fetchYearsAndData();
+                          //                     }
+                          //                   },
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //           ),
+                          //         );
+                          //       },
+                          //     ),
+                          // const SizedBox(height: 24),
                         ],
                       ),
                     ),
@@ -750,7 +750,7 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
 Widget _buildCategoryList(
   List<ChiTietChiTieuDanhMuc> data,
   int loai,
-  int page,
+  double tongSoTien,
 ) {
   // Gom nhóm theo danh mục
   final Map<String, double> tongTienTheoDanhMuc = {};
@@ -784,6 +784,7 @@ Widget _buildCategoryList(
       final id = sorted[idx].key;
       final ten = tenDanhMuc[id] ?? '';
       final soTien = sorted[idx].value;
+      final percent = tongSoTien > 0 ? (soTien / tongSoTien * 100) : 0;
       final color = loai == 1 ? Colors.green : Colors.red;
       final icon = loai == 1 ? Icons.arrow_upward : Icons.arrow_downward;
       // Lấy icon emoji nếu có
@@ -822,13 +823,23 @@ Widget _buildCategoryList(
             ten,
             style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
           ),
-          trailing: Text(
-            '${soTien.toInt()} đ',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: color,
-              fontSize: 16,
-            ),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '${soTien.toInt()} đ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                  fontSize: 16,
+                ),
+              ),
+              Text(
+                '(${percent.toStringAsFixed(1)}%)',
+                style: TextStyle(color: Colors.blue, fontSize: 13),
+              ),
+            ],
           ),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,

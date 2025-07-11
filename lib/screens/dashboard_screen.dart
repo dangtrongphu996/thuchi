@@ -22,6 +22,7 @@ import 'dart:io';
 import 'danh_muc_list_screen.dart';
 import 'chi_tiet_theo_thang.dart';
 import 'package:thuchi/screens/vocabulary/screen/vocabulary_menu_screen.dart';
+import 'muc_tieu_thang_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -252,6 +253,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => VocabularyMenuScreen(),
+                  ),
+                );
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.flag, color: Colors.teal),
+              title: Text('Mục tiêu tháng', style: GoogleFonts.montserrat()),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MucTieuThangScreen(),
                   ),
                 );
               },
