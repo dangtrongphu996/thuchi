@@ -134,6 +134,18 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
         title: const Text('Giao dịch theo tháng'),
         backgroundColor: Colors.teal,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () async {
+              setState(() {
+                _loading = true;
+              });
+              await _fetchMonthsAndData();
+            },
+            tooltip: 'Làm mới dữ liệu',
+          ),
+        ],
       ),
       body:
           _loading

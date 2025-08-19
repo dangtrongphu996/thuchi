@@ -60,6 +60,18 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
         title: const Text('Giao dịch theo năm'),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () async {
+              setState(() {
+                _loading = true;
+              });
+              await _fetchYearsAndData();
+            },
+            tooltip: 'Làm mới dữ liệu',
+          ),
+        ],
       ),
       body:
           _loading

@@ -422,11 +422,38 @@ class _ThongKeThangDanhMucScreenState extends State<ThongKeThangDanhMucScreen> {
                                           Icons.receipt_long,
                                           color: Colors.orange,
                                         ),
-                                        title: Text(
-                                          '${ct.chiTietChiTieu.soTien.toStringAsFixed(0)} đ',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        title: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${ct.chiTietChiTieu.soTien.toStringAsFixed(0)} đ',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                            if (ct
+                                                .chiTietChiTieu
+                                                .ghiChu
+                                                .isNotEmpty)
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                  top: 4,
+                                                ),
+                                                child: Text(
+                                                  ct.chiTietChiTieu.ghiChu,
+                                                  style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Colors.blue,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                          ],
                                         ),
                                         subtitle: Text(
                                           dateFormat.format(

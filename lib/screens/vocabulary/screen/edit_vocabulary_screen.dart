@@ -48,7 +48,7 @@ class _EditVocabularyScreenState extends State<EditVocabularyScreen> {
 
   Future<String> _getLocalVocabularyPath() async {
     final directory = await getApplicationDocumentsDirectory();
-    return '${directory.path}/vocabulary_temp.json';
+    return '${directory.path}/vocabulary.json';
   }
 
   Future<File> _getLocalVocabularyFile() async {

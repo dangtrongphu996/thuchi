@@ -65,6 +65,18 @@ class _GiaoDichTheoNgayScreenState extends State<GiaoDichTheoNgayScreen> {
         title: const Text('Giao dịch theo ngày'),
         backgroundColor: Colors.purple,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () async {
+              setState(() {
+                _loading = true;
+              });
+              await _fetchDaysAndData();
+            },
+            tooltip: 'Làm mới dữ liệu',
+          ),
+        ],
       ),
       body:
           _loading

@@ -12,7 +12,7 @@ Future<List<Vocabulary>> loadVocabulary() async {
 
 Future<List<Vocabulary>> loadVocabularyFromLocal() async {
   final directory = await getApplicationDocumentsDirectory();
-  final file = File('${directory.path}/vocabulary_temp.json');
+  final file = File('${directory.path}/vocabulary.json');
   if (!await file.exists()) {
     final data = await rootBundle.loadString('assets/data/vocabulary.json');
     await file.writeAsString(data);
