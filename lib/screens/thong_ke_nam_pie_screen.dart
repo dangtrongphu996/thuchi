@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../db/chi_tiet_chi_tieu_dao.dart';
-import '../db/danh_muc_dao.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'chi_tiet_theo_thang.dart';
 
 class ThongKeNamPieScreen extends StatefulWidget {
   const ThongKeNamPieScreen({super.key});
@@ -13,7 +12,6 @@ class ThongKeNamPieScreen extends StatefulWidget {
 
 class _ThongKeNamPieScreenState extends State<ThongKeNamPieScreen> {
   final ChiTietChiTieuDao _ctDao = ChiTietChiTieuDao();
-  final DanhMucDao _dmDao = DanhMucDao();
   int selectedYear = DateTime.now().year;
   List<int> allYears = [];
   List<_MonthStat> monthStats = [];
@@ -697,6 +695,18 @@ class _ThongKeNamPieScreenState extends State<ThongKeNamPieScreen> {
                                         ),
                                       ],
                                     ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder:
+                                              (_) => ChiTietTheoThangScreen(
+                                                selectedMonth: stat.month,
+                                                selectedYear: selectedYear,
+                                              ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 );
                               },
