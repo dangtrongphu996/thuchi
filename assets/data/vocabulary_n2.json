@@ -1,0 +1,162 @@
+{
+    "character": 1,
+    "section": 1,
+    "vocabulary": [
+        {
+            "kanji": "一家",
+            "hiragana": "いっか",
+            "mean": "nhà, cả nhà, cả gia đình",
+            "example": "兄が私達一家を支えてくれている。Anh tôi cáng đáng cả gia đình chúng tôi."
+        },
+        {
+            "kanji": "ありがたい",
+            "hiragana": "ありがたい",
+            "mean": "biết ơn, hạnh phúc, đáng quý",
+            "example": "家族は本当にありがたい存在だ。Gia đình thật sự là sự tồn tại đáng quý."
+        },
+        {
+            "kanji": "向かい合う",
+            "hiragana": "むかいあう",
+            "mean": "đối diện",
+            "example": "家族みんなで問題に向かい合っている。Cả gia đình đối diện với vấn đề."
+        },
+        {
+            "kanji": "つくづく [と]",
+            "hiragana": "つくづく [と]",
+            "mean": "sâu sắc, tỉ mỉ, thầm thía",
+            "example": "最近、家族のありがたさをつくづくと感じる。Gần đây, tôi cảm nhận sâu sắc sự quý giá của gia đình."
+        },
+        {
+            "kanji": "養う",
+            "hiragana": "やしなう",
+            "mean": "nuôi dưỡng, cấp dưỡng",
+            "example": "父は一生懸命に働いて、家族を養っている。Cha tôi làm việc vất vả để nuôi gia đình."
+        },
+        {
+            "kanji": "役目",
+            "hiragana": "やくめ",
+            "mean": "nghĩa vụ, trách nhiệm, vai trò",
+            "example": "子どもを育てることが親の役目だ。Nuôi dạy con là trách nhiệm của cha mẹ."
+        },
+        {
+            "kanji": "甘える",
+            "hiragana": "あまえる",
+            "mean": "làm nũng, nhõng nhẽo",
+            "example": "妹は子どもの頃から、母に甘えている。Em gái tôi từ nhỏ đã nhõng nhẽo với mẹ."
+        },
+        {
+            "kanji": "世間知らず",
+            "hiragana": "せけんしらず",
+            "mean": "không hiểu biết, khờ khạo, ngây thơ",
+            "example": "父に「お前は世間知らずだ」と言われた。Cha tôi bị nói \"mày khờ khạo\". "
+        },
+        {
+            "kanji": "しつけ",
+            "hiragana": "しつけ",
+            "mean": "giáo dục, rèn luyện, dạy dỗ, phép tắc",
+            "example": "子どものしつけは、親の義務だ。Việc giáo dục khuôn phép cho con cái là nghĩa vụ của cha mẹ. "
+        },
+        {
+            "kanji": "言い聞かせる",
+            "hiragana": "いいきかせる",
+            "mean": "giảng giải, nhắc nhở, răn dạy",
+            "example": "兄は妹のいたずらを母に言い聞かせた。Anh tôi mách mẹ về việc em gái nghịch ngợm. "
+        },
+        {
+            "kanji": "自立する",
+            "hiragana": "じりつする",
+            "mean": "tự lập, độc lập",
+            "example": "兄は自立して、一人暮らしをしている。Anh tôi tự lập, sống một mình. "
+        },
+        {
+            "kanji": "言い出す",
+            "hiragana": "いいだす",
+            "mean": "đề xuất, bắt đầu nói",
+            "example": "妹はアメリカに語学留学したいと言い出した。Em gái tôi ngỏ ý muốn đi Mỹ du học tiếng Anh. "
+        },
+        {
+            "kanji": "意思",
+            "hiragana": "いし",
+            "mean": "ý muốn, chủ ý",
+            "example": "親に自分の意思を伝えるのは難しい。Khó để truyền đạt ý chí của mình cho cha mẹ. "
+        },
+        {
+            "kanji": "尊重する",
+            "hiragana": "そんちょうする",
+            "mean": "tôn trọng",
+            "example": "両親はいつも、私の意見を尊重してくれる。Bố mẹ luôn tôn trọng ý kiến của tôi. "
+        },
+        {
+            "kanji": "説得する",
+            "hiragana": "せっとくする",
+            "mean": "thuyết phục, làm cho tin",
+            "example": "父は私の留学に反対だったが、母が説得してくれた。Cha tôi phản đối du học nhưng mẹ tôi đã thuyết phục giúp tôi. "
+        },
+        {
+            "kanji": "納得する",
+            "hiragana": "なっとくする",
+            "mean": "đồng ý, chấp nhận",
+            "example": "父は私の留学を、やっと納得してくれた。Cuối cùng bố cũng đồng ý với việc du học của tôi. "
+        },
+        {
+            "kanji": "逆らう",
+            "hiragana": "さからう",
+            "mean": "chống đối, nghịch lại",
+            "example": "①若いときは、よく親に逆らった。Khi còn trẻ, tôi thường chống đối bố mẹ. "
+        },
+        {
+            "kanji": "反省する",
+            "hiragana": "はんせいする",
+            "mean": "tự phản tỉnh, suy nghĩ lại",
+            "example": "昔親に逆らったことを、今は反省している。Tôi đang tự phản tỉnh về việc ngày xưa đã chống đối bố mẹ. "
+        },
+        {
+            "kanji": "放っておく",
+            "hiragana": "ほうっておく",
+            "mean": "bỏ mặc, phớt lờ",
+            "example": "父はうるさいから、放っておいてほしい。Bố tôi nhiều chuyện nên muốn ông ấy để tôi yên. "
+        },
+        {
+            "kanji": "介護する",
+            "hiragana": "かいごする",
+            "mean": "chăm sóc, điều dưỡng",
+            "example": "家族みんなで祖母を介護している。Cả gia đình cùng chăm sóc bà. "
+        },
+        {
+            "kanji": "ホームヘルパー",
+            "hiragana": "ホームヘルパー",
+            "mean": "người giúp việc nhà",
+            "example": "週に3回、ホームヘルパーに来てもらう。Tôi nhờ người giúp việc đến 3 lần một tuần. "
+        },
+        {
+            "kanji": "世代",
+            "hiragana": "せだい",
+            "mean": "thế hệ, thời đại",
+            "example": "世代が違うと、話が合わないこともある。Khó có thể giao tiếp khi thế hệ khác nhau. "
+        },
+        {
+            "kanji": "継ぐ",
+            "hiragana": "つぐ",
+            "mean": "kế thừa, tiếp nối",
+            "example": "来年、父の会社を継ぐことになった。Tôi sẽ kế thừa công ty bố tôi vào năm tới. "
+        },
+        {
+            "kanji": "妊娠する",
+            "hiragana": "にんしんする",
+            "mean": "mang thai, thụ thai",
+            "example": "妹は妊娠3か月だ。Em gái tôi mang thai 3 tháng."
+        },
+        {
+            "kanji": "出産する",
+            "hiragana": "しゅっさんする",
+            "mean": "sinh, đẻ (con)",
+            "example": "実家の近くの病院で出産することにした。Tôi quyết định sinh ở bệnh viện gần nhà bố mẹ ruột."
+        },
+        {
+            "kanji": "産む",
+            "hiragana": "うむ",
+            "mean": "sinh, đẻ",
+            "example": "姉は二十歳のときに長男を産んだ。Chị tôi đã sinh con trai trưởng khi 20 tuổi."
+        }
+    ]
+}

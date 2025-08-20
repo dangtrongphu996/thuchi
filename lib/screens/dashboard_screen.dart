@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:thuchi/screens/vocabulary/screen/mode_selection_screen.dart';
 import '../db/chi_tiet_chi_tieu_dao.dart';
 import '../db/ngan_sach_dao.dart';
 import '../db/danh_muc_dao.dart';
 import '../models/danh_muc.dart';
 import '../models/ngan_sach.dart';
 import 'home_screen.dart';
-import 'all_transactions_screen.dart';
 import 'them_chi_tiet_screen.dart';
 import 'all_months_summary_screen.dart';
 import 'income_categories_screen.dart';
 import 'expense_categories_screen.dart';
-import '../db/database_helper.dart';
 import 'them_danh_muc_screen.dart';
 import '../db/backup_restore_helper.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,7 +19,8 @@ import 'dart:io';
 import 'danh_muc_list_screen.dart';
 import 'chi_tiet_theo_thang.dart';
 import 'package:thuchi/screens/vocabulary/screen/vocabulary_menu_screen.dart';
-import 'muc_tieu_thang_screen.dart';
+// import 'muc_tieu_thang_screen.dart';
+import 'phan_tich_tong_hop_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -242,6 +240,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.analytics, color: Colors.teal),
+              title: Text(
+                'Phân tích tổng hợp',
+                style: GoogleFonts.montserrat(),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PhanTichTongHopScreen(),
+                  ),
                 );
               },
             ),
