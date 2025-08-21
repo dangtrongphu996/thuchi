@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import '../db/chi_tiet_chi_tieu_dao.dart';
 import '../models/chi_tiet_chi_tieu_danh_muc.dart';
 import 'lich_su_giao_dich_danh_muc_screen.dart';
+import 'thong_ke_nam_danh_muc_screen.dart';
+import 'thong_ke_thang_danh_muc_screen.dart';
 
 enum _FilterMode { today, range, month, year }
 
@@ -263,6 +265,15 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh, color: Colors.white),
+            onPressed: () {
+              _loadAll();
+            },
+            tooltip: 'Làm mới dữ liệu',
+          ),
+        ],
       ),
       body:
           _isLoading
@@ -280,7 +291,12 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                       _buildSummaryCards(currency),
                       const SizedBox(height: 12),
                       if (_mode == _FilterMode.month)
+                        _buildDailyIncomeChart(currency),
+                      if (_mode == _FilterMode.month)
                         _buildDailySpendingChart(currency),
+                      if (_mode == _FilterMode.month)
+                        const SizedBox(height: 12),
+
                       if (_mode == _FilterMode.month)
                         const SizedBox(height: 12),
                       _buildPieCharts(),
@@ -756,23 +772,30 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
       }
     }
 
-    // Define representative days to show (1, 7, 14, 21, 28, 30)
-    final representativeDays = <int>[1, 7, 14, 21, 28];
+    // Define representative days for labels (1, 7, 14, 21, 28, and last day of month)
+    final labelDays = <int>[1, 7, 14, 21, 28];
 
     // Add the last day of month if it's different from 28
     final lastDay = daysInMonth;
-    if (lastDay != 28 && !representativeDays.contains(lastDay)) {
-      representativeDays.add(lastDay);
+    if (lastDay != 28 && !labelDays.contains(lastDay)) {
+      labelDays.add(lastDay);
     }
 
-    // Sort days in ascending order
-    representativeDays.sort();
+    // Sort label days in ascending order
+    labelDays.sort();
 
+    // Get all days with spending data (not just representative days)
     final spendingData =
-        representativeDays
-            .map((day) => MapEntry(day, dailySpending[day] ?? 0))
+        dailySpending.entries
+            .where((e) => e.value > 0)
+            .map((e) => MapEntry(e.key, e.value))
             .toList()
           ..sort((a, b) => a.key.compareTo(b.key));
+
+    // If no spending data, hide chart
+    if (spendingData.isEmpty) {
+      return const SizedBox.shrink();
+    }
 
     final maxSpending = spendingData
         .map((e) => e.value)
@@ -836,9 +859,10 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                                 interval: 1,
                                 getTitlesWidget: (value, meta) {
                                   final day = value.toInt();
-                                  if (spendingData.any((e) => e.key == day)) {
+                                  // Only show labels for representative days (1, 7, 14, 21, 28, last day)
+                                  if (labelDays.contains(day)) {
                                     return Text(
-                                      'Ngày $day',
+                                      'ng$day',
                                       style: const TextStyle(fontSize: 10),
                                     );
                                   }
@@ -926,6 +950,220 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                                         text: currency.format(touchedSpot.y),
                                         style: const TextStyle(
                                           color: Colors.red,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }).toList();
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDailyIncomeChart(NumberFormat currency) {
+    final daysInMonth = DateTime(_selectedYear, _selectedMonth + 1, 0).day;
+    final Map<int, double> dailyIncome = {};
+
+    // Initialize all days with 0
+    for (int day = 1; day <= daysInMonth; day++) {
+      dailyIncome[day] = 0;
+    }
+
+    // Aggregate income by day
+    for (final item in _filtered) {
+      if (item.danhMuc.loai == 1) {
+        // Only income
+        final day = DateTime.parse(item.chiTietChiTieu.ngay).day;
+        dailyIncome[day] = (dailyIncome[day] ?? 0) + item.chiTietChiTieu.soTien;
+      }
+    }
+
+    // Define representative days for labels (1, 7, 14, 21, 28, and last day of month)
+    final labelDays = <int>[1, 7, 14, 21, 28];
+
+    // Add the last day of month if it's different from 28
+    final lastDay = daysInMonth;
+    if (lastDay != 28 && !labelDays.contains(lastDay)) {
+      labelDays.add(lastDay);
+    }
+
+    // Sort label days in ascending order
+    labelDays.sort();
+
+    // Get all days with income data (not just representative days)
+    final incomeData =
+        dailyIncome.entries
+            .where((e) => e.value > 0)
+            .map((e) => MapEntry(e.key, e.value))
+            .toList()
+          ..sort((a, b) => a.key.compareTo(b.key));
+
+    // If no income data, hide chart
+    if (incomeData.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    final maxIncome = incomeData
+        .map((e) => e.value)
+        .reduce((a, b) => a > b ? a : b);
+
+    return Card(
+      color: Colors.green.shade50,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: const [
+                Icon(Icons.trending_up, color: Colors.green),
+                SizedBox(width: 8),
+                Text(
+                  'Thu nhập theo ngày trong tháng',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              height: 200,
+              child:
+                  incomeData.isEmpty
+                      ? const Center(child: Text('Không có dữ liệu'))
+                      : LineChart(
+                        LineChartData(
+                          gridData: FlGridData(
+                            show: true,
+                            drawVerticalLine: true,
+                            horizontalInterval:
+                                maxIncome > 0 ? maxIncome / 4 : 1,
+                            getDrawingHorizontalLine: (value) {
+                              return FlLine(
+                                color: Colors.grey.withOpacity(0.3),
+                                strokeWidth: 1,
+                              );
+                            },
+                            getDrawingVerticalLine: (value) {
+                              return FlLine(
+                                color: Colors.grey.withOpacity(0.3),
+                                strokeWidth: 1,
+                              );
+                            },
+                          ),
+                          titlesData: FlTitlesData(
+                            show: true,
+                            rightTitles: const AxisTitles(
+                              sideTitles: SideTitles(showTitles: false),
+                            ),
+                            topTitles: const AxisTitles(
+                              sideTitles: SideTitles(showTitles: false),
+                            ),
+                            bottomTitles: AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 30,
+                                interval: 1,
+                                getTitlesWidget: (value, meta) {
+                                  final day = value.toInt();
+                                  // Only show labels for representative days (1, 7, 14, 21, 28, last day)
+                                  if (labelDays.contains(day)) {
+                                    return Text(
+                                      'ng$day',
+                                      style: const TextStyle(fontSize: 10),
+                                    );
+                                  }
+                                  return const SizedBox.shrink();
+                                },
+                              ),
+                            ),
+                            leftTitles: AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 40,
+                                interval: maxIncome > 0 ? maxIncome / 4 : 1,
+                                getTitlesWidget: (value, meta) {
+                                  return Text(
+                                    currency.format(value).replaceAll('đ', ''),
+                                    style: const TextStyle(fontSize: 10),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          borderData: FlBorderData(
+                            show: true,
+                            border: Border.all(
+                              color: Colors.grey.withOpacity(0.3),
+                            ),
+                          ),
+                          minX: incomeData.first.key.toDouble(),
+                          maxX: incomeData.last.key.toDouble(),
+                          minY: 0,
+                          maxY: maxIncome > 0 ? maxIncome * 1.2 : 100,
+                          lineBarsData: [
+                            LineChartBarData(
+                              spots:
+                                  incomeData
+                                      .map(
+                                        (e) =>
+                                            FlSpot(e.key.toDouble(), e.value),
+                                      )
+                                      .toList(),
+                              isCurved: true,
+                              gradient: LinearGradient(
+                                colors: [Colors.green, Colors.green.shade300],
+                              ),
+                              barWidth: 3,
+                              dotData: FlDotData(
+                                show: true,
+                                getDotPainter: (spot, percent, barData, index) {
+                                  return FlDotCirclePainter(
+                                    radius: 4,
+                                    color: Colors.green,
+                                    strokeWidth: 2,
+                                    strokeColor: Colors.white,
+                                  );
+                                },
+                              ),
+                              belowBarData: BarAreaData(
+                                show: true,
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.green.withOpacity(0.3),
+                                    Colors.green.withOpacity(0.1),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
+                            ),
+                          ],
+                          lineTouchData: LineTouchData(
+                            enabled: true,
+                            touchTooltipData: LineTouchTooltipData(
+                              tooltipBgColor: Colors.green.shade100,
+                              tooltipRoundedRadius: 8,
+                              getTooltipItems: (touchedSpots) {
+                                return touchedSpots.map((touchedSpot) {
+                                  return LineTooltipItem(
+                                    'Ngày ${touchedSpot.x.toInt()}\n',
+                                    const TextStyle(
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: currency.format(touchedSpot.y),
+                                        style: const TextStyle(
+                                          color: Colors.green,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -1139,12 +1377,16 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                     final totalByType = isIncome ? totalIncome : totalExpense;
                     final percent =
                         totalByType > 0 ? (total / totalByType * 100) : 0.0;
-                    final sampleDanhMuc =
+                    // Find the actual danhMuc from filtered data
+                    final danhMucItem =
                         _filtered
-                            .firstWhere(
-                              (e) => (e.danhMuc.id ?? -1) == categoryId,
-                            )
-                            .danhMuc;
+                            .where((e) => (e.danhMuc.id ?? -1) == categoryId)
+                            .firstOrNull;
+
+                    if (danhMucItem == null)
+                      return const SizedBox.shrink(); // Return empty widget if no matching danhMuc
+
+                    final danhMuc = danhMucItem.danhMuc;
                     final baseColor = _categoryBaseColor(categoryId);
                     return ListTile(
                       leading: Container(
@@ -1173,8 +1415,8 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                           alignment: Alignment.center,
                           children: [
                             Text(
-                              (sampleDanhMuc.icon ?? '').isNotEmpty
-                                  ? sampleDanhMuc.icon!.characters.first
+                              (danhMuc.icon ?? '').isNotEmpty
+                                  ? danhMuc.icon!.characters.first
                                   : (isIncome ? 'T' : 'C'),
                               style: const TextStyle(
                                 color: Colors.white,
@@ -1231,16 +1473,18 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                         ),
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder:
-                                (_) => LichSuGiaoDichDanhMucScreen(
-                                  danhMuc: sampleDanhMuc,
-                                ),
-                          ),
-                        );
+                        // Only allow navigation for month and year modes
+                        if (_mode == _FilterMode.month ||
+                            _mode == _FilterMode.year) {
+                          _showDanhMucOptions(context, danhMuc);
+                        }
                       },
+                      // Visual feedback for non-navigable modes
+                      tileColor:
+                          (_mode == _FilterMode.month ||
+                                  _mode == _FilterMode.year)
+                              ? null
+                              : Colors.grey.withOpacity(0.1),
                     );
                   },
                 );
@@ -1248,6 +1492,106 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
             ),
         ],
       ),
+    );
+  }
+
+  void _showDanhMucOptions(BuildContext context, dynamic danhMuc) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Chọn tùy chọn cho danh mục:',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 24),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.history),
+                    label: const Text('Lịch sử giao dịch'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                      foregroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (_) =>
+                                  LichSuGiaoDichDanhMucScreen(danhMuc: danhMuc),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.bar_chart),
+                    label: const Text('Thống kê năm'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (_) => ThongKeNamDanhMucScreen(danhMuc: danhMuc),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.calendar_month),
+                    label: const Text('Thống kê tháng'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightBlueAccent,
+                      foregroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (_) =>
+                                  ThongKeThangDanhMucScreen(danhMuc: danhMuc),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextButton(
+                    child: const Text('Đóng', style: TextStyle(fontSize: 16)),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+            ),
+          ),
     );
   }
 }
