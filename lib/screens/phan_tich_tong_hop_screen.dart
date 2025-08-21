@@ -290,13 +290,14 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                       const SizedBox(height: 12),
                       _buildSummaryCards(currency),
                       const SizedBox(height: 12),
-                      if (_mode == _FilterMode.month)
+                      if (_mode == _FilterMode.month &&
+                          (_typeFilter == _TypeFilter.all ||
+                              _typeFilter == _TypeFilter.income))
                         _buildDailyIncomeChart(currency),
-                      if (_mode == _FilterMode.month)
+                      if (_mode == _FilterMode.month &&
+                          (_typeFilter == _TypeFilter.all ||
+                              _typeFilter == _TypeFilter.expense))
                         _buildDailySpendingChart(currency),
-                      if (_mode == _FilterMode.month)
-                        const SizedBox(height: 12),
-
                       if (_mode == _FilterMode.month)
                         const SizedBox(height: 12),
                       _buildPieCharts(),
