@@ -29,6 +29,8 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
   int _selectedYear = DateTime.now().year;
 
   bool _isLoading = true;
+  bool _useShortNumberFormat = false;
+  String? _errorMessage;
 
   List<ChiTietChiTieuDanhMuc> _all = [];
   List<ChiTietChiTieuDanhMuc> _filtered = [];
@@ -61,6 +63,46 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
     return _palette[index];
   }
 
+  String _formatCurrency(double value, {bool withSymbol = true}) {
+    if (_useShortNumberFormat) {
+      return _formatShortNumber(value, withSymbol: withSymbol);
+    }
+    final formatted = NumberFormat.currency(
+      locale: 'vi_VN',
+      symbol: withSymbol ? 'đ' : '',
+      decimalDigits: 0,
+    ).format(value);
+    return withSymbol ? formatted : formatted.replaceAll('đ', '').trim();
+  }
+
+  String _formatNumber(num value, {bool withSymbol = false}) {
+    return _formatCurrency(value.toDouble(), withSymbol: withSymbol);
+  }
+
+  String _formatShortNumber(double value, {bool withSymbol = true}) {
+    final abs = value.abs();
+    String suffix;
+    double numPart;
+    if (abs >= 1e9) {
+      numPart = value / 1e9;
+      suffix = 'B';
+    } else if (abs >= 1e6) {
+      numPart = value / 1e6;
+      suffix = 'M';
+    } else if (abs >= 1e3) {
+      numPart = value / 1e3;
+      suffix = 'k';
+    } else {
+      numPart = value;
+      suffix = '';
+    }
+    final fixed =
+        numPart >= 100 || numPart == numPart.roundToDouble()
+            ? numPart.toStringAsFixed(0)
+            : numPart.toStringAsFixed(1);
+    return withSymbol ? '$fixed$suffix đ' : '$fixed$suffix';
+  }
+
   @override
   void initState() {
     super.initState();
@@ -68,11 +110,19 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
   }
 
   Future<void> _loadAll() async {
-    setState(() => _isLoading = true);
-    final list = await _dao.getAll();
-    _all = List.from(list);
-    _applyFilter();
-    setState(() => _isLoading = false);
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+    try {
+      final list = await _dao.getAll();
+      _all = List.from(list);
+      _applyFilter();
+    } catch (e) {
+      _errorMessage = 'Không thể tải dữ liệu. Vui lòng thử lại.';
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
   }
 
   void _applyFilter() {
@@ -133,12 +183,6 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
       ).compareTo(DateTime.parse(a.chiTietChiTieu.ngay)),
     );
     _filtered = data;
-    if (_mode == _FilterMode.month) {
-      _computePrevMonthTotals();
-    } else {
-      _prevThu = 0;
-      _prevChi = 0;
-    }
     _recalcStats();
   }
 
@@ -149,47 +193,24 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
     for (final e in _filtered) {
       if (e.danhMuc.loai == 1) {
         thu += e.chiTietChiTieu.soTien;
-        thuByCate.update(
-          e.danhMuc.ten,
-          (v) => v + e.chiTietChiTieu.soTien,
-          ifAbsent: () => e.chiTietChiTieu.soTien,
-        );
+        final cateName = e.danhMuc.ten;
+        thuByCate[cateName] =
+            (thuByCate[cateName] ?? 0) + e.chiTietChiTieu.soTien;
       } else if (e.danhMuc.loai == 2) {
         chi += e.chiTietChiTieu.soTien;
-        chiByCate.update(
-          e.danhMuc.ten,
-          (v) => v + e.chiTietChiTieu.soTien,
-          ifAbsent: () => e.chiTietChiTieu.soTien,
-        );
+        final cateName = e.danhMuc.ten;
+        chiByCate[cateName] =
+            (chiByCate[cateName] ?? 0) + e.chiTietChiTieu.soTien;
       }
     }
-    _tongThu = thu;
-    _tongChi = chi;
-
-    _thuLabels = thuByCate.keys.toList();
-    _chiLabels = chiByCate.keys.toList();
-    _thuSections = _buildPieSections(thuByCate);
-    _chiSections = _buildPieSections(chiByCate);
-    setState(() {});
-  }
-
-  void _computePrevMonthTotals() {
-    int prevMonth = _selectedMonth == 1 ? 12 : _selectedMonth - 1;
-    int prevYear = _selectedMonth == 1 ? _selectedYear - 1 : _selectedYear;
-    double thu = 0, chi = 0;
-    for (final e in _all) {
-      final d = DateTime.tryParse(e.chiTietChiTieu.ngay);
-      if (d == null) continue;
-      if (d.year == prevYear && d.month == prevMonth) {
-        if (e.danhMuc.loai == 1) {
-          thu += e.chiTietChiTieu.soTien;
-        } else if (e.danhMuc.loai == 2) {
-          chi += e.chiTietChiTieu.soTien;
-        }
-      }
-    }
-    _prevThu = thu;
-    _prevChi = chi;
+    setState(() {
+      _tongThu = thu;
+      _tongChi = chi;
+      _thuLabels = thuByCate.keys.toList();
+      _chiLabels = chiByCate.keys.toList();
+      _thuSections = _buildPieSections(thuByCate);
+      _chiSections = _buildPieSections(chiByCate);
+    });
   }
 
   List<PieChartSectionData> _buildPieSections(Map<String, double> data) {
@@ -273,40 +294,100 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
             },
             tooltip: 'Làm mới dữ liệu',
           ),
+          PopupMenuButton<String>(
+            tooltip: 'Tùy chọn hiển thị',
+            onSelected: (val) {
+              if (val == 'toggle_number_format') {
+                setState(() => _useShortNumberFormat = !_useShortNumberFormat);
+              }
+            },
+            itemBuilder:
+                (context) => [
+                  PopupMenuItem<String>(
+                    value: 'toggle_number_format',
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.format_list_numbered,
+                          color: Colors.black87,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          _useShortNumberFormat
+                              ? 'Định dạng số: Đầy đủ'
+                              : 'Định dạng số: Ngắn',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+          ),
         ],
       ),
-      body:
-          _isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : RefreshIndicator(
-                onRefresh: _loadAll,
-                child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _buildFilterBar(),
-                      const SizedBox(height: 12),
-                      _buildSummaryCards(currency),
-                      const SizedBox(height: 12),
-                      if (_mode == _FilterMode.month &&
-                          (_typeFilter == _TypeFilter.all ||
-                              _typeFilter == _TypeFilter.income))
-                        _buildDailyIncomeChart(currency),
-                      if (_mode == _FilterMode.month &&
-                          (_typeFilter == _TypeFilter.all ||
-                              _typeFilter == _TypeFilter.expense))
-                        _buildDailySpendingChart(currency),
-                      if (_mode == _FilterMode.month)
-                        const SizedBox(height: 12),
-                      _buildPieCharts(),
-                      const SizedBox(height: 12),
-                      _buildCategoryList(currency),
-                    ],
+      body: RefreshIndicator(
+        onRefresh: _loadAll,
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _buildFilterBar(),
+              const SizedBox(height: 12),
+              if (_errorMessage != null)
+                Card(
+                  color: Colors.red.shade50,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.error_outline, color: Colors.red),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            _errorMessage!,
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: _loadAll,
+                          child: const Text('Thử lại'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              if (_isLoading)
+                _buildSkeletonSummaryCards()
+              else
+                _buildSummaryCards(currency),
+              const SizedBox(height: 12),
+              if (_mode == _FilterMode.month) ...[
+                if (_isLoading)
+                  _buildSkeletonChart(color: Colors.green.shade100)
+                else if (_typeFilter == _TypeFilter.all ||
+                    _typeFilter == _TypeFilter.income)
+                  _buildDailyIncomeChart(currency),
+                if (_isLoading)
+                  const SizedBox(height: 12)
+                else if (_typeFilter == _TypeFilter.all ||
+                    _typeFilter == _TypeFilter.expense)
+                  _buildDailySpendingChart(currency),
+                const SizedBox(height: 12),
+              ],
+              if (_isLoading)
+                _buildSkeletonChart(color: Colors.blueGrey.shade100)
+              else
+                _buildPieCharts(),
+              const SizedBox(height: 12),
+              if (_isLoading)
+                _buildSkeletonList()
+              else
+                _buildCategoryList(currency),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -601,119 +682,165 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
 
   Widget _buildSummaryCards(NumberFormat currency) {
     final soDu = _tongThu - _tongChi;
-    final prevSoDu = _prevThu - _prevChi;
+    final balanceColor = soDu >= 0 ? Colors.green : Colors.red;
+    final balanceIcon = soDu >= 0 ? Icons.trending_up : Icons.trending_down;
+
+    // Calculate proportions and deltas for tooltips
+    final monthProportion =
+        _mode == _FilterMode.month ? _calculateMonthProportion() : null;
+    final yearProportion =
+        _mode == _FilterMode.year ? _calculateYearProportion() : null;
+    final previousPeriodDelta = _calculatePreviousPeriodDelta();
+
     return Row(
       children: [
         Expanded(
           child: Card(
             color: Colors.green.shade50,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Thu nhập',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+            child: Tooltip(
+              message: _buildIncomeTooltip(
+                monthProportion,
+                yearProportion,
+                previousPeriodDelta['income'],
+              ),
+              waitDuration: const Duration(milliseconds: 500),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.trending_up,
                       color: Colors.green,
+                      size: 24,
                     ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    currency.format(_tongThu),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Thu nhập',
+                      style: TextStyle(fontSize: 12, color: Colors.green),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  if (_mode == _FilterMode.month)
-                    _deltaWidget(
-                      current: _tongThu,
-                      previous: _prevThu,
-                      upColor: Colors.green,
-                      downColor: Colors.red,
-                      currency: currency,
+                    const SizedBox(height: 4),
+                    Text(
+                      _formatCurrency(_tongThu),
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
                     ),
-                ],
+                    if (previousPeriodDelta['income'] != null)
+                      Text(
+                        _formatDelta(previousPeriodDelta['income']!),
+                        style: TextStyle(
+                          fontSize: 10,
+                          color:
+                              previousPeriodDelta['income']! >= 0
+                                  ? Colors.green
+                                  : Colors.red,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
+        const SizedBox(width: 8),
         Expanded(
           child: Card(
             color: Colors.red.shade50,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Chi phí',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+            child: Tooltip(
+              message: _buildExpenseTooltip(
+                monthProportion,
+                yearProportion,
+                previousPeriodDelta['expense'],
+              ),
+              waitDuration: const Duration(milliseconds: 500),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.trending_down,
                       color: Colors.red,
+                      size: 24,
                     ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    currency.format(_tongChi),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Chi phí',
+                      style: TextStyle(fontSize: 12, color: Colors.red),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  if (_mode == _FilterMode.month)
-                    _deltaWidget(
-                      current: _tongChi,
-                      previous: _prevChi,
-                      upColor: Colors.green,
-                      downColor: Colors.red,
-                      currency: currency,
+                    const SizedBox(height: 4),
+                    Text(
+                      _formatCurrency(_tongChi),
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
                     ),
-                ],
+                    if (previousPeriodDelta['expense'] != null)
+                      Text(
+                        _formatDelta(previousPeriodDelta['expense']!),
+                        style: TextStyle(
+                          fontSize: 10,
+                          color:
+                              previousPeriodDelta['expense']! >= 0
+                                  ? Colors.red
+                                  : Colors.green,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
+        const SizedBox(width: 8),
         Expanded(
           child: Card(
-            color: Colors.teal.shade50,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Còn lại',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal,
+            color: balanceColor.shade50,
+            child: Tooltip(
+              message: _buildBalanceTooltip(
+                monthProportion,
+                yearProportion,
+                previousPeriodDelta['balance'],
+              ),
+              waitDuration: const Duration(milliseconds: 500),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(balanceIcon, color: balanceColor, size: 24),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Còn lại',
+                      style: TextStyle(fontSize: 12, color: balanceColor),
                     ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    currency.format(soDu),
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: soDu >= 0 ? Colors.teal : Colors.redAccent,
+                    const SizedBox(height: 4),
+                    Text(
+                      _formatCurrency(soDu),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: balanceColor,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  if (_mode == _FilterMode.month)
-                    _deltaWidget(
-                      current: soDu,
-                      previous: prevSoDu,
-                      upColor: Colors.teal,
-                      downColor: Colors.red,
-                      currency: currency,
-                    ),
-                ],
+                    if (previousPeriodDelta['balance'] != null)
+                      Text(
+                        _formatDelta(previousPeriodDelta['balance']!),
+                        style: TextStyle(
+                          fontSize: 10,
+                          color:
+                              previousPeriodDelta['balance']! >= 0
+                                  ? Colors.green
+                                  : Colors.red,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -722,35 +849,382 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
     );
   }
 
-  Widget _deltaWidget({
-    required double current,
-    required double previous,
-    required Color upColor,
-    required Color downColor,
-    required NumberFormat currency,
-  }) {
-    final diff = current - previous;
-    if (diff == 0) {
-      return Text(
-        'Không đổi so với tháng trước',
-        style: TextStyle(color: Colors.grey[600], fontSize: 12),
+  // Helper methods for tooltip calculations
+  Map<String, double?> _calculatePreviousPeriodDelta() {
+    if (_mode == _FilterMode.month) {
+      final previousMonth = DateTime(_selectedYear, _selectedMonth - 1);
+      final previousData =
+          _all.where((item) {
+            final itemDate = DateTime.parse(item.chiTietChiTieu.ngay);
+            return itemDate.year == previousMonth.year &&
+                itemDate.month == previousMonth.month;
+          }).toList();
+
+      final prevIncome = previousData
+          .where((item) => item.danhMuc.loai == 1)
+          .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+      final prevExpense = previousData
+          .where((item) => item.danhMuc.loai == 2)
+          .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+      final prevBalance = prevIncome - prevExpense;
+
+      return {
+        'income': _tongThu - prevIncome,
+        'expense': _tongChi - prevExpense,
+        'balance': (_tongThu - _tongChi) - prevBalance,
+      };
+    } else if (_mode == _FilterMode.year) {
+      final previousYear = _selectedYear - 1;
+      final previousData =
+          _all.where((item) {
+            final itemDate = DateTime.parse(item.chiTietChiTieu.ngay);
+            return itemDate.year == previousYear;
+          }).toList();
+
+      final prevIncome = previousData
+          .where((item) => item.danhMuc.loai == 1)
+          .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+      final prevExpense = previousData
+          .where((item) => item.danhMuc.loai == 2)
+          .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+      final prevBalance = prevIncome - prevExpense;
+
+      return {
+        'income': _tongThu - prevIncome,
+        'expense': _tongChi - prevExpense,
+        'balance': (_tongThu - _tongChi) - prevBalance,
+      };
+    } else if (_mode == _FilterMode.range &&
+        _startDate != null &&
+        _endDate != null) {
+      final previousRange = _endDate!.difference(_startDate!);
+      final previousStart = _startDate!.subtract(previousRange);
+      final previousEnd = _startDate!;
+
+      final previousData =
+          _all.where((item) {
+            final itemDate = DateTime.parse(item.chiTietChiTieu.ngay);
+            return itemDate.isAfter(
+                  previousStart.subtract(const Duration(days: 1)),
+                ) &&
+                itemDate.isBefore(previousEnd.add(const Duration(days: 1)));
+          }).toList();
+
+      final prevIncome = previousData
+          .where((item) => item.danhMuc.loai == 1)
+          .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+      final prevExpense = previousData
+          .where((item) => item.danhMuc.loai == 2)
+          .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+      final prevBalance = prevIncome - prevExpense;
+
+      return {
+        'income': _tongThu - prevIncome,
+        'expense': _tongChi - prevExpense,
+        'balance': (_tongThu - _tongChi) - prevBalance,
+      };
+    }
+    return {'income': null, 'expense': null, 'balance': null};
+  }
+
+  double? _calculateMonthProportion() {
+    if (_mode != _FilterMode.month) return null;
+
+    final yearData =
+        _all.where((item) {
+          final itemDate = DateTime.parse(item.chiTietChiTieu.ngay);
+          return itemDate.year == _selectedYear;
+        }).toList();
+
+    final yearIncome = yearData
+        .where((item) => item.danhMuc.loai == 1)
+        .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+    final yearExpense = yearData
+        .where((item) => item.danhMuc.loai == 2)
+        .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+
+    if (yearIncome > 0) return (_tongThu / yearIncome) * 100;
+    if (yearExpense > 0) return (_tongChi / yearExpense) * 100;
+    return null;
+  }
+
+  double? _calculateYearProportion() {
+    if (_mode != _FilterMode.year) return null;
+
+    final allData = _all;
+    final totalIncome = allData
+        .where((item) => item.danhMuc.loai == 1)
+        .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+    final totalExpense = allData
+        .where((item) => item.danhMuc.loai == 2)
+        .fold(0.0, (sum, item) => sum + item.chiTietChiTieu.soTien);
+
+    if (totalIncome > 0) return (_tongThu / totalIncome) * 100;
+    if (totalExpense > 0) return (_tongChi / totalExpense) * 100;
+    return null;
+  }
+
+  String _formatDelta(double delta) {
+    final prefix = delta >= 0 ? '+' : '';
+    return '$prefix${_formatCurrency(delta.abs())}';
+  }
+
+  String _buildIncomeTooltip(
+    double? monthProportion,
+    double? yearProportion,
+    double? delta,
+  ) {
+    final buffer = StringBuffer();
+    buffer.writeln('💰 THU NHẬP CHI TIẾT 💰');
+    buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+    if (delta != null) {
+      final period =
+          _mode == _FilterMode.month
+              ? 'tháng trước'
+              : _mode == _FilterMode.year
+              ? 'năm trước'
+              : 'kỳ trước';
+      final deltaIcon = delta >= 0 ? '📈' : '📉';
+      buffer.writeln(
+        '$deltaIcon Chênh lệch so với $period: ${_formatDelta(delta)}',
       );
     }
-    final isUp = diff > 0;
-    final color = isUp ? upColor : downColor;
-    final icon = isUp ? Icons.arrow_upward : Icons.arrow_downward;
+
+    // Thêm thông tin về số lượng giao dịch
+    final incomeTransactions =
+        _filtered.where((item) => item.danhMuc.loai == 1).length;
+    buffer.writeln('📊 Số giao dịch: $incomeTransactions');
+
+    // Thêm thông tin về trung bình
+    if (incomeTransactions > 0) {
+      final average = _tongThu / incomeTransactions;
+      buffer.writeln('📊 Trung bình/giao dịch: ${_formatCurrency(average)}');
+    }
+
+    if (monthProportion != null) {
+      buffer.writeln(
+        '📅 Tỉ trọng trong năm: ${monthProportion.toStringAsFixed(1)}%',
+      );
+    }
+
+    if (yearProportion != null) {
+      buffer.writeln(
+        '📅 Tỉ trọng tổng thể: ${yearProportion.toStringAsFixed(1)}%',
+      );
+    }
+
+    // Thêm thông tin về danh mục lớn nhất
+    final incomeByCategory = <String, double>{};
+    for (final item in _filtered.where((item) => item.danhMuc.loai == 1)) {
+      final categoryName = item.danhMuc.ten;
+      incomeByCategory[categoryName] =
+          (incomeByCategory[categoryName] ?? 0) + item.chiTietChiTieu.soTien;
+    }
+
+    if (incomeByCategory.isNotEmpty) {
+      final topCategory = incomeByCategory.entries.reduce(
+        (a, b) => a.value > b.value ? a : b,
+      );
+      buffer.writeln('🏆 Danh mục lớn nhất: ${topCategory.key}');
+      buffer.writeln('   (${_formatCurrency(topCategory.value)})');
+    }
+
+    return buffer.toString().trim();
+  }
+
+  String _buildExpenseTooltip(
+    double? monthProportion,
+    double? yearProportion,
+    double? delta,
+  ) {
+    final buffer = StringBuffer();
+    buffer.writeln('💸 CHI PHÍ CHI TIẾT 💸');
+    buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+    if (delta != null) {
+      final period =
+          _mode == _FilterMode.month
+              ? 'tháng trước'
+              : _mode == _FilterMode.year
+              ? 'năm trước'
+              : 'kỳ trước';
+      final deltaIcon = delta >= 0 ? '📈' : '📉';
+      buffer.writeln(
+        '$deltaIcon Chênh lệch so với $period: ${_formatDelta(delta)}',
+      );
+    }
+
+    // Thêm thông tin về số lượng giao dịch
+    final expenseTransactions =
+        _filtered.where((item) => item.danhMuc.loai == 2).length;
+    buffer.writeln('📊 Số giao dịch: $expenseTransactions');
+
+    // Thêm thông tin về trung bình
+    if (expenseTransactions > 0) {
+      final average = _tongChi / expenseTransactions;
+      buffer.writeln('📊 Trung bình/giao dịch: ${_formatCurrency(average)}');
+    }
+
+    if (monthProportion != null) {
+      buffer.writeln(
+        '📅 Tỉ trọng trong năm: ${monthProportion.toStringAsFixed(1)}%',
+      );
+    }
+
+    if (yearProportion != null) {
+      buffer.writeln(
+        '📅 Tỉ trọng tổng thể: ${yearProportion.toStringAsFixed(1)}%',
+      );
+    }
+
+    // Thêm thông tin về danh mục lớn nhất
+    final expenseByCategory = <String, double>{};
+    for (final item in _filtered.where((item) => item.danhMuc.loai == 2)) {
+      final categoryName = item.danhMuc.ten;
+      expenseByCategory[categoryName] =
+          (expenseByCategory[categoryName] ?? 0) + item.chiTietChiTieu.soTien;
+    }
+
+    if (expenseByCategory.isNotEmpty) {
+      final topCategory = expenseByCategory.entries.reduce(
+        (a, b) => a.value > b.value ? a : b,
+      );
+      buffer.writeln('🏆 Danh mục lớn nhất: ${topCategory.key}');
+      buffer.writeln('   (${_formatCurrency(topCategory.value)})');
+    }
+
+    return buffer.toString().trim();
+  }
+
+  String _buildBalanceTooltip(
+    double? monthProportion,
+    double? yearProportion,
+    double? delta,
+  ) {
+    final buffer = StringBuffer();
+    buffer.writeln('💳 SỐ DƯ CHI TIẾT 💳');
+    buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+    if (delta != null) {
+      final period =
+          _mode == _FilterMode.month
+              ? 'tháng trước'
+              : _mode == _FilterMode.year
+              ? 'năm trước'
+              : 'kỳ trước';
+      final deltaIcon = delta >= 0 ? '📈' : '📉';
+      buffer.writeln(
+        '$deltaIcon Chênh lệch so với $period: ${_formatDelta(delta)}',
+      );
+    }
+
+    final balance = _tongThu - _tongChi;
+    if (balance > 0) {
+      buffer.writeln('✅ Tiết kiệm: ${_formatCurrency(balance)}');
+
+      // Thêm thông tin về tỷ lệ tiết kiệm
+      final savingsRate = (balance / _tongThu) * 100;
+      buffer.writeln('📊 Tỷ lệ tiết kiệm: ${savingsRate.toStringAsFixed(1)}%');
+    } else if (balance < 0) {
+      buffer.writeln('⚠️ Chi tiêu vượt: ${_formatCurrency(balance.abs())}');
+
+      // Thêm thông tin về tỷ lệ chi tiêu vượt
+      final overspendingRate = (balance.abs() / _tongThu) * 100;
+      buffer.writeln(
+        '📊 Tỷ lệ chi tiêu vượt: ${overspendingRate.toStringAsFixed(1)}%',
+      );
+    }
+
+    // Thêm thông tin về tổng số giao dịch
+    final totalTransactions = _filtered.length;
+    buffer.writeln('📊 Tổng số giao dịch: $totalTransactions');
+
+    // Thêm thông tin về ngày giao dịch đầu/cuối
+    if (_filtered.isNotEmpty) {
+      final sortedByDate = List<ChiTietChiTieuDanhMuc>.from(_filtered)..sort(
+        (a, b) => DateTime.parse(
+          a.chiTietChiTieu.ngay,
+        ).compareTo(DateTime.parse(b.chiTietChiTieu.ngay)),
+      );
+
+      final firstDate = DateTime.parse(sortedByDate.first.chiTietChiTieu.ngay);
+      final lastDate = DateTime.parse(sortedByDate.last.chiTietChiTieu.ngay);
+
+      buffer.writeln(
+        '📅 Giao dịch đầu: ${DateFormat('dd/MM/yyyy').format(firstDate)}',
+      );
+      buffer.writeln(
+        '📅 Giao dịch cuối: ${DateFormat('dd/MM/yyyy').format(lastDate)}',
+      );
+    }
+
+    return buffer.toString().trim();
+  }
+
+  // Skeletons
+  Widget _buildSkeletonSummaryCards() {
+    Widget _skeletonCard(Color color) => Expanded(
+      child: Card(
+        color: color.withOpacity(0.08),
+        child: const Padding(
+          padding: EdgeInsets.all(12.0),
+          child: SizedBox(height: 68),
+        ),
+      ),
+    );
     return Row(
       children: [
-        Icon(icon, size: 14, color: color),
-        const SizedBox(width: 4),
-        Flexible(
-          child: Text(
-            '${currency.format(diff.abs())}',
-            style: TextStyle(color: color, fontSize: 12),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
+        _skeletonCard(Colors.green),
+        _skeletonCard(Colors.red),
+        _skeletonCard(Colors.teal),
       ],
+    );
+  }
+
+  Widget _buildSkeletonChart({required Color color}) {
+    return Card(
+      color: color.withOpacity(0.25),
+      child: const Padding(
+        padding: EdgeInsets.all(12.0),
+        child: SizedBox(height: 200),
+      ),
+    );
+  }
+
+  Widget _buildSkeletonList() {
+    final items = List.generate(6, (i) => i);
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Column(
+          children: [
+            for (final _ in items)
+              const ListTile(
+                leading: CircleAvatar(backgroundColor: Colors.black12),
+                title: SizedBox(
+                  height: 14,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.black12),
+                  ),
+                ),
+                subtitle: SizedBox(
+                  height: 12,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.black12),
+                  ),
+                ),
+                trailing: SizedBox(
+                  width: 72,
+                  height: 16,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.black12),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -878,7 +1352,7 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                                 interval: maxSpending > 0 ? maxSpending / 4 : 1,
                                 getTitlesWidget: (value, meta) {
                                   return Text(
-                                    currency.format(value).replaceAll('đ', ''),
+                                    _formatNumber(value),
                                     style: const TextStyle(fontSize: 10),
                                   );
                                 },
@@ -948,7 +1422,7 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: currency.format(touchedSpot.y),
+                                        text: _formatCurrency(touchedSpot.y),
                                         style: const TextStyle(
                                           color: Colors.red,
                                           fontWeight: FontWeight.bold,
@@ -1092,7 +1566,7 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                                 interval: maxIncome > 0 ? maxIncome / 4 : 1,
                                 getTitlesWidget: (value, meta) {
                                   return Text(
-                                    currency.format(value).replaceAll('đ', ''),
+                                    _formatNumber(value),
                                     style: const TextStyle(fontSize: 10),
                                   );
                                 },
@@ -1162,7 +1636,7 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: currency.format(touchedSpot.y),
+                                        text: _formatCurrency(touchedSpot.y),
                                         style: const TextStyle(
                                           color: Colors.green,
                                           fontWeight: FontWeight.bold,
@@ -1467,7 +1941,7 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                         ],
                       ),
                       trailing: Text(
-                        currency.format(total),
+                        _formatCurrency(total),
                         style: TextStyle(
                           color: isIncome ? Colors.green : Colors.red,
                           fontWeight: FontWeight.bold,
