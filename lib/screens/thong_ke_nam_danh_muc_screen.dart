@@ -6,7 +6,12 @@ import 'thong_ke_thang_danh_muc_screen.dart';
 
 class ThongKeNamDanhMucScreen extends StatefulWidget {
   final DanhMuc danhMuc;
-  const ThongKeNamDanhMucScreen({super.key, required this.danhMuc});
+  final int? selectedYear;
+  const ThongKeNamDanhMucScreen({
+    super.key,
+    required this.danhMuc,
+    this.selectedYear,
+  });
 
   @override
   State<ThongKeNamDanhMucScreen> createState() =>
@@ -22,6 +27,7 @@ class _ThongKeNamDanhMucScreenState extends State<ThongKeNamDanhMucScreen> {
   @override
   void initState() {
     super.initState();
+    selectedYear = widget.selectedYear ?? DateTime.now().year;
     loadData();
   }
 
@@ -73,6 +79,15 @@ class _ThongKeNamDanhMucScreenState extends State<ThongKeNamDanhMucScreen> {
         title: Text('Thống kê năm: ${widget.danhMuc.ten}'),
         backgroundColor: Colors.green,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () {
+              loadData();
+            },
+            tooltip: 'Làm mới',
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(bottom: 16),

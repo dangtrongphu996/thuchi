@@ -96,6 +96,15 @@ class _ThongKeThangDanhMucScreenState extends State<ThongKeThangDanhMucScreen> {
         ),
         backgroundColor: Colors.orange,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () {
+              loadData();
+            },
+            tooltip: 'Làm mới',
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(bottom: 16),

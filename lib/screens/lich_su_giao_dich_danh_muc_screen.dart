@@ -76,6 +76,17 @@ class _LichSuGiaoDichDanhMucScreenState
         title: Text('Lịch sử: ${widget.danhMuc.ten}'),
         backgroundColor: Colors.purple,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () {
+              setState(() {
+                _transactionsFuture = _loadTransactions();
+              });
+            },
+            tooltip: 'Làm mới',
+          ),
+        ],
       ),
       body: FutureBuilder<List<ChiTietChiTieuDanhMuc>>(
         future: _transactionsFuture,

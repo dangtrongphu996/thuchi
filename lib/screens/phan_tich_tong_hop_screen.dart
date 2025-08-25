@@ -1831,11 +1831,16 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                   );
                 }
                 final entries =
-                    categoryAgg.entries.toList()..sort(
-                      (a, b) => (b.value['total'] as double).compareTo(
+                    categoryAgg.entries.toList()..sort((a, b) {
+                      // Sắp xếp: thu nhập trước (loai == 1), chi phí sau (loai == 2)
+                      if (a.value['type'] != b.value['type']) {
+                        return a.value['type'].compareTo(b.value['type']);
+                      }
+                      // Trong mỗi nhóm, sắp xếp theo số tiền giảm dần
+                      return (b.value['total'] as double).compareTo(
                         a.value['total'] as double,
-                      ),
-                    );
+                      );
+                    });
                 return ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -2029,7 +2034,10 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (_) => ThongKeNamDanhMucScreen(danhMuc: danhMuc),
+                              (_) => ThongKeNamDanhMucScreen(
+                                danhMuc: danhMuc,
+                                selectedYear: _selectedYear,
+                              ),
                         ),
                       );
                     },
@@ -2052,8 +2060,11 @@ class _PhanTichTongHopScreenState extends State<PhanTichTongHopScreen> {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (_) =>
-                                  ThongKeThangDanhMucScreen(danhMuc: danhMuc),
+                              (_) => ThongKeThangDanhMucScreen(
+                                danhMuc: danhMuc,
+                                selectedMonth: _selectedMonth,
+                                selectedYear: _selectedYear,
+                              ),
                         ),
                       );
                     },

@@ -81,10 +81,13 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
           };
         }).toList();
 
-    // Sắp xếp giảm dần theo số tiền
-    danhMucStats.sort(
-      (a, b) => (b['tong'] as double).compareTo(a['tong'] as double),
-    );
+    // Sắp xếp: thu nhập trước (loai == 1), chi phí sau (loai == 2), mỗi nhóm giảm dần theo số tiền
+    danhMucStats.sort((a, b) {
+      if (a['loai'] != b['loai']) {
+        return a['loai'].compareTo(b['loai']);
+      }
+      return (b['tong'] as double).compareTo(a['tong'] as double);
+    });
 
     // Thống kê tổng thu/chi
     tongThu = danhMucStats
