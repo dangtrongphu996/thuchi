@@ -862,7 +862,11 @@ Widget _buildCategoryList(
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => ThongKeNamDanhMucScreen(danhMuc: danhMucObj!),
+                  builder:
+                      (_) => ThongKeNamDanhMucScreen(
+                        danhMuc: danhMucObj!,
+                        selectedYear: year,
+                      ),
                 ),
               );
             }

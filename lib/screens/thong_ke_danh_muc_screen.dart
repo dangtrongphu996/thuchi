@@ -502,7 +502,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.green[900],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                         SizedBox(width: 6),
@@ -511,7 +511,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.green[800],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                       ],
@@ -529,7 +529,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.green[700],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                         SizedBox(width: 6),
@@ -538,7 +538,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.green[600],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                       ],
@@ -556,7 +556,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.red[900],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                         SizedBox(width: 6),
@@ -565,7 +565,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.red[800],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                       ],
@@ -583,7 +583,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.red[700],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                         SizedBox(width: 6),
@@ -592,7 +592,7 @@ class _ThongKeDanhMucScreenState extends State<ThongKeDanhMucScreen> {
                                           style: TextStyle(
                                             color: Colors.red[600],
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                           ),
                                         ),
                                       ],

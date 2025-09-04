@@ -36,13 +36,18 @@ class GoogleAuthClient extends http.BaseClient {
 }
 
 class BackupRestoreHelper {
+  /// Lưu thông tin lỗi gần nhất khi backup/restore để hiển thị ra UI
+  static String? lastError;
+
   /// Đăng nhập Google
   static Future<GoogleSignInAccount?> signInWithGoogle() async {
     try {
+      lastError = null;
       final account = await googleSignIn.signIn();
       return account;
     } catch (e) {
       debugPrint('Google sign in error: $e');
+      lastError = e.toString();
       return null;
     }
   }
@@ -63,6 +68,7 @@ class BackupRestoreHelper {
   /// Sao lưu database lên Google Drive
   static Future<bool> backupToGoogleDrive(GoogleSignInAccount account) async {
     try {
+      lastError = null;
       final headers = await account.authHeaders;
       final client = GoogleAuthClient(headers);
       final driveApi = drive.DriveApi(client);
@@ -95,6 +101,7 @@ class BackupRestoreHelper {
       return true;
     } catch (e) {
       debugPrint('Backup failed: $e');
+      lastError = e.toString();
       return false;
     }
   }
@@ -104,6 +111,7 @@ class BackupRestoreHelper {
     GoogleSignInAccount account,
   ) async {
     try {
+      lastError = null;
       final headers = await account.authHeaders;
       final client = GoogleAuthClient(headers);
       final driveApi = drive.DriveApi(client);
@@ -148,6 +156,7 @@ class BackupRestoreHelper {
       return true;
     } catch (e) {
       debugPrint('Restore failed: $e');
+      lastError = e.toString();
       return false;
     }
   }

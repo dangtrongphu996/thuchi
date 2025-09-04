@@ -279,7 +279,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 final account = await BackupRestoreHelper.signInWithGoogle();
                 if (account == null) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Đăng nhập Google thất bại!')),
+                    SnackBar(
+                      content: Text(
+                        'Đăng nhập Google thất bại!\n${BackupRestoreHelper.lastError ?? ''}'
+                            .trim(),
+                      ),
+                    ),
                   );
                   return;
                 }
@@ -289,7 +294,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      ok ? 'Sao lưu thành công!' : 'Sao lưu thất bại!',
+                      ok
+                          ? 'Sao lưu thành công!'
+                          : 'Sao lưu thất bại!\n${BackupRestoreHelper.lastError ?? ''}'
+                              .trim(),
                     ),
                   ),
                 );
@@ -303,7 +311,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 final account = await BackupRestoreHelper.signInWithGoogle();
                 if (account == null) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Đăng nhập Google thất bại!')),
+                    SnackBar(
+                      content: Text(
+                        'Đăng nhập Google thất bại!\n${BackupRestoreHelper.lastError ?? ''}'
+                            .trim(),
+                      ),
+                    ),
                   );
                   return;
                 }
@@ -315,7 +328,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     content: Text(
                       ok
                           ? 'Khôi phục thành công! Vui lòng khởi động lại ứng dụng.'
-                          : 'Khôi phục thất bại!',
+                          : 'Khôi phục thất bại!\n${BackupRestoreHelper.lastError ?? ''}'
+                              .trim(),
                     ),
                   ),
                 );
