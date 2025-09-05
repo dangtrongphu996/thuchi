@@ -4,6 +4,7 @@ import '../db/chi_tiet_chi_tieu_dao.dart';
 import 'package:flutter/cupertino.dart';
 import '../db/danh_muc_dao.dart';
 import '../models/danh_muc.dart';
+import 'thong_ke_thang_danh_muc_screen.dart';
 
 class BarChartScreen extends StatefulWidget {
   const BarChartScreen({super.key});
@@ -24,6 +25,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
   int startMonth = 1;
   int endMonth = DateTime.now().month;
   Map<int, Map<String, dynamic>> _barDetails = {};
+  Map<int, double> _categoryTotals = {}; // categoryId: totalAmount
 
   Future<void> loadChart() async {
     setState(() {
@@ -42,6 +44,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
       final data = <int, double>{};
       final details =
           <int, Map<String, dynamic>>{}; // month: {total, count, topCategory}
+      final categoryTotals = <int, double>{}; // categoryId: totalAmount
 
       for (int m = startMonth; m <= endMonth; m++) {
         final list = await _dao.getByMonth(m, selectedYear);
@@ -65,6 +68,9 @@ class _BarChartScreenState extends State<BarChartScreen> {
           for (var e in filtered) {
             catSum[e.danhMuc.id!] =
                 (catSum[e.danhMuc.id!] ?? 0) + e.chiTietChiTieu.soTien;
+            // Add to category totals
+            categoryTotals[e.danhMuc.id!] =
+                (categoryTotals[e.danhMuc.id!] ?? 0) + e.chiTietChiTieu.soTien;
           }
         }
         String topCategory = '';
@@ -106,6 +112,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                 );
               }).toList();
           _barDetails = details;
+          _categoryTotals = categoryTotals;
           isLoading = false;
         });
       }
@@ -193,351 +200,356 @@ class _BarChartScreenState extends State<BarChartScreen> {
                   ),
                 )
                 : SafeArea(
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(
-                          top: 18,
-                          left: 18,
-                          right: 18,
-                          bottom: 6,
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.18),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  selectedType == 2
-                                      ? CupertinoIcons.money_dollar_circle
-                                      : CupertinoIcons.money_dollar_circle_fill,
-                                  color:
-                                      selectedType == 2
-                                          ? Colors.redAccent
-                                          : Colors.lightBlue,
-                                  size: 28,
-                                ),
-                                const SizedBox(width: 8),
-                                const Text(
-                                  'Loại:',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            DropdownButton<int>(
-                              value: selectedType,
-                              underline: Container(),
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black,
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(
+                            top: 18,
+                            left: 18,
+                            right: 18,
+                            bottom: 6,
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.18),
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
                               ),
-                              items: const [
-                                DropdownMenuItem(
-                                  value: 2,
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        CupertinoIcons.arrow_up_right_circle,
-                                        color: Colors.redAccent,
-                                        size: 20,
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text('Chi phí'),
-                                    ],
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    selectedType == 2
+                                        ? CupertinoIcons.money_dollar_circle
+                                        : CupertinoIcons
+                                            .money_dollar_circle_fill,
+                                    color:
+                                        selectedType == 2
+                                            ? Colors.redAccent
+                                            : Colors.lightBlue,
+                                    size: 28,
                                   ),
-                                ),
-                                DropdownMenuItem(
-                                  value: 1,
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        CupertinoIcons.arrow_down_left_circle,
-                                        color: Colors.lightBlue,
-                                        size: 20,
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text('Thu nhập'),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                              onChanged: (value) {
-                                if (value != null) {
-                                  setState(() {
-                                    selectedType = value;
-                                    allDanhMucs = [];
-                                    selectedDanhMucs = [];
-                                  });
-                                  loadChart();
-                                }
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(16),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.15),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              'Năm:',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 140,
-                              child: DropdownButtonFormField<int>(
-                                value: selectedYear,
-                                decoration: InputDecoration(
-                                  labelText: '',
-                                  prefixIcon: Icon(
-                                    Icons.date_range,
-                                    color: Colors.deepOrange,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  contentPadding: EdgeInsets.symmetric(
-                                    vertical: 0,
-                                    horizontal: 8,
-                                  ),
-                                ),
-                                items: List.generate(
-                                  5,
-                                  (i) => DropdownMenuItem(
-                                    value: DateTime.now().year - 2 + i,
-                                    child: Text(
-                                      "${DateTime.now().year - 2 + i}",
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                  const SizedBox(width: 8),
+                                  const Text(
+                                    'Loại:',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
+                                ],
+                              ),
+                              DropdownButton<int>(
+                                value: selectedType,
+                                underline: Container(),
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black,
                                 ),
+                                items: const [
+                                  DropdownMenuItem(
+                                    value: 2,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.arrow_down_left_circle,
+                                          color: Colors.redAccent,
+                                          size: 20,
+                                        ),
+                                        SizedBox(width: 4),
+                                        Text('Chi phí'),
+                                      ],
+                                    ),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 1,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.arrow_up_right_circle,
+                                          color: Colors.lightBlue,
+                                          size: 20,
+                                        ),
+                                        SizedBox(width: 4),
+                                        Text('Thu nhập'),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                                 onChanged: (value) {
                                   if (value != null) {
                                     setState(() {
-                                      selectedYear = value;
+                                      selectedType = value;
+                                      allDanhMucs = [];
+                                      selectedDanhMucs = [];
                                     });
                                     loadChart();
                                   }
                                 },
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          top: 8,
-                          left: 18,
-                          right: 18,
-                          bottom: 6,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                onTap: () async {
-                                  final result = await showDialog<List<int>>(
-                                    context: context,
-                                    builder: (context) {
-                                      List<int> tempSelected = List.from(
-                                        selectedDanhMucs,
-                                      );
-                                      return AlertDialog(
-                                        title: const Text('Chọn danh mục'),
-                                        content: SizedBox(
-                                          width: double.maxFinite,
-                                          child: ListView(
-                                            shrinkWrap: true,
-                                            children:
-                                                allDanhMucs.map((dm) {
-                                                  return CheckboxListTile(
-                                                    value: tempSelected
-                                                        .contains(dm.id),
-                                                    title: Text(
-                                                      '${dm.icon ?? ''} ${dm.ten}',
-                                                    ),
-                                                    onChanged: (checked) {
-                                                      if (checked == true) {
-                                                        tempSelected.add(
-                                                          dm.id!,
-                                                        );
-                                                      } else {
-                                                        tempSelected.remove(
-                                                          dm.id,
-                                                        );
-                                                      }
-                                                      (context as Element)
-                                                          .markNeedsBuild();
-                                                    },
-                                                  );
-                                                }).toList(),
-                                          ),
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                            onPressed:
-                                                () => Navigator.pop(
-                                                  context,
-                                                  null,
-                                                ),
-                                            child: const Text('Hủy'),
-                                          ),
-                                          ElevatedButton(
-                                            onPressed:
-                                                () => Navigator.pop(
-                                                  context,
-                                                  tempSelected,
-                                                ),
-                                            child: const Text('Chọn'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                  if (result != null) {
-                                    setState(() {
-                                      selectedDanhMucs = result;
-                                    });
-                                    loadChart();
-                                  }
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                      color: Colors.grey.shade300,
+                        Container(
+                          margin: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.15),
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'Năm:',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 140,
+                                child: DropdownButtonFormField<int>(
+                                  value: selectedYear,
+                                  decoration: InputDecoration(
+                                    labelText: '',
+                                    prefixIcon: Icon(
+                                      Icons.date_range,
+                                      color: Colors.deepOrange,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 0,
+                                      horizontal: 8,
                                     ),
                                   ),
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.category,
-                                        size: 20,
-                                        color: Colors.deepPurple,
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Expanded(
-                                        child: Text(
-                                          selectedDanhMucs.length ==
-                                                  allDanhMucs.length
-                                              ? 'Tất cả danh mục'
-                                              : allDanhMucs
-                                                  .where(
-                                                    (dm) => selectedDanhMucs
-                                                        .contains(dm.id),
-                                                  )
-                                                  .map((dm) => dm.ten)
-                                                  .join(', '),
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                          overflow: TextOverflow.ellipsis,
+                                  items: List.generate(
+                                    5,
+                                    (i) => DropdownMenuItem(
+                                      value: DateTime.now().year - 2 + i,
+                                      child: Text(
+                                        "${DateTime.now().year - 2 + i}",
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      const Icon(Icons.arrow_drop_down),
-                                    ],
+                                    ),
+                                  ),
+                                  onChanged: (value) {
+                                    if (value != null) {
+                                      setState(() {
+                                        selectedYear = value;
+                                      });
+                                      loadChart();
+                                    }
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            top: 8,
+                            left: 18,
+                            right: 18,
+                            bottom: 6,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () async {
+                                    final result = await showDialog<List<int>>(
+                                      context: context,
+                                      builder: (context) {
+                                        List<int> tempSelected = List.from(
+                                          selectedDanhMucs,
+                                        );
+                                        return AlertDialog(
+                                          title: const Text('Chọn danh mục'),
+                                          content: SizedBox(
+                                            width: double.maxFinite,
+                                            child: ListView(
+                                              shrinkWrap: true,
+                                              children:
+                                                  allDanhMucs.map((dm) {
+                                                    return CheckboxListTile(
+                                                      value: tempSelected
+                                                          .contains(dm.id),
+                                                      title: Text(
+                                                        '${dm.icon ?? ''} ${dm.ten}',
+                                                      ),
+                                                      onChanged: (checked) {
+                                                        if (checked == true) {
+                                                          tempSelected.add(
+                                                            dm.id!,
+                                                          );
+                                                        } else {
+                                                          tempSelected.remove(
+                                                            dm.id,
+                                                          );
+                                                        }
+                                                        (context as Element)
+                                                            .markNeedsBuild();
+                                                      },
+                                                    );
+                                                  }).toList(),
+                                            ),
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                              onPressed:
+                                                  () => Navigator.pop(
+                                                    context,
+                                                    null,
+                                                  ),
+                                              child: const Text('Hủy'),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed:
+                                                  () => Navigator.pop(
+                                                    context,
+                                                    tempSelected,
+                                                  ),
+                                              child: const Text('Chọn'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (result != null) {
+                                      setState(() {
+                                        selectedDanhMucs = result;
+                                      });
+                                      loadChart();
+                                    }
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(
+                                        color: Colors.grey.shade300,
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.category,
+                                          size: 20,
+                                          color: Colors.deepPurple,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Expanded(
+                                          child: Text(
+                                            selectedDanhMucs.length ==
+                                                    allDanhMucs.length
+                                                ? 'Tất cả danh mục'
+                                                : allDanhMucs
+                                                    .where(
+                                                      (dm) => selectedDanhMucs
+                                                          .contains(dm.id),
+                                                    )
+                                                    .map((dm) => dm.ten)
+                                                    .join(', '),
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        const Icon(Icons.arrow_drop_down),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: 10),
-                            DropdownButton<int>(
-                              value: startMonth,
-                              items:
-                                  List.generate(12, (i) => i + 1)
-                                      .map(
-                                        (e) => DropdownMenuItem(
-                                          value: e,
-                                          child: Text('T$e'),
-                                        ),
-                                      )
-                                      .toList(),
-                              onChanged: (value) {
-                                if (value != null && value <= endMonth) {
-                                  setState(() {
-                                    startMonth = value;
-                                  });
-                                  loadChart();
-                                }
-                              },
-                            ),
-                            const Text(' - '),
-                            DropdownButton<int>(
-                              value: endMonth,
-                              items:
-                                  List.generate(12, (i) => i + 1)
-                                      .map(
-                                        (e) => DropdownMenuItem(
-                                          value: e,
-                                          child: Text('T$e'),
-                                        ),
-                                      )
-                                      .toList(),
-                              onChanged: (value) {
-                                if (value != null && value >= startMonth) {
-                                  setState(() {
-                                    endMonth = value;
-                                  });
-                                  loadChart();
-                                }
-                              },
-                            ),
-                          ],
+                              const SizedBox(width: 10),
+                              DropdownButton<int>(
+                                value: startMonth,
+                                items:
+                                    List.generate(12, (i) => i + 1)
+                                        .map(
+                                          (e) => DropdownMenuItem(
+                                            value: e,
+                                            child: Text('T$e'),
+                                          ),
+                                        )
+                                        .toList(),
+                                onChanged: (value) {
+                                  if (value != null && value <= endMonth) {
+                                    setState(() {
+                                      startMonth = value;
+                                    });
+                                    loadChart();
+                                  }
+                                },
+                              ),
+                              const Text(' - '),
+                              DropdownButton<int>(
+                                value: endMonth,
+                                items:
+                                    List.generate(12, (i) => i + 1)
+                                        .map(
+                                          (e) => DropdownMenuItem(
+                                            value: e,
+                                            child: Text('T$e'),
+                                          ),
+                                        )
+                                        .toList(),
+                                onChanged: (value) {
+                                  if (value != null && value >= startMonth) {
+                                    setState(() {
+                                      endMonth = value;
+                                    });
+                                    loadChart();
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 30),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.all(16),
+                        const SizedBox(height: 12),
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(24),
@@ -551,10 +563,12 @@ class _BarChartScreenState extends State<BarChartScreen> {
                             ],
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Expanded(
+                                AspectRatio(
+                                  aspectRatio: 1.2,
                                   child: BarChart(
                                     BarChartData(
                                       alignment: BarChartAlignment.spaceAround,
@@ -656,14 +670,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 12),
+                                const SizedBox(height: 8),
                                 _buildStatistics(),
+                                const SizedBox(height: 8),
+                                _buildCategoryList(),
                               ],
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
       ),
@@ -763,6 +779,156 @@ class _BarChartScreenState extends State<BarChartScreen> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildCategoryList() {
+    if (_categoryTotals.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    // Sort categories by total amount (descending)
+    final sortedCategories =
+        _categoryTotals.entries.toList()
+          ..sort((a, b) => b.value.compareTo(a.value));
+
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.grey.shade200),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.category,
+                color: selectedType == 2 ? Colors.redAccent : Colors.lightBlue,
+                size: 20,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Tổng theo danh mục',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color:
+                      selectedType == 2 ? Colors.redAccent : Colors.lightBlue,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          ...sortedCategories.map((entry) {
+            final category = allDanhMucs.firstWhere(
+              (dm) => dm.id == entry.key,
+              orElse:
+                  () => DanhMuc(
+                    id: 0,
+                    ten: 'Unknown',
+                    icon: '',
+                    loai: selectedType,
+                  ),
+            );
+            final percentage =
+                _categoryTotals.values.fold(0.0, (a, b) => a + b) > 0
+                    ? (entry.value /
+                            _categoryTotals.values.fold(0.0, (a, b) => a + b)) *
+                        100
+                    : 0.0;
+
+            return Container(
+              margin: const EdgeInsets.only(bottom: 4),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => ThongKeThangDanhMucScreen(
+                            danhMuc: category,
+                            selectedMonth: null, // Will use current month
+                            selectedYear: selectedYear,
+                          ),
+                    ),
+                  );
+                },
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.grey.shade300),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        category.icon ?? '',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              category.ten,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              '${percentage.toStringAsFixed(1)}%',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Text(
+                        '${entry.value.toStringAsFixed(0)} đ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          color:
+                              selectedType == 2
+                                  ? Colors.redAccent
+                                  : Colors.lightBlue,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12,
+                        color: Colors.grey[400],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ],
+      ),
     );
   }
 }

@@ -965,4 +965,62 @@ List<Book> books = [
     ],
     pdfPath: 'assets/pdf/nghigiaulamgiau.pdf',
   ),
+  Book(
+    title: 'Trí tuệ của người xưa',
+    coverImage: 'assets/images/tri_tue_cua_nguoi_xua.png',
+    phans: [
+      Phan(
+        title: "PHẦN I: TRÍ TUỆ CỦA NGƯỜI Á CHÂU",
+        chapters: [
+          Chapter(
+            title: "Chương 1. TRUNG QUỐC THỜI XUÂN THU CHIẾN QUỐC",
+            startPage: 10,
+            endPage: 12,
+          ),
+          Chapter(
+            title: "Chương 2. DÙNG TRÍ QUA KHE QUỶ KHÓC",
+            startPage: 14,
+            endPage: 16,
+          ),
+          Chapter(title: "Chương 3. HỒI TRỐNG ĐẦU", startPage: 18, endPage: 20),
+          Chapter(
+            title: "Chương 4. CHÚC CHI VŨ LUI QUÂN TẦN",
+            startPage: 22,
+            endPage: 24,
+          ),
+          Chapter(
+            title: "Chương 5. SỨ GIẢ KHAO QUÂN",
+            startPage: 26,
+            endPage: 28,
+          ),
+          Chapter(
+            title: "Chương 6. ƯU MẠNH KHÓC NGỰA",
+            startPage: 30,
+            endPage: 31,
+          ),
+          Chapter(
+            title: "Chương 7. CƯỚP TRÂU GIẪM LÚA",
+            startPage: 33,
+            endPage: 34,
+          ),
+          Chapter(
+            title: "Chương 8. YẾN TỬ ĐI SỨ NƯỚC SỞ",
+            startPage: 36,
+            endPage: 38,
+          ),
+          Chapter(
+            title: "Chương 9. LỜI CAN KHÉO CỦA TÊN VỆ SĨ",
+            startPage: 40,
+            endPage: 41,
+          ),
+          Chapter(
+            title: "Chương 10. BIỆN TRANG TỬ GIẾT HỔ",
+            startPage: 43,
+            endPage: 43,
+          ),
+        ],
+      ),
+    ],
+    pdfPath: 'assets/pdf/tri_tue_cua_nguoi_xua.pdf',
+  ),
 ];
