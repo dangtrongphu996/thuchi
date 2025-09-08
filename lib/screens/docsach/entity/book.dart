@@ -970,10 +970,10 @@ List<Book> books = [
     coverImage: 'assets/images/tri_tue_cua_nguoi_xua.png',
     phans: [
       Phan(
-        title: "PHẦN I: TRÍ TUỆ CỦA NGƯỜI Á CHÂU",
+        title: "PHẦN I: TRUNG QUỐC THỜI XUÂN THU CHIẾN QUỐC",
         chapters: [
           Chapter(
-            title: "Chương 1. TRUNG QUỐC THỜI XUÂN THU CHIẾN QUỐC",
+            title: "Chương 1. TIỀU PHU DỤ ĐỊCH",
             startPage: 10,
             endPage: 12,
           ),
@@ -1016,7 +1016,78 @@ List<Book> books = [
           Chapter(
             title: "Chương 10. BIỆN TRANG TỬ GIẾT HỔ",
             startPage: 43,
-            endPage: 43,
+            endPage: 43, // Kết thúc trước Chương 11 (trang 45) [1, 2]
+          ),
+          // Các Chapter còn thiếu từ tài liệu:
+          Chapter(
+            title: "Chương 11. HẠNG THÁC GÂY KHÓ KHỔNG TỬ",
+            startPage: 45,
+            endPage: 46, // Kết thúc trước Chương 12 (trang 48) [2]
+          ),
+          Chapter(
+            title: "Chương 12. THỦY THẦN LẤY VỢ",
+            startPage: 48,
+            endPage: 50, // Kết thúc trước Chương 13 (trang 50) [2]
+          ),
+          Chapter(
+            title: "Chương 13. CHÂU KỴ KHUYÊN VUA TỀ",
+            startPage: 52,
+            endPage: 54, // Kết thúc trước Chương 14 (trang 52) [2]
+          ),
+          Chapter(
+            title: "Chương 14. CHIẾC LƯỠI KHÉO LÉO CỦA THUẦN VU KHÔN",
+            startPage: 56,
+            endPage: 59, // Kết thúc trước Chương 15 (trang 55) [2]
+          ),
+          Chapter(
+            title: "Chương 15. ĐIỀN KỴ ĐẤU NGỰA",
+            startPage: 61,
+            endPage: 63, // Kết thúc trước Chương 16 (trang 57) [2]
+          ),
+          Chapter(
+            title: "Chương 16. VÂY NGỤY CỨU TRIỆU",
+            startPage: 65,
+            endPage: 67, // Kết thúc trước Chương 17 (trang 59) [2]
+          ),
+          Chapter(
+            title: "Chương 17. GIẢM BẾP DỤ ĐỊCH",
+            startPage: 69,
+            endPage: 71, // Kết thúc trước Chương 18 (trang 61) [2]
+          ),
+          Chapter(
+            title: "Chương 18. LÂM CHUNG HIẾN KẾ BẮT THÍCH KHÁCH",
+            startPage: 73,
+            endPage: 75, // Kết thúc trước Chương 19 (trang 64) [2]
+          ),
+          Chapter(
+            title: "Chương 19. NGÀN VÀNG MUA XƯƠNG NGỰA",
+            startPage: 77,
+            endPage: 78, // Kết thúc trước Chương 20 (trang 66) [2]
+          ),
+          Chapter(
+            title: "Chương 20. CHIM SỢ LÀM CUNG",
+            startPage: 80,
+            endPage: 81, // Kết thúc trước Chương 21 (trang 68) [2, 3]
+          ),
+          Chapter(
+            title: "Chương 21. PHÙNG HUYÊN KHOÉT BA HANG",
+            startPage: 83,
+            endPage: 86, // Kết thúc trước Chương 22 (trang 70) [3]
+          ),
+          Chapter(
+            title: "Chương 22. TRẢ NGỌC VỀ NƯỚC TRIỆU",
+            startPage: 88,
+            endPage: 92, // Kết thúc trước Chương 23 (trang 72) [3]
+          ),
+          Chapter(
+            title: "Chương 23. HỘI THỀ Ở MẪN TRÌ",
+            startPage: 94,
+            endPage: 96, // Kết thúc trước Chương 24 (trang 74) [3]
+          ),
+          Chapter(
+            title: "Chương 24. QUAN NGOẠI GIAO 12 TUỔI",
+            startPage: 98,
+            endPage: 100, // Kết thúc trước Chương 25 (trang 76) [3]
           ),
         ],
       ),

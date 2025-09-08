@@ -47,6 +47,9 @@ dependencies:
   flutter_fortune_wheel: ^1.2.0
   google_fonts: ^6.1.0
   shared_preferences: ^2.2.3
+  screenshot: ^3.0.0
+  gal: ^2.3.0
+  photo_view: ^0.14.0
   
 
   # The following adds the Cupertino Icons font to your application.
