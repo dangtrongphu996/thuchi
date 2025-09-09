@@ -5,11 +5,10 @@ import '../db/chi_tiet_chi_tieu_dao.dart';
 import '../models/chi_tiet_chi_tieu_danh_muc.dart';
 import 'them_chi_tiet_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'chi_tiet_danh_muc_screen.dart';
-import 'chi_tiet_theo_thang.dart';
 import '../models/danh_muc.dart';
 import '../db/muc_tieu_thang_dao.dart';
 import '../models/muc_tieu_thang.dart';
+import '../utils/screen_wrapper.dart';
 
 class GiaoDichTheoThangScreen extends StatefulWidget {
   const GiaoDichTheoThangScreen({Key? key}) : super(key: key);
@@ -28,14 +27,16 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
   int _initialPage = 0;
   PageController? _pageController;
 
-  MucTieuThang? _mucTieuThu;
-  MucTieuThang? _mucTieuChi;
-
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
     _fetchMonthsAndData();
+  }
+
+  @override
+  void dispose() {
+    _pageController?.dispose();
+    super.dispose();
   }
 
   Future<void> _fetchMonthsAndData() async {
@@ -60,61 +61,36 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
       (m) => '${m.year}-${m.month.toString().padLeft(2, '0')}' == nowKey,
     );
     if (_initialPage < 0) _initialPage = months.length - 1;
-    // Lấy mục tiêu tháng hiện tại
-    if (months.isNotEmpty) {
-      final currentMonth = months[_initialPage];
-      _mucTieuThu = await _mucTieuDao.getByMonthAndType(
-        currentMonth.month,
-        currentMonth.year,
-        1,
-      );
-      _mucTieuChi = await _mucTieuDao.getByMonthAndType(
-        currentMonth.month,
-        currentMonth.year,
-        2,
-      );
-    } else {
-      _mucTieuThu = null;
-      _mucTieuChi = null;
-    }
+    // Không cần lấy mục tiêu ở đây nữa vì mỗi trang tự lấy
     setState(() {
       _months = months;
       _dataByMonth = grouped;
       _loading = false;
     });
-    // Đảm bảo PageController về đúng trang hiện tại
-    if (_pageController != null &&
-        _initialPage >= 0 &&
-        _initialPage < months.length) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (_pageController!.hasClients) {
-          _pageController!.jumpToPage(_initialPage);
-        }
-      });
-    }
+
+    // Khởi tạo PageController với initialPage sau khi có dữ liệu
+    _pageController = PageController(initialPage: _initialPage);
   }
 
   Future<void> _updateMucTieuForPage(int page) async {
-    if (page >= 0 && page < _months.length) {
-      final m = _months[page];
-      final mucTieuThu = await _mucTieuDao.getByMonthAndType(
-        m.month,
-        m.year,
-        1,
-      );
-      final mucTieuChi = await _mucTieuDao.getByMonthAndType(
-        m.month,
-        m.year,
-        2,
-      );
-      setState(() {
-        _mucTieuThu = mucTieuThu;
-        _mucTieuChi = mucTieuChi;
-      });
-    }
+    // Không cần cập nhật state nữa vì mỗi trang tự lấy mục tiêu riêng
+    // Method này có thể được loại bỏ trong tương lai
   }
 
-  Color _getTypeColor(int loai) => loai == 1 ? Colors.green : Colors.red;
+  Future<Map<String, MucTieuThang?>> _getMucTieuForMonth(DateTime month) async {
+    final mucTieuThu = await _mucTieuDao.getByMonthAndType(
+      month.month,
+      month.year,
+      1,
+    );
+    final mucTieuChi = await _mucTieuDao.getByMonthAndType(
+      month.month,
+      month.year,
+      2,
+    );
+    return {'thu': mucTieuThu, 'chi': mucTieuChi};
+  }
+
   IconData _getTypeIcon(int loai) =>
       loai == 1 ? Icons.arrow_upward : Icons.arrow_downward;
 
@@ -129,7 +105,9 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ScreenWrapper(
+      useAdvancedScrollable: true,
+      includeAppBar: true,
       appBar: AppBar(
         title: const Text('Giao dịch theo tháng'),
         backgroundColor: Colors.teal,
@@ -155,7 +133,9 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                 child: Text('Không có dữ liệu giao dịch theo tháng'),
               )
               : PageView.builder(
-                controller: _pageController,
+                controller:
+                    _pageController ??
+                    PageController(initialPage: _initialPage),
                 itemCount: _months.length,
                 onPageChanged: (page) {
                   _updateMucTieuForPage(page);
@@ -439,59 +419,74 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                               ),
                             ),
                           ),
-                          // Card tiến độ mục tiêu tháng
-                          if (_mucTieuThu != null || _mucTieuChi != null)
-                            Card(
-                              elevation: 2,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              margin: const EdgeInsets.symmetric(vertical: 8),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 16,
-                                  horizontal: 18,
+                          // Card tiến độ mục tiêu tháng - lấy riêng cho từng tháng
+                          FutureBuilder<Map<String, MucTieuThang?>>(
+                            future: _getMucTieuForMonth(month),
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData)
+                                return const SizedBox.shrink();
+
+                              final mucTieuThu = snapshot.data!['thu'];
+                              final mucTieuChi = snapshot.data!['chi'];
+
+                              if (mucTieuThu == null && mucTieuChi == null) {
+                                return const SizedBox.shrink();
+                              }
+
+                              return Card(
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.flag,
-                                          color: Colors.teal,
-                                          size: 22,
-                                        ),
-                                        const SizedBox(width: 8),
-                                        Text(
-                                          'Tiến độ mục tiêu tháng',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15,
-                                            color: Colors.teal.shade700,
+                                margin: const EdgeInsets.symmetric(vertical: 8),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 16,
+                                    horizontal: 18,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.flag,
+                                            color: Colors.teal,
+                                            size: 22,
                                           ),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            'Tiến độ mục tiêu tháng',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                              color: Colors.teal.shade700,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 10),
+                                      if (mucTieuThu != null)
+                                        _buildProgressBar(
+                                          tongThu,
+                                          mucTieuThu.soTien,
+                                          'Thu nhập',
+                                          icon: Icons.trending_up,
                                         ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10),
-                                    if (_mucTieuThu != null)
-                                      _buildProgressBar(
-                                        tongThu,
-                                        _mucTieuThu!.soTien,
-                                        'Thu nhập',
-                                        icon: Icons.trending_up,
-                                      ),
-                                    if (_mucTieuChi != null)
-                                      _buildProgressBar(
-                                        tongChi,
-                                        _mucTieuChi!.soTien,
-                                        'Chi phí',
-                                        icon: Icons.trending_down,
-                                      ),
-                                  ],
+                                      if (mucTieuChi != null)
+                                        _buildProgressBar(
+                                          tongChi,
+                                          mucTieuChi.soTien,
+                                          'Chi phí',
+                                          icon: Icons.trending_down,
+                                        ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
+                          ),
                           // Danh sách danh mục thu nhập và chi phí
                           const SizedBox(height: 18),
                           const Text(
@@ -801,7 +796,7 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
                                   );
                                 },
                               ),
-                          const SizedBox(height: 24),
+                          const SizedBox(height: 60),
                         ],
                       ),
                     ),
@@ -811,36 +806,29 @@ class _GiaoDichTheoThangScreenState extends State<GiaoDichTheoThangScreen> {
       floatingActionButton:
           _months.isEmpty
               ? null
-              : Builder(
-                builder: (context) {
+              : FloatingActionButton(
+                backgroundColor: Colors.teal,
+                child: const Icon(Icons.add),
+                onPressed: () async {
+                  // Lấy tháng đang xem
                   final pageController = _pageController;
-                  return FloatingActionButton(
-                    backgroundColor: Colors.teal,
-                    child: const Icon(Icons.add),
-                    onPressed: () async {
-                      // Lấy tháng đang xem
-                      final page =
-                          (pageController?.hasClients == true
-                              ? pageController?.page?.round()
-                              : _initialPage) ??
-                          _initialPage;
-                      final month = _months[page];
-                      final date = DateTime(month.year, month.month, 1);
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder:
-                              (_) => ThemChiTietScreen(
-                                chiTiet: null,
-                                danhMuc: null,
-                              ),
-                        ),
-                      );
-                      _fetchMonthsAndData();
-                    },
-                    tooltip: 'Thêm giao dịch cho tháng này',
+                  final page =
+                      (pageController?.hasClients == true
+                          ? pageController?.page?.round()
+                          : _initialPage) ??
+                      _initialPage;
+                  _months[page];
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (_) =>
+                              ThemChiTietScreen(chiTiet: null, danhMuc: null),
+                    ),
                   );
+                  _fetchMonthsAndData();
                 },
+                tooltip: 'Thêm giao dịch cho tháng này',
               ),
     );
   }

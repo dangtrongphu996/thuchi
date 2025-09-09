@@ -47,6 +47,21 @@ body: AppWrapper(
   child: YourWidget(),
 ),
 
+// Phiên bản Advanced Scrollable (MỚI - có tùy chọn bao gồm AppBar)
+body: AppWrapper(
+  screenName: 'ten_man_hinh_${DateTime.now().millisecondsSinceEpoch}',
+  useAdvancedScrollable: true, // Chụp ảnh với tùy chọn AppBar
+  includeAppBar: true, // Có thể là true hoặc false
+  child: YourWidget(),
+),
+
+// Phiên bản Full Page (MỚI - luôn bao gồm AppBar)
+body: AppWrapper(
+  screenName: 'ten_man_hinh_${DateTime.now().millisecondsSinceEpoch}',
+  useFullPage: true, // Chụp toàn bộ trang bao gồm AppBar
+  child: YourWidget(),
+),
+
 // Phiên bản đơn giản chỉ có gallery (tránh lỗi Hero)
 body: AppWrapper(
   useSimpleGallery: true, // Chỉ có nút gallery, không có chụp ảnh
@@ -67,6 +82,73 @@ body: AppWrapper(
   child: YourWidget(),
 ),
 ```
+
+## Các wrapper mới với hỗ trợ AppBar
+
+### AdvancedScrollableScreenshotWrapper
+- **Đặc điểm**: Có dialog cho phép chọn chụp ảnh có hoặc không có AppBar
+- **Sử dụng**: `useAdvancedScrollable: true`
+- **Tùy chọn**: `includeAppBar: true/false` để đặt mặc định
+- **Dialog options**: 
+  - "Toàn màn hình (bao gồm AppBar)" 
+  - "Chỉ nội dung (không có AppBar)"
+
+### FullPageScreenshotWrapper  
+- **Đặc điểm**: Luôn chụp toàn bộ trang bao gồm AppBar
+- **Sử dụng**: `useFullPage: true`
+- **Phù hợp**: Khi bạn luôn muốn có AppBar trong ảnh
+
+## ScreenWrapper - Giải pháp tối ưu cho AppBar
+
+**ScreenWrapper** là wrapper mới cho phép bạn wrap toàn bộ screen và có control hoàn toàn về việc có bao gồm AppBar hay không.
+
+### Cách sử dụng ScreenWrapper:
+```dart
+import '../utils/screen_wrapper.dart';
+
+// Thay vì Scaffold truyền thống:
+return ScreenWrapper(
+  screenName: 'ten_man_hinh_${DateTime.now().millisecondsSinceEpoch}',
+  useAdvancedScrollable: true, // Có dialog chọn có/không AppBar
+  includeAppBar: true, // Mặc định bao gồm AppBar
+  appBar: AppBar(
+    title: Text('Title'),
+    backgroundColor: Colors.purple,
+  ),
+  body: YourContentWidget(),
+);
+
+// Hoặc để luôn bao gồm AppBar:
+return ScreenWrapper(
+  screenName: 'ten_man_hinh_${DateTime.now().millisecondsSinceEpoch}',
+  useFullPage: true, // Luôn chụp toàn bộ
+  appBar: AppBar(title: Text('Title')),
+  body: YourContentWidget(),
+);
+```
+
+### Tính năng "Chụp không có AppBar":
+- Khi chọn "Chỉ nội dung (không có AppBar)", hệ thống sẽ:
+  1. Chụp toàn màn hình trước
+  2. Tự động crop (cắt bỏ) phần AppBar ở trên
+  3. Lưu ảnh chỉ có phần nội dung body
+- Nếu không thể crop được, sẽ thông báo và lưu ảnh toàn màn hình
+
+### Menu item trong AppBar:
+**Giờ đây các button chụp ảnh đã được tích hợp vào AppBar menu!**
+- Icon camera (📷) trong AppBar actions
+- Menu gồm 2 options:
+  - "Chụp ảnh (tùy chọn)" hoặc "Chụp toàn màn hình"
+  - "Xem thư viện ảnh"
+- Giao diện gọn gàng, không có floating buttons
+
+### Logic chụp ảnh có AppBar (MỚI):
+**Đã sửa lỗi không hiển thị AppBar!**
+- Khi chọn "Toàn màn hình (bao gồm AppBar)":
+  1. Tự động tìm kiếm parent RepaintBoundary chứa Scaffold
+  2. Chụp từ boundary cao nhất để bao gồm AppBar
+  3. Fallback về boundary hiện tại nếu không tìm thấy
+- Đảm bảo AppBar được hiển thị đúng trong ảnh chụp
 
 ## Ví dụ tích hợp vào màn hình
 

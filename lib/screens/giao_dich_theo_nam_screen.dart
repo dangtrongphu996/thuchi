@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../db/chi_tiet_chi_tieu_dao.dart';
 import '../models/chi_tiet_chi_tieu_danh_muc.dart';
 import 'them_chi_tiet_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'chi_tiet_danh_muc_screen.dart';
 import 'thong_ke_nam_danh_muc_screen.dart';
 import '../models/danh_muc.dart';
+import '../utils/screen_wrapper.dart';
 
 class GiaoDichTheoNamScreen extends StatefulWidget {
   const GiaoDichTheoNamScreen({Key? key}) : super(key: key);
@@ -49,13 +48,11 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
     });
   }
 
-  Color _getTypeColor(int loai) => loai == 1 ? Colors.green : Colors.red;
-  IconData _getTypeIcon(int loai) =>
-      loai == 1 ? Icons.arrow_upward : Icons.arrow_downward;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ScreenWrapper(
+      useAdvancedScrollable: true,
+      includeAppBar: true,
       appBar: AppBar(
         title: const Text('Giao dịch theo năm'),
         backgroundColor: Colors.indigo,
@@ -677,38 +674,31 @@ class _GiaoDichTheoNamScreenState extends State<GiaoDichTheoNamScreen> {
       floatingActionButton:
           _years.isEmpty
               ? null
-              : Builder(
-                builder: (context) {
+              : FloatingActionButton(
+                backgroundColor: Colors.indigo,
+                child: const Icon(Icons.add),
+                onPressed: () async {
+                  // Lấy năm đang xem
                   final pageController = PageController(
                     initialPage: _initialPage,
                   );
-                  return FloatingActionButton(
-                    backgroundColor: Colors.indigo,
-                    child: const Icon(Icons.add),
-                    onPressed: () async {
-                      // Lấy năm đang xem
-                      final page =
-                          (pageController.hasClients
-                              ? pageController.page?.round()
-                              : _initialPage) ??
-                          _initialPage;
-                      final year = _years[page];
-                      final date = DateTime(year, 1, 1);
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder:
-                              (_) => ThemChiTietScreen(
-                                chiTiet: null,
-                                danhMuc: null,
-                              ),
-                        ),
-                      );
-                      _fetchYearsAndData();
-                    },
-                    tooltip: 'Thêm giao dịch cho năm này',
+                  final page =
+                      (pageController.hasClients
+                          ? pageController.page?.round()
+                          : _initialPage) ??
+                      _initialPage;
+                  _years[page];
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (_) =>
+                              ThemChiTietScreen(chiTiet: null, danhMuc: null),
+                    ),
                   );
+                  _fetchYearsAndData();
                 },
+                tooltip: 'Thêm giao dịch cho năm này',
               ),
     );
   }

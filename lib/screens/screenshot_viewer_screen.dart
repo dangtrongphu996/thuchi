@@ -91,7 +91,27 @@ class _ScreenshotViewerScreenState extends State<ScreenshotViewerScreen> {
   }
 
   String _getFileName(File file) {
-    return file.path.split('/').last.split('\\').last;
+    String fullName = file.path.split('/').last.split('\\').last;
+
+    // Rút gọn tên file cho phù hợp với layout responsive
+    if (fullName.length > 30) {
+      // Tách name và extension
+      final parts = fullName.split('.');
+      if (parts.length > 1) {
+        final extension = parts.last;
+        final nameWithoutExt = parts.sublist(0, parts.length - 1).join('.');
+
+        // Rút gọn phần name, giữ extension
+        if (nameWithoutExt.length > 25) {
+          return '${nameWithoutExt.substring(0, 22)}...$extension';
+        }
+      } else {
+        // Không có extension, rút gọn toàn bộ
+        return '${fullName.substring(0, 27)}...';
+      }
+    }
+
+    return fullName;
   }
 
   @override
@@ -146,33 +166,61 @@ class _ScreenshotViewerScreenState extends State<ScreenshotViewerScreen> {
       ),
       bottomNavigationBar: Container(
         color: Colors.black.withOpacity(0.8),
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              _getFileName(widget.screenshots[_currentIndex]),
-              style: const TextStyle(color: Colors.white, fontSize: 12),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.zoom_out, color: Colors.white),
-                  onPressed: () {
-                    // Zoom out functionality can be added here
-                  },
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: SafeArea(
+          child: Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Text(
+                  _getFileName(widget.screenshots[_currentIndex]),
+                  style: const TextStyle(color: Colors.white, fontSize: 12),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                IconButton(
-                  icon: const Icon(Icons.zoom_in, color: Colors.white),
-                  onPressed: () {
-                    // Zoom in functionality can be added here
-                  },
+              ),
+              const SizedBox(width: 8),
+              Flexible(
+                flex: 2,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.zoom_out,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        // Zoom out functionality can be added here
+                      },
+                      constraints: const BoxConstraints(
+                        minWidth: 40,
+                        minHeight: 40,
+                      ),
+                      padding: const EdgeInsets.all(8),
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.zoom_in,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        // Zoom in functionality can be added here
+                      },
+                      constraints: const BoxConstraints(
+                        minWidth: 40,
+                        minHeight: 40,
+                      ),
+                      padding: const EdgeInsets.all(8),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
