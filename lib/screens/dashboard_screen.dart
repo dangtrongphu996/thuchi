@@ -21,6 +21,7 @@ import 'chi_tiet_theo_thang.dart';
 import 'package:thuchi/screens/vocabulary/screen/vocabulary_menu_screen.dart';
 // import 'muc_tieu_thang_screen.dart';
 import 'phan_tich_tong_hop_screen.dart';
+import 'gold_brands_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -1217,6 +1218,100 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                       ),
                     const SizedBox(height: 18),
+                    // Nút chức năng giá vàng
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 18),
+                    //   child: Card(
+                    //     color: Colors.white,
+                    //     elevation: 4,
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(16),
+                    //     ),
+                    //     child: InkWell(
+                    //       onTap: () {
+                    //         Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //             builder: (_) => const GoldBrandsScreen(),
+                    //           ),
+                    //         );
+                    //       },
+                    //       borderRadius: BorderRadius.circular(16),
+                    //       child: Container(
+                    //         padding: const EdgeInsets.all(16),
+                    //         child: Row(
+                    //           children: [
+                    //             Container(
+                    //               width: 60,
+                    //               height: 60,
+                    //               decoration: BoxDecoration(
+                    //                 gradient: const LinearGradient(
+                    //                   colors: [
+                    //                     Color(0xFFFFD700),
+                    //                     Color(0xFFFFA500),
+                    //                   ],
+                    //                   begin: Alignment.topLeft,
+                    //                   end: Alignment.bottomRight,
+                    //                 ),
+                    //                 borderRadius: BorderRadius.circular(30),
+                    //                 boxShadow: [
+                    //                   BoxShadow(
+                    //                     color: Colors.orange.withOpacity(0.3),
+                    //                     blurRadius: 8,
+                    //                     offset: const Offset(0, 2),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //               child: const Icon(
+                    //                 Icons.trending_up,
+                    //                 color: Colors.white,
+                    //                 size: 30,
+                    //               ),
+                    //             ),
+                    //             const SizedBox(width: 16),
+                    //             Expanded(
+                    //               child: Column(
+                    //                 crossAxisAlignment:
+                    //                     CrossAxisAlignment.start,
+                    //                 children: [
+                    //                   Text(
+                    //                     'Giá Vàng Hôm Nay',
+                    //                     style: GoogleFonts.roboto(
+                    //                       fontSize: 18,
+                    //                       fontWeight: FontWeight.bold,
+                    //                       color: const Color(0xFF1B5E20),
+                    //                     ),
+                    //                   ),
+                    //                   const SizedBox(height: 4),
+                    //                   Text(
+                    //                     'Theo dõi giá vàng SJC, PNJ, Mi Hồng',
+                    //                     style: TextStyle(
+                    //                       fontSize: 14,
+                    //                       color: Colors.grey[600],
+                    //                     ),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //             Container(
+                    //               padding: const EdgeInsets.all(8),
+                    //               decoration: BoxDecoration(
+                    //                 color: const Color(0xFFF1F8E9),
+                    //                 borderRadius: BorderRadius.circular(8),
+                    //               ),
+                    //               child: const Icon(
+                    //                 Icons.arrow_forward_ios,
+                    //                 color: Color(0xFF2E7D32),
+                    //                 size: 16,
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 18),
                     // Danh sách chi tiêu 7 ngày gần nhất
                     Card(
                       color: Colors.white,

@@ -16,6 +16,8 @@ class _ThongKeNamPieScreenState extends State<ThongKeNamPieScreen> {
   List<int> allYears = [];
   List<_MonthStat> monthStats = [];
   bool isLoading = false;
+  List<BarChartGroupData> incomeBarGroups = [];
+  List<BarChartGroupData> expenseBarGroups = [];
 
   // Thống kê
   double maxThu = 0,
@@ -71,21 +73,78 @@ class _ThongKeNamPieScreenState extends State<ThongKeNamPieScreen> {
             .where((e) => e.thu > 0 || e.chi > 0)
             .toList();
     // Thống kê cao/thấp nhất
-    maxThu = monthStats.map((e) => e.thu).reduce((a, b) => a > b ? a : b);
-    minThu = monthStats.map((e) => e.thu).reduce((a, b) => a < b ? a : b);
-    maxChi = monthStats.map((e) => e.chi).reduce((a, b) => a > b ? a : b);
-    minChi = monthStats.map((e) => e.chi).reduce((a, b) => a < b ? a : b);
-    maxConLai = monthStats.map((e) => e.conLai).reduce((a, b) => a > b ? a : b);
-    minConLai = monthStats.map((e) => e.conLai).reduce((a, b) => a < b ? a : b);
-    maxThuMonth = monthStats.firstWhere((e) => e.thu == maxThu).month;
-    minThuMonth = monthStats.firstWhere((e) => e.thu == minThu).month;
-    maxChiMonth = monthStats.firstWhere((e) => e.chi == maxChi).month;
-    minChiMonth = monthStats.firstWhere((e) => e.chi == minChi).month;
-    maxConLaiMonth = monthStats.firstWhere((e) => e.conLai == maxConLai).month;
-    minConLaiMonth = monthStats.firstWhere((e) => e.conLai == minConLai).month;
+    if (monthStats.isNotEmpty) {
+      maxThu = monthStats.map((e) => e.thu).reduce((a, b) => a > b ? a : b);
+      minThu = monthStats.map((e) => e.thu).reduce((a, b) => a < b ? a : b);
+      maxChi = monthStats.map((e) => e.chi).reduce((a, b) => a > b ? a : b);
+      minChi = monthStats.map((e) => e.chi).reduce((a, b) => a < b ? a : b);
+      maxConLai = monthStats
+          .map((e) => e.conLai)
+          .reduce((a, b) => a > b ? a : b);
+      minConLai = monthStats
+          .map((e) => e.conLai)
+          .reduce((a, b) => a < b ? a : b);
+      maxThuMonth = monthStats.firstWhere((e) => e.thu == maxThu).month;
+      minThuMonth = monthStats.firstWhere((e) => e.thu == minThu).month;
+      maxChiMonth = monthStats.firstWhere((e) => e.chi == maxChi).month;
+      minChiMonth = monthStats.firstWhere((e) => e.chi == minChi).month;
+      maxConLaiMonth =
+          monthStats.firstWhere((e) => e.conLai == maxConLai).month;
+      minConLaiMonth =
+          monthStats.firstWhere((e) => e.conLai == minConLai).month;
+    }
+
+    // Tạo dữ liệu cho 2 biểu đồ cột riêng biệt
+    _generateIncomeBarChartData();
+    _generateExpenseBarChartData();
+
     setState(() {
       isLoading = false;
     });
+  }
+
+  void _generateIncomeBarChartData() {
+    incomeBarGroups =
+        monthStats.map((stat) {
+          return BarChartGroupData(
+            x: stat.month,
+            barRods: [
+              BarChartRodData(
+                toY: stat.thu,
+                gradient: LinearGradient(
+                  colors: [Colors.green.shade400, Colors.green.shade600],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                ),
+                width: 20,
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ],
+            showingTooltipIndicators: stat.thu > 0 ? [0] : [],
+          );
+        }).toList();
+  }
+
+  void _generateExpenseBarChartData() {
+    expenseBarGroups =
+        monthStats.map((stat) {
+          return BarChartGroupData(
+            x: stat.month,
+            barRods: [
+              BarChartRodData(
+                toY: stat.chi,
+                gradient: LinearGradient(
+                  colors: [Colors.red.shade400, Colors.red.shade600],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                ),
+                width: 20,
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ],
+            showingTooltipIndicators: stat.chi > 0 ? [0] : [],
+          );
+        }).toList();
   }
 
   @override
@@ -522,6 +581,22 @@ class _ThongKeNamPieScreenState extends State<ThongKeNamPieScreen> {
                             ),
                           ),
                         ),
+                        // Biểu đồ cột thu nhập/chi phí
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          child: Text(
+                            'Biểu đồ cột thu nhập và chi phí',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              color: Colors.teal,
+                            ),
+                          ),
+                        ),
+                        _buildSeparateBarCharts(),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 12,
@@ -917,6 +992,414 @@ class _ThongKeNamPieScreenState extends State<ThongKeNamPieScreen> {
                   ),
                 ),
               ),
+    );
+  }
+
+  Widget _buildSeparateBarCharts() {
+    if (monthStats.isEmpty) {
+      return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: const Center(
+          child: Text(
+            'Không có dữ liệu để hiển thị biểu đồ',
+            style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic),
+          ),
+        ),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      child: Column(
+        children: [
+          _buildIncomeBarChart(),
+          const SizedBox(height: 16),
+          _buildExpenseBarChart(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIncomeBarChart() {
+    // Tính toán maxY cho biểu đồ thu nhập
+    double maxValue = 0;
+    for (var group in incomeBarGroups) {
+      for (var rod in group.barRods) {
+        if (rod.toY > maxValue) {
+          maxValue = rod.toY;
+        }
+      }
+    }
+    double maxY = maxValue * 1.2;
+
+    // Tính đơn vị hiển thị
+    String yUnit = '';
+    double yDivisor = 1;
+    if (maxY >= 1000000000) {
+      yUnit = 'B';
+      yDivisor = 1000000000;
+    } else if (maxY >= 1000000) {
+      yUnit = 'M';
+      yDivisor = 1000000;
+    } else if (maxY >= 1000) {
+      yUnit = 'K';
+      yDivisor = 1000;
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            // Tiêu đề
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.green.shade400, Colors.green.shade600],
+                    ),
+                    borderRadius: BorderRadius.circular(3),
+                  ),
+                ),
+                const SizedBox(width: 6),
+                const Text(
+                  'Thu nhập',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            // Biểu đồ
+            AspectRatio(
+              aspectRatio: 1.8,
+              child: BarChart(
+                BarChartData(
+                  alignment: BarChartAlignment.spaceAround,
+                  maxY: maxY > 0 ? maxY : 1000,
+                  barTouchData: BarTouchData(
+                    touchTooltipData: BarTouchTooltipData(
+                      tooltipBgColor: Colors.transparent,
+                      getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                        final month = group.x;
+                        final stat = monthStats.firstWhere(
+                          (s) => s.month == month,
+                        );
+                        final value = stat.thu;
+
+                        if (value <= 0) return null;
+
+                        String displayValue;
+                        if (value >= 1000000) {
+                          displayValue =
+                              '${(value / 1000000).toStringAsFixed(1)}M';
+                        } else if (value >= 1000) {
+                          displayValue =
+                              '${(value / 1000).toStringAsFixed(0)}K';
+                        } else {
+                          displayValue = value.toStringAsFixed(0);
+                        }
+
+                        return BarTooltipItem(
+                          displayValue,
+                          TextStyle(
+                            color: Colors.green.shade700,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 9,
+                            shadows: [
+                              Shadow(
+                                offset: Offset(0.5, 0.5),
+                                color: Colors.white,
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  borderData: FlBorderData(show: false),
+                  gridData: FlGridData(
+                    show: true,
+                    drawVerticalLine: false,
+                    horizontalInterval: maxY > 0 ? maxY / 4 : 250,
+                    getDrawingHorizontalLine: (value) {
+                      return FlLine(
+                        color: Colors.grey.withOpacity(0.2),
+                        strokeWidth: 1,
+                      );
+                    },
+                  ),
+                  barGroups: incomeBarGroups,
+                  titlesData: FlTitlesData(
+                    show: true,
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: (value, meta) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 6.0),
+                            child: Text(
+                              "T${value.toInt()}",
+                              style: TextStyle(
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    leftTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        reservedSize: 50,
+                        getTitlesWidget: (value, meta) {
+                          return Text(
+                            ((value / yDivisor) % 1 == 0
+                                    ? (value / yDivisor).toStringAsFixed(0)
+                                    : (value / yDivisor).toStringAsFixed(1)) +
+                                yUnit,
+                            style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 11,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    topTitles: AxisTitles(
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
+                    rightTitles: AxisTitles(
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildExpenseBarChart() {
+    // Tính toán maxY cho biểu đồ chi phí
+    double maxValue = 0;
+    for (var group in expenseBarGroups) {
+      for (var rod in group.barRods) {
+        if (rod.toY > maxValue) {
+          maxValue = rod.toY;
+        }
+      }
+    }
+    double maxY = maxValue * 1.2;
+
+    // Tính đơn vị hiển thị
+    String yUnit = '';
+    double yDivisor = 1;
+    if (maxY >= 1000000000) {
+      yUnit = 'B';
+      yDivisor = 1000000000;
+    } else if (maxY >= 1000000) {
+      yUnit = 'M';
+      yDivisor = 1000000;
+    } else if (maxY >= 1000) {
+      yUnit = 'K';
+      yDivisor = 1000;
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            // Tiêu đề
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.red.shade400, Colors.red.shade600],
+                    ),
+                    borderRadius: BorderRadius.circular(3),
+                  ),
+                ),
+                const SizedBox(width: 6),
+                const Text(
+                  'Chi phí',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            // Biểu đồ
+            AspectRatio(
+              aspectRatio: 1.8,
+              child: BarChart(
+                BarChartData(
+                  alignment: BarChartAlignment.spaceAround,
+                  maxY: maxY > 0 ? maxY : 1000,
+                  barTouchData: BarTouchData(
+                    touchTooltipData: BarTouchTooltipData(
+                      tooltipBgColor: Colors.transparent,
+                      getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                        final month = group.x;
+                        final stat = monthStats.firstWhere(
+                          (s) => s.month == month,
+                        );
+                        final value = stat.chi;
+
+                        if (value <= 0) return null;
+
+                        String displayValue;
+                        if (value >= 1000000) {
+                          displayValue =
+                              '${(value / 1000000).toStringAsFixed(1)}M';
+                        } else if (value >= 1000) {
+                          displayValue =
+                              '${(value / 1000).toStringAsFixed(0)}K';
+                        } else {
+                          displayValue = value.toStringAsFixed(0);
+                        }
+
+                        return BarTooltipItem(
+                          displayValue,
+                          TextStyle(
+                            color: Colors.red.shade700,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 9,
+                            shadows: [
+                              Shadow(
+                                offset: Offset(0.5, 0.5),
+                                color: Colors.white,
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  borderData: FlBorderData(show: false),
+                  gridData: FlGridData(
+                    show: true,
+                    drawVerticalLine: false,
+                    horizontalInterval: maxY > 0 ? maxY / 4 : 250,
+                    getDrawingHorizontalLine: (value) {
+                      return FlLine(
+                        color: Colors.grey.withOpacity(0.2),
+                        strokeWidth: 1,
+                      );
+                    },
+                  ),
+                  barGroups: expenseBarGroups,
+                  titlesData: FlTitlesData(
+                    show: true,
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: (value, meta) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 6.0),
+                            child: Text(
+                              "T${value.toInt()}",
+                              style: TextStyle(
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    leftTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        reservedSize: 50,
+                        getTitlesWidget: (value, meta) {
+                          return Text(
+                            ((value / yDivisor) % 1 == 0
+                                    ? (value / yDivisor).toStringAsFixed(0)
+                                    : (value / yDivisor).toStringAsFixed(1)) +
+                                yUnit,
+                            style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 11,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    topTitles: AxisTitles(
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
+                    rightTitles: AxisTitles(
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
